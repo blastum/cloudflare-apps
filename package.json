@@ -1,0 +1,16 @@
+{
+  "name": "cloudflare-apps",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && wrangler pages dev dist",
+    "preview": "npm run dev"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
