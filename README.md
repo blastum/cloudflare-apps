@@ -1,4 +1,4 @@
-# cloudflare-apps
+# Smirking Cat Software
 
 Umbrella site for small single-page web apps, deployed on [Cloudflare Pages](https://developers.cloudflare.com/pages/).
 
@@ -8,7 +8,7 @@ Umbrella site for small single-page web apps, deployed on [Cloudflare Pages](htt
 /
 ├── index.html          # Home page (/)
 ├── apps/               # One folder per app → served at /<slug>/
-│   └── <slug>/
+│   └── trump-account-modeler/
 ├── scripts/build.mjs   # Builds all apps into dist/
 ├── dist/               # Pages deploy output (gitignored)
 └── wrangler.jsonc      # Local dev + Pages config
@@ -33,7 +33,6 @@ npm run dev
 
 Preview deployments are created automatically for other branches and pull requests.
 
-## Planned apps
+## Apps
 
-- Trump account calculator (from `trump-account-calc`)
-- Others TBD
+- [Trump Account Modeler](/trump-account-modeler/) — growth, Roth conversion, and IRA projections

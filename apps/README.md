@@ -4,10 +4,10 @@ Each subdirectory here is an independent single-page app (typically Vite + TypeS
 
 ## URL layout
 
-After build, source in `apps/trump-calculator/` is served at the site root subpath:
+After build, source in `apps/trump-account-modeler/` is served at the site root subpath:
 
 ```
-https://<your-domain>/trump-calculator/
+https://<your-domain>/trump-account-modeler/
 ```
 
 (The `apps/` folder is only the monorepo layout — it is not part of the public URL.)

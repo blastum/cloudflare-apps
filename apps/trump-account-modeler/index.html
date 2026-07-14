@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trump Account Modeler · Smirking Cat Software</title>
+    <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/theme.css" />
+    <link rel="stylesheet" href="/src/styles/calculator.css" />
+  </head>
+  <body>
+    <div class="page page--wide">
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <img src="/public/images/smirk-cat.png" alt="" width="60" height="60" />
+          </div>
+          <div class="brand-text">
+            <p class="brand-title">Smirking Cat Software</p>
+            <p class="brand-subtitle">Trump Account Modeler</p>
+          </div>
+        </div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">All apps</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <h1>Trump Account Modeler</h1>
+          <p>
+            Project a Trump account balance through age 18, Roth conversion tax, and long-term IRA
+            growth. All calculations run in your browser.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="inputs-heading">
+          <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
+          <form id="calculator-form">
+            <div class="form-grid">
+              <label>
+                Starting age
+                <input type="number" name="startingAge" min="0" max="17" step="1" value="0" />
+                <span class="field-hint">Age when projection starts</span>
+              </label>
+              <label>
+                Starting balance ($)
+                <input type="number" name="startingBalance" min="0" step="1" value="1000" />
+                <span class="field-hint">Federal pilot deposit; no basis</span>
+              </label>
+              <div class="form-field">
+                <label for="annualContribution">Annual contribution ($)</label>
+                <input
+                  id="annualContribution"
+                  type="number"
+                  name="annualContribution"
+                  min="0"
+                  max="5000"
+                  step="1"
+                  value="5000"
+                />
+                <label class="form-check">
+                  <input
+                    type="checkbox"
+                    name="contributionInflationIndexed"
+                    checked
+                  />
+                  Grow with inflation
+                </label>
+                <span class="field-hint">Max $5,000/year, 18 contribution years</span>
+              </div>
+              <label>
+                Average CPI (%)
+                <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
+                <span class="field-hint">Default ~US CPI 1975–2025 (BLS)</span>
+              </label>
+              <label>
+                Average market growth (%)
+                <input type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" />
+                <span class="field-hint">Default ~S&amp;P 500 total return 1975–2025</span>
+              </label>
+            </div>
+          </form>
+        </section>
+
+        <section class="card" aria-labelledby="results-heading">
+          <h2 id="results-heading" class="card-heading">Results</h2>
+          <div id="results"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Estimates only — not tax or financial advice.</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
