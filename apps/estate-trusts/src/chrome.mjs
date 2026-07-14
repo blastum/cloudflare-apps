@@ -79,17 +79,20 @@ export function renderPage({
   </head>
   <body id="top">
     <div class="page hub-page">
-      <header class="site-header hub-header">
-        <div class="brand">
-          <a class="brand-link" href="${BASE}/">
+      <header class="hub-shell">
+        <div class="site-header">
+          <div class="brand">
             <div class="brand-mark" aria-hidden="true">
-              <img src="/public/images/smirk-cat.png" alt="" width="48" height="48" />
+              <img src="/public/images/smirk-cat.png" alt="" width="60" height="60" />
             </div>
             <div class="brand-text">
-              <p class="brand-title">Estate Trusts</p>
-              <p class="brand-subtitle">Educational primer hub</p>
+              <p class="brand-title">Smirking Cat Software</p>
+              <p class="brand-subtitle">Yeah good luck</p>
             </div>
-          </a>
+          </div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">All apps</a>
+          </nav>
         </div>
         <nav class="hub-nav" aria-label="Primary">
           ${nav}

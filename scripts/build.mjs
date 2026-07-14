@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(root, 'dist')
 const appsDir = join(root, 'apps')
+const siteOnly = process.argv.includes('--site-only')
 
 async function exists(path) {
   try {
@@ -41,7 +42,7 @@ async function buildApp(slug, appDir) {
   await cp(appDist, join(dist, slug), { recursive: true })
 }
 
-async function main() {
+async function syncSite() {
   await mkdir(dist, { recursive: true })
   await cp(join(root, 'index.html'), join(dist, 'index.html'))
 
@@ -49,6 +50,11 @@ async function main() {
   if (await exists(publicDir)) {
     await cp(publicDir, join(dist, 'public'), { recursive: true })
   }
+}
+
+async function main() {
+  await syncSite()
+  if (siteOnly) return
 
   if (!(await exists(appsDir))) return
 

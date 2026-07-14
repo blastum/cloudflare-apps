@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:site": "node scripts/build.mjs --site-only",
     "dev": "npm run build && wrangler pages dev dist",
+    "dev:site": "npm run build:site && wrangler pages dev dist",
     "preview": "npm run dev"
   },
   "workspaces": [

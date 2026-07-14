@@ -89,19 +89,26 @@ a:hover {
   justify-content: space-between;
   gap: var(--space-4);
   margin-bottom: var(--space-8);
+  padding-top: var(--space-8);
+}
+
+.site-header:not(:has(.breadcrumb)) {
+  justify-content: center;
 }
 
 .brand {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: var(--space-3);
+  text-align: center;
 }
 
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: var(--radius-sm);
   overflow: hidden;
   flex-shrink: 0;
@@ -116,19 +123,20 @@ a:hover {
 .brand-text {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .brand-title {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 .brand-subtitle {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--text-muted);
 }
 
@@ -146,7 +154,7 @@ a:hover {
 
 .hero p {
   margin: 0;
-  max-width: 36ch;
+  max-width: 75%;
   font-size: 1.0625rem;
   color: var(--text-muted);
 }
@@ -162,20 +170,32 @@ a:hover {
 
 .app-grid {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+.app-grid > li {
+  min-width: 0;
+}
+
 .app-card {
-  display: grid;
-  gap: var(--space-2);
-  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-3);
+  aspect-ratio: 1;
+  height: 100%;
+  padding: var(--space-4);
+  padding-top: 20%;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
+  text-align: center;
   transition:
     border-color 160ms ease,
     box-shadow 160ms ease,
@@ -196,33 +216,19 @@ a.app-card:hover,
 
 .app-card h2 {
   margin: 0;
-  font-size: 1.0625rem;
+  font-size: clamp(1.375rem, 4.2vw, 1.875rem);
   font-weight: 600;
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .app-card p {
   margin: 0;
-  font-size: 0.9375rem;
+  flex: 0;
+  max-width: 90%;
+  font-size: clamp(0.9375rem, 2.2vw, 1.0625rem);
   color: var(--text-muted);
-}
-
-.app-card-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  margin-top: var(--space-1);
-  font-size: 0.8125rem;
-  color: var(--text-faint);
-}
-
-.app-card-meta code {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 0.1rem 0.35rem;
-  border-radius: 0.25rem;
-  background: var(--surface-raised);
-  color: var(--text-muted);
+  line-height: 1.45;
 }
 
 .app-card--placeholder {

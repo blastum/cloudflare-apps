@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Illinois Estate Tax Modeler · Smirking Cat Software</title>
+    <title>Child Brokerage Modeler · Smirking Cat Software</title>
     <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +23,7 @@
           </div>
           <div class="brand-text">
             <p class="brand-title">Smirking Cat Software</p>
-            <p class="brand-subtitle">WTF, Illinois?</p>
+            <p class="brand-subtitle">Making trust fund kids since 2026</p>
           </div>
         </div>
         <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -33,10 +33,10 @@
 
       <main>
         <section class="hero">
-          <h1>Illinois Estate Tax Modeler</h1>
+          <h1>Child Brokerage Modeler</h1>
           <p>
-            Estimate Illinois estate tax from tentative taxable estate and adjusted taxable gifts.
-            Matches the IL Attorney General calculator workflow. All calculations run in your browser.
+            Project a child investment account with year-by-year contributions, then see estimated
+            brokerage value at key ages. All calculations run in your browser.
           </p>
         </section>
 
@@ -45,40 +45,34 @@
           <form id="calculator-form">
             <div class="form-grid">
               <label>
-                Tentative taxable estate ($)
-                <input
-                  type="number"
-                  name="tentativeTaxableEstate"
-                  min="0"
-                  step="1000"
-                  value="5000000"
-                />
-                <span class="field-hint">Form 706 line 3a — tentative taxable estate</span>
+                Starting age
+                <input type="number" name="startingAge" min="0" max="17" step="1" value="0" />
+                <span class="field-hint">Child's age when the account opens (year 0)</span>
               </label>
               <label>
-                Adjusted taxable gifts ($)
-                <input
-                  type="number"
-                  name="adjustedTaxableGifts"
-                  min="0"
-                  step="1000"
-                  value="0"
-                />
-                <span class="field-hint">Form 706 line 4 — lifetime taxable gifts</span>
+                Starting balance ($)
+                <input type="number" name="startingBalance" min="0" step="1" value="0" />
+                <span class="field-hint">Initial account balance at year 0</span>
               </label>
               <label>
-                Illinois situs (%)
-                <input
-                  type="number"
-                  name="illinoisSitusPercent"
-                  min="0"
-                  max="100"
-                  step="1"
-                  value="100"
-                />
-                <span class="field-hint">100% = all assets in Illinois (Schedule A/B line 9)</span>
+                Average CPI (%)
+                <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
+                <span class="field-hint">Default ~US CPI 1975–2025 (BLS)</span>
+              </label>
+              <label>
+                Average market growth (%)
+                <input type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" />
+                <span class="field-hint">Default ~S&amp;P 500 total return 1975–2025</span>
               </label>
             </div>
+
+            <h3 class="form-section-heading">Contributions by year</h3>
+            <p class="field-hint contributions-intro">
+              Year 0 is when the account opens. Add a row for each year you plan to contribute;
+              years without a row contribute $0.
+            </p>
+            <div id="contributions-list" class="contributions-list"></div>
+            <button type="button" class="btn-add" data-add-contribution>Add year</button>
           </form>
         </section>
 
@@ -86,15 +80,10 @@
           <h2 id="results-heading" class="card-heading">Results</h2>
           <div id="results"></div>
         </section>
-
-        <section class="card" aria-labelledby="scenarios-heading">
-          <h2 id="scenarios-heading" class="card-heading">Tax by estate size</h2>
-          <div id="scenarios"></div>
-        </section>
       </main>
 
       <footer class="site-footer">
-        <p>Estimates only — not legal or tax advice. File Form 700 with the Illinois Attorney General.</p>
+        <p>Estimates only — not tax or financial advice.</p>
       </footer>
     </div>
     <script type="module" src="/src/main.ts"></script>

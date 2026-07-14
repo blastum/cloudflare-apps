@@ -2,22 +2,25 @@
   max-width: 52rem;
 }
 
-.hub-header {
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  align-items: flex-start;
+.hub-shell {
+  margin-bottom: var(--space-8);
 }
 
-.brand-link {
-  display: flex;
-  gap: var(--space-3);
-  align-items: center;
+.hub-shell .site-header {
+  margin-bottom: var(--space-4);
+}
+
+.breadcrumb {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb a {
   text-decoration: none;
-  color: inherit;
 }
 
-.brand-link:hover .brand-title {
-  color: var(--accent-hover);
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
 
 .hub-nav {
@@ -143,7 +146,7 @@
 .lede {
   font-size: 1.1rem;
   color: var(--text-muted);
-  max-width: 40rem;
+  max-width: 75%;
 }
 
 .entry-grid {
