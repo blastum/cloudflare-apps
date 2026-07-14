@@ -1,0 +1,217 @@
+.page--wide {
+  --page-width: 52rem;
+}
+
+.breadcrumb {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-heading {
+  margin: 0 0 var(--space-4);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.form-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 36rem) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-grid label,
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 0.9375rem;
+}
+
+.form-field > label:first-child {
+  display: block;
+}
+
+.form-grid input {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--text);
+  font: inherit;
+}
+
+.form-grid input:focus {
+  outline: 2px solid var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.form-grid input[type='checkbox'] {
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.form-check {
+  flex-direction: row !important;
+  align-items: center;
+  gap: var(--space-2) !important;
+  font-size: 0.875rem !important;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.form-check input {
+  flex-shrink: 0;
+}
+
+.field-hint {
+  font-size: 0.8125rem;
+  color: var(--text-faint);
+  line-height: 1.35;
+}
+
+.form-section-heading {
+  margin: var(--space-5) 0 var(--space-4);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footnote {
+  margin: var(--space-4) 0 0;
+  color: var(--text-faint);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.projection-inputs {
+  margin: 0 0 var(--space-4);
+  display: grid;
+  gap: 0.35rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 36rem) {
+  .projection-inputs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.projection-inputs div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.projection-inputs dt {
+  color: var(--text-muted);
+}
+
+.projection-inputs dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 0 -0.25rem;
+  padding: 0 0.25rem;
+}
+
+.projection-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.projection-table th,
+.projection-table td {
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border-subtle);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.projection-table th[scope='row'] {
+  text-align: left;
+  font-weight: 600;
+}
+
+.projection-table thead th {
+  background: var(--bg-accent);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.projection-table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
+}
+
+.projection-table td.cell-lines {
+  white-space: normal;
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.form-grid select {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--text);
+  font: inherit;
+}
+
+.form-grid select:focus {
+  outline: 2px solid var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.result-emphasis dt,
+.result-emphasis dd {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.warnings {
+  margin: 0 0 var(--space-4);
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.projection-table tr.row-highlight {
+  background: color-mix(in srgb, var(--accent-soft) 35%, var(--surface)) !important;
+}
+
+.schedule-lines {
+  margin-top: var(--space-4);
+}

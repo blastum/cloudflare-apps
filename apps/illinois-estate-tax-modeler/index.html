@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Illinois Estate Tax Modeler · Smirking Cat Software</title>
+    <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/theme.css" />
+    <link rel="stylesheet" href="/src/styles/calculator.css" />
+  </head>
+  <body>
+    <div class="page page--wide">
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <img src="/public/images/smirk-cat.png" alt="" width="60" height="60" />
+          </div>
+          <div class="brand-text">
+            <p class="brand-title">Smirking Cat Software</p>
+            <p class="brand-subtitle">Illinois Estate Tax Modeler</p>
+          </div>
+        </div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">All apps</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <h1>Illinois Estate Tax Modeler</h1>
+          <p>
+            Estimate Illinois estate tax from tentative taxable estate and adjusted taxable gifts.
+            Matches the IL Attorney General calculator workflow. All calculations run in your browser.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="inputs-heading">
+          <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
+          <form id="calculator-form">
+            <div class="form-grid">
+              <label>
+                Tentative taxable estate ($)
+                <input
+                  type="number"
+                  name="tentativeTaxableEstate"
+                  min="0"
+                  step="1000"
+                  value="5000000"
+                />
+                <span class="field-hint">Form 706 line 3a — tentative taxable estate</span>
+              </label>
+              <label>
+                Adjusted taxable gifts ($)
+                <input
+                  type="number"
+                  name="adjustedTaxableGifts"
+                  min="0"
+                  step="1000"
+                  value="0"
+                />
+                <span class="field-hint">Form 706 line 4 — lifetime taxable gifts</span>
+              </label>
+              <label>
+                Illinois situs (%)
+                <input
+                  type="number"
+                  name="illinoisSitusPercent"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="100"
+                />
+                <span class="field-hint">100% = all assets in Illinois (Schedule A/B line 9)</span>
+              </label>
+            </div>
+          </form>
+        </section>
+
+        <section class="card" aria-labelledby="results-heading">
+          <h2 id="results-heading" class="card-heading">Results</h2>
+          <div id="results"></div>
+        </section>
+
+        <section class="card" aria-labelledby="scenarios-heading">
+          <h2 id="scenarios-heading" class="card-heading">Tax by estate size</h2>
+          <div id="scenarios"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Estimates only — not legal or tax advice. File Form 700 with the Illinois Attorney General.</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

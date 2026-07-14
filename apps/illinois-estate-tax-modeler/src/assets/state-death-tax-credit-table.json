@@ -1,0 +1,29 @@
+{
+  "source": "https://illinoisattorneygeneral.gov/application/estate-tax-calculator/taxtable.htm",
+  "description": "IRC §2011 state death tax credit table as in effect 12/31/2001 (Illinois uses via 35 ILCS 405/2)",
+  "table_adjustment_dollars": 60000,
+  "illinois_exclusion_dollars": 4000000,
+  "brackets": [
+    {"at_least": 0, "less_than": 40000, "credit": 0, "percent": 0.0, "excess_over": 0},
+    {"at_least": 40000, "less_than": 90000, "credit": 0, "percent": 0.008, "excess_over": 40000},
+    {"at_least": 90000, "less_than": 140000, "credit": 400, "percent": 0.016, "excess_over": 90000},
+    {"at_least": 140000, "less_than": 240000, "credit": 1200, "percent": 0.024, "excess_over": 140000},
+    {"at_least": 240000, "less_than": 440000, "credit": 3600, "percent": 0.032, "excess_over": 240000},
+    {"at_least": 440000, "less_than": 640000, "credit": 10000, "percent": 0.04, "excess_over": 440000},
+    {"at_least": 640000, "less_than": 840000, "credit": 18000, "percent": 0.048, "excess_over": 640000},
+    {"at_least": 840000, "less_than": 1040000, "credit": 27600, "percent": 0.056, "excess_over": 840000},
+    {"at_least": 1040000, "less_than": 1540000, "credit": 38800, "percent": 0.064, "excess_over": 1040000},
+    {"at_least": 1540000, "less_than": 2040000, "credit": 70800, "percent": 0.072, "excess_over": 1540000},
+    {"at_least": 2040000, "less_than": 2540000, "credit": 106800, "percent": 0.08, "excess_over": 2040000},
+    {"at_least": 2540000, "less_than": 3040000, "credit": 146800, "percent": 0.088, "excess_over": 2540000},
+    {"at_least": 3040000, "less_than": 3540000, "credit": 190800, "percent": 0.096, "excess_over": 3040000},
+    {"at_least": 3540000, "less_than": 4040000, "credit": 238800, "percent": 0.104, "excess_over": 3540000},
+    {"at_least": 4040000, "less_than": 5040000, "credit": 290800, "percent": 0.112, "excess_over": 4040000},
+    {"at_least": 5040000, "less_than": 6040000, "credit": 402800, "percent": 0.12, "excess_over": 5040000},
+    {"at_least": 6040000, "less_than": 7040000, "credit": 522800, "percent": 0.128, "excess_over": 6040000},
+    {"at_least": 7040000, "less_than": 8040000, "credit": 650800, "percent": 0.136, "excess_over": 7040000},
+    {"at_least": 8040000, "less_than": 9040000, "credit": 786800, "percent": 0.144, "excess_over": 8040000},
+    {"at_least": 9040000, "less_than": 10040000, "credit": 930800, "percent": 0.152, "excess_over": 9040000},
+    {"at_least": 10040000, "less_than": 99999999999, "credit": 1082800, "percent": 0.16, "excess_over": 10040000}
+  ]
+}
