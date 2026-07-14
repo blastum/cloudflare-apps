@@ -36,3 +36,4 @@ Preview deployments are created automatically for other branches and pull reques
 ## Apps
 
 - [Trump Account Modeler](/trump-account-modeler/) — growth, Roth conversion, and IRA projections
+- [Estate Trusts](/estate-trusts/) — hyperlinked trust types, guides, Illinois notes, glossary
