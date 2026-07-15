@@ -241,6 +241,23 @@ a.app-card:hover,
   font-style: italic;
 }
 
+.app-card--wip {
+  border-style: dashed;
+}
+
+.app-card__badge {
+  display: inline-block;
+  padding: 0.2em 0.55em;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+}
+
 .site-footer {
   margin-top: var(--space-8);
   padding-top: var(--space-5);

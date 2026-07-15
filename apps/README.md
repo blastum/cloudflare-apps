@@ -23,7 +23,3 @@ The umbrella home page lives at `/` (`index.html` in the repo root).
 5. Add a link on the root `index.html`.
 
 See `apps/_template/` for a starter layout (when present).
-
-## estate-trusts
-
-Static markdown hub. Content lives in `apps/estate-trusts/content/` (vendored copies of notebook notes — originals are not modified). Refresh with `npm run sync` from that app when the sibling NotebookLinkManager notes change, then `npm run build`.

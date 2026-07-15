@@ -1,5 +1,8 @@
 node_modules/
 dist/
+apps/trust-intent-picker/public/trusts/
+apps/trust-intent-picker/public/picker.css
+apps/trust-intent-picker/src/generated/
 .DS_Store
 *.local
 .env

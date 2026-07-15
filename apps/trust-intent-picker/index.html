@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trust Intent Picker · Smirking Cat Software</title>
+    <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/theme.css" />
+    <link rel="stylesheet" href="/trust-intent-picker/picker.css" />
+  </head>
+  <body>
+    <div class="page page--wide">
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <img src="/public/images/smirk-cat.png" alt="" width="60" height="60" />
+          </div>
+          <div class="brand-text">
+            <p class="brand-title">Smirking Cat Software</p>
+            <p class="brand-subtitle">Estate planning education</p>
+          </div>
+        </div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">All apps</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <h1>Trust Intent Picker</h1>
+          <p>
+            Choose goals in plain language — who benefits, when it starts, how you fund it — and see
+            which trust structures from the glossary may address those goals.
+          </p>
+        </section>
+
+        <p class="disclaimer" role="note">
+          <strong>Educational only.</strong> This tool surfaces trust types that
+          <em>deal with</em> stated goals. It is not legal or tax advice and does not recommend a
+          specific structure for your situation. Discuss options with qualified counsel.
+        </p>
+
+        <div id="examples"></div>
+
+        <div id="intent-controls" class="intent-layout" aria-label="Intent selection"></div>
+
+        <section class="card" aria-labelledby="results-heading">
+          <h2 id="results-heading" class="card-heading">Results</h2>
+          <div id="results"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>All matching runs locally in your browser. Glossary prose synced from notebook sources.</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

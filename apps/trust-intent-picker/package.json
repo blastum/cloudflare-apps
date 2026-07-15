@@ -1,0 +1,18 @@
+{
+  "name": "trust-intent-picker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node src/check-intent-mappings.mjs",
+    "sync:glossary": "node scripts/sync-glossary.mjs",
+  "prebuild": "npm run check && npm run sync:glossary && cp src/styles/picker.css public/picker.css",
+  "build": "vite build",
+  "typecheck": "tsc --noEmit",
+    "dev": "npm run sync:glossary && cp src/styles/picker.css public/picker.css && vite",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^7.1.7"
+  }
+}

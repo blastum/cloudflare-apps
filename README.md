@@ -37,5 +37,4 @@ Preview deployments are created automatically for other branches and pull reques
 
 - [Trump Account Modeler](/trump-account-modeler/) — growth, Roth conversion, and IRA projections
 - [Illinois Estate Tax Modeler](/illinois-estate-tax-modeler/) — Form 700 / AG calculator parity
-- [Estate Trusts](/estate-trusts/) — hyperlinked trust types, guides, Illinois notes, glossary
 - [Ramsey Debt Modeler](/ramsey-modeler/) — Monte Carlo snowball vs avalanche debt payoff
