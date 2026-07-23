@@ -95,29 +95,6 @@
   line-height: 1.35;
 }
 
-.card--inputs .card-heading {
-  margin-bottom: var(--space-3);
-}
-
-.card--inputs .form-grid {
-  gap: var(--space-3);
-}
-
-.card--inputs .form-grid label,
-.card--inputs .form-field {
-  gap: 0.35rem;
-  font-size: 0.875rem;
-}
-
-.card--inputs .form-grid input {
-  padding: 0.45rem 0.55rem;
-}
-
-.card--inputs .field-hint {
-  font-size: 0.75rem;
-  line-height: 1.3;
-}
-
 .form-section-heading {
   margin: var(--space-5) 0 var(--space-4);
   font-size: 1rem;
@@ -247,24 +224,6 @@
   margin-bottom: 0;
 }
 
-.result-group--assumptions {
-  padding: var(--space-3);
-}
-
-.result-group--assumptions .result-group-heading {
-  margin: 0 0 var(--space-2);
-  font-size: 0.875rem;
-}
-
-.result-group--assumptions .projection-inputs {
-  gap: 0.15rem 1rem;
-  font-size: 0.8125rem;
-}
-
-.result-group--assumptions .projection-inputs div {
-  gap: var(--space-2);
-}
-
 .result-group .prefund-summary {
   margin-top: var(--space-3);
   margin-bottom: 0;
@@ -274,20 +233,6 @@
   margin: var(--space-5) 0 var(--space-4);
   font-size: 1rem;
   font-weight: 600;
-}
-
-.results-calculations {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.results-calculations .form-section-heading {
-  margin-top: 0;
-}
-
-.results-calculations .footnote {
-  margin-bottom: 0;
 }
 
 .results-real-note {

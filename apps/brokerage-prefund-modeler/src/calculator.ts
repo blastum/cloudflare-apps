@@ -26,6 +26,23 @@ export type AccountYearRow = {
   balances: { childNumber: number; nominal: number; real: number }[]
 }
 
+/** Pot-share table rows: skip years 1–20 where proportions are unchanged. */
+export function shareDisplayRows(rows: AccountYearRow[]): AccountYearRow[] {
+  return rows.filter((row) => row.modelYear <= 0 || row.modelYear >= TARGET_AGE)
+}
+
+/** Child's share of the combined pot at a model year, or null if not in the pot. */
+export function childSharePercent(
+  row: AccountYearRow,
+  childNumber: number,
+): number | null {
+  const entry = row.balances.find((b) => b.childNumber === childNumber)
+  if (!entry) return null
+  const total = row.balances.reduce((sum, b) => sum + b.nominal, 0)
+  if (total <= 0) return null
+  return (entry.nominal / total) * 100
+}
+
 export type CalculatorResult = {
   fundingYear: number
   firstModelYear: number

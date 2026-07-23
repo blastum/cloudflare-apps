@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brokerage Prefund Modeler · Smirking Cat Software</title>
+    <title>Trump Account Modeler Deluxe · Smirking Cat Software</title>
     <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,6 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/public/css/theme.css" />
+    <link rel="stylesheet" href="/src/styles/calculator.css" />
   </head>
   <body>
     <div class="page page--wide">
@@ -31,11 +33,11 @@
 
       <main>
         <section class="hero no-print">
-          <h1>Brokerage Prefund Modeler</h1>
+          <h1>Trump Account Modeler Deluxe</h1>
           <p>
-            Size separate brokerage deposits at a single funding year so each child reaches a
-            target real value at age 21. Year 0 is the first child's birth.
-            All calculations run in your browser.
+            Prefund a brokerage with the lump sum that pays every Trump contribution and ends at
+            zero, then project the Trump account through age 18 and long-term IRA growth. All
+            calculations run in your browser.
           </p>
         </section>
 
@@ -44,25 +46,46 @@
           <form id="calculator-form">
             <div class="form-grid">
               <label>
-                Number of children
-                <input type="number" name="childCount" min="1" max="20" step="1" value="1" />
-                <span class="field-hint">Each gets a separate brokerage deposit</span>
+                Starting age
+                <input type="number" name="startingAge" min="0" max="17" step="1" value="0" />
+                <span class="field-hint">Age when projection starts</span>
               </label>
               <label>
-                Years between children
-                <input type="number" name="childSpacingYears" min="0" max="30" step="1" value="2" />
-                <span class="field-hint">Equal birth spacing after the first child</span>
+                Starting balance ($)
+                <input type="number" name="startingBalance" min="0" step="1" value="1000" />
+                <span class="field-hint">Federal pilot deposit; no basis</span>
               </label>
-              <label>
-                Funding year
-                <input type="number" name="fundingYear" min="-30" max="30" step="1" value="0" />
-                <span class="field-hint">Year 0 = first birth; negative = fund early</span>
-              </label>
-              <label>
-                Target at age 21 ($ real)
-                <input type="number" name="targetRealAtAge21" min="0" step="1000" value="200000" />
-                <span class="field-hint">Real value in year-0 dollars when each child turns 21</span>
-              </label>
+              <div class="form-field">
+                <label for="annualContribution">Annual contribution ($)</label>
+                <input
+                  id="annualContribution"
+                  type="number"
+                  name="annualContribution"
+                  min="0"
+                  max="5000"
+                  step="1"
+                  value="5000"
+                />
+                <label class="form-check">
+                  <input
+                    type="checkbox"
+                    name="contributionInflationIndexed"
+                    checked
+                  />
+                  Grow with inflation
+                </label>
+                <span class="field-hint">Max $5,000/year, 18 contribution years</span>
+              </div>
+              <div class="form-field">
+                <span class="field-label">Prefunding</span>
+                <label class="form-check">
+                  <input type="checkbox" name="enablePrefund" checked />
+                  Prefund contributions from year-0 brokerage
+                </label>
+                <span class="field-hint"
+                  >Computes the deposit that pays all contributions and ends near zero</span
+                >
+              </div>
               <label>
                 Average CPI (%)
                 <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
@@ -79,6 +102,7 @@
 
         <section class="card card--results" aria-labelledby="results-heading">
           <h2 id="results-heading" class="card-heading">Results</h2>
+          <p class="print-only-heading">Trump Account Modeler Deluxe</p>
           <div id="results"></div>
         </section>
       </main>

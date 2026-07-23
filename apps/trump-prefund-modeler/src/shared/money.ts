@@ -15,7 +15,3 @@ export function formatNominalReal(nominal: number, real: number): string {
 export function formatPct(rate: number): string {
   return `${(rate * 100).toFixed(1)}%`
 }
-
-export function formatSharePct(share: number): string {
-  return `${share.toFixed(1)}%`
-}

@@ -1,7 +1,5 @@
-import '../../../public/css/theme.css'
 import { calculate, type CalculatorInputs } from './calculator'
 import { mountCalculator } from './render'
-import './styles/calculator.css'
 
 const formEl = document.querySelector<HTMLFormElement>('#calculator-form')
 const resultsEl = document.querySelector<HTMLDivElement>('#results')
@@ -16,8 +14,8 @@ function readInputs(): CalculatorInputs {
   return {
     childCount: Math.max(1, Math.round(num('childCount'))),
     childSpacingYears: Math.max(0, Math.round(num('childSpacingYears'))),
-    fundingYear: Math.round(num('fundingYear')),
-    targetRealAtAge21: Math.max(0, num('targetRealAtAge21')),
+    yearsBeforeFirstBirth: Math.max(0, Math.round(num('yearsBeforeFirstBirth'))),
+    contributionInflationIndexed: data.get('contributionInflationIndexed') === 'on',
     cpiRate: pct('cpiRate'),
     marketRate: pct('marketRate'),
   }

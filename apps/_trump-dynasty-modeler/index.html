@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trump Dynasty Modeler · Smirking Cat Software</title>
+    <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/theme.css" />
+    <link rel="stylesheet" href="/src/styles/calculator.css" />
+  </head>
+  <body>
+    <div class="page page--wide">
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <img src="/public/images/smirk-cat.png" alt="" width="60" height="60" />
+          </div>
+          <div class="brand-text">
+            <p class="brand-title">Smirking Cat Software</p>
+            <p class="brand-subtitle">One endowment, many generations</p>
+          </div>
+        </div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">All apps</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <h1>Trump Funding Dynasty</h1>
+          <p>
+            One endowment pays max Trump contributions for every descendant in their age 0–17
+            window. Compound between births — fund multiple generations, or forever. All
+            calculations run in your browser.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="family-heading">
+          <h2 id="family-heading" class="card-heading">Family shape</h2>
+          <form id="calculator-form">
+            <div class="slider-grid">
+              <label class="slider-field">
+                <span class="slider-label">
+                  Generational gap
+                  <output for="generationalGap" name="generationalGapOut">25</output>
+                </span>
+                <input
+                  type="range"
+                  id="generationalGap"
+                  name="generationalGap"
+                  min="18"
+                  max="40"
+                  step="1"
+                  value="25"
+                />
+                <span class="field-hint">Years from a birth to that person’s first child</span>
+              </label>
+              <label class="slider-field">
+                <span class="slider-label">
+                  Children each person has
+                  <output for="childrenPerGeneration" name="childrenPerGenerationOut">1</output>
+                </span>
+                <input
+                  type="range"
+                  id="childrenPerGeneration"
+                  name="childrenPerGeneration"
+                  min="1"
+                  max="6"
+                  step="1"
+                  value="1"
+                />
+                <span class="field-hint"
+                  >Gen 1 starts with this many; every descendant has the same number (branching)</span
+                >
+              </label>
+              <label class="slider-field">
+                <span class="slider-label">
+                  Child spacing
+                  <output for="childSpacing" name="childSpacingOut">2</output>
+                </span>
+                <input
+                  type="range"
+                  id="childSpacing"
+                  name="childSpacing"
+                  min="1"
+                  max="8"
+                  step="1"
+                  value="2"
+                />
+                <span class="field-hint">Years between siblings in a generation</span>
+              </label>
+              <label class="slider-field">
+                <span class="slider-label">
+                  Generations to simulate
+                  <output for="maxGenerations" name="maxGenerationsOut">5</output>
+                </span>
+                <input
+                  type="range"
+                  id="maxGenerations"
+                  name="maxGenerations"
+                  min="1"
+                  max="12"
+                  step="1"
+                  value="5"
+                />
+                <span class="field-hint">Horizon cap for the timeline</span>
+              </label>
+            </div>
+
+            <h3 class="form-section-heading">Assumptions</h3>
+            <div class="form-grid">
+              <label>
+                Initial real deposit ($)
+                <input
+                  type="number"
+                  name="initialDeposit"
+                  min="0"
+                  step="1000"
+                  value="110000"
+                />
+                <span class="field-hint">Lump sum into the dynasty endowment at model start</span>
+              </label>
+              <label class="slider-field">
+                <span class="slider-label">
+                  Years before first birth
+                  <output for="yearsBeforeFirstBirth" name="yearsBeforeFirstBirthOut">0</output>
+                </span>
+                <input
+                  type="range"
+                  id="yearsBeforeFirstBirth"
+                  name="yearsBeforeFirstBirth"
+                  min="0"
+                  max="40"
+                  step="1"
+                  value="0"
+                />
+                <span class="field-hint">Pre-birth compound-only years</span>
+              </label>
+              <label>
+                Average CPI (%)
+                <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
+                <span class="field-hint">Default ~US CPI 1975–2025 (BLS)</span>
+              </label>
+              <label>
+                Average market growth (%)
+                <input type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" />
+                <span class="field-hint">Default ~S&amp;P 500 total return 1975–2025</span>
+              </label>
+            </div>
+          </form>
+        </section>
+
+        <section class="card" aria-labelledby="results-heading">
+          <h2 id="results-heading" class="card-heading">Results</h2>
+          <div id="results"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Estimates only — not tax or financial advice.</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

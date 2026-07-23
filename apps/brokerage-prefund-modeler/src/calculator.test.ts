@@ -2,9 +2,11 @@ import { describe, expect, it } from 'vitest'
 import {
   birthYearForChild,
   calculate,
+  childSharePercent,
   firstModelYearFor,
   lastModelYearFor,
   maturityYearForChild,
+  shareDisplayRows,
   type CalculatorInputs,
 } from './calculator'
 import { DEFAULTS, TARGET_AGE } from './constants'
@@ -103,5 +105,46 @@ describe('calculate scenarios', () => {
     expect(birthYearForChild(i, 2)).toBe(4)
     expect(maturityYearForChild(i, 2)).toBe(4 + TARGET_AGE)
     expect(lastModelYearFor(i)).toBe(4 + TARGET_AGE)
+  })
+
+  it('pot shares sum to 100% while multiple children are active', () => {
+    const result = calculate(
+      inputs({
+        childCount: 2,
+        childSpacingYears: 2,
+        fundingYear: 0,
+      }),
+    )
+    const midRow = result.accountRows.find((r) => r.modelYear === 10)!
+    const shares = [1, 2].map((n) => childSharePercent(midRow, n)!)
+    expect(shares.every((s) => s > 0)).toBe(true)
+    expect(shares.reduce((a, b) => a + b, 0)).toBeCloseTo(100, 5)
+  })
+
+  it('sole remaining child owns 100% after others mature', () => {
+    const result = calculate(
+      inputs({
+        childCount: 2,
+        childSpacingYears: 2,
+        fundingYear: 0,
+      }),
+    )
+    const child1Maturity = result.children[0]!.maturityYear
+    const afterRow = result.accountRows.find(
+      (r) => r.modelYear === child1Maturity + 1,
+    )!
+    expect(childSharePercent(afterRow, 1)).toBeNull()
+    expect(childSharePercent(afterRow, 2)).toBeCloseTo(100, 5)
+  })
+
+  it('share display rows skip years 1–20', () => {
+    const result = calculate(
+      inputs({ childCount: 2, childSpacingYears: 2, fundingYear: 0 }),
+    )
+    const years = shareDisplayRows(result.accountRows).map((r) => r.modelYear)
+    expect(years).not.toContain(10)
+    expect(years).toContain(0)
+    expect(years).toContain(TARGET_AGE)
+    expect(years.every((y) => y <= 0 || y >= TARGET_AGE)).toBe(true)
   })
 })

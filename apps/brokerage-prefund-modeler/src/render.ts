@@ -1,11 +1,18 @@
 import {
   type AccountYearRow,
+  childSharePercent,
   type CalculatorInputs,
   type CalculatorResult,
   type ChildSummary,
+  shareDisplayRows,
 } from './calculator'
 import { TARGET_AGE } from './constants'
-import { formatCurrency, formatNominalReal, formatPct } from './shared/money'
+import {
+  formatCurrency,
+  formatNominalReal,
+  formatPct,
+  formatSharePct,
+} from './shared/money'
 
 function renderPrefundSummary(inputs: CalculatorInputs, result: CalculatorResult): string {
   const childWord = inputs.childCount === 1 ? 'child' : 'children'
@@ -69,6 +76,51 @@ function renderChildTable(children: ChildSummary[]): string {
   `
 }
 
+function renderShareTable(
+  rows: AccountYearRow[],
+  childCount: number,
+): string {
+  const childNumbers = Array.from({ length: childCount }, (_, i) => i + 1)
+  const displayRows = shareDisplayRows(rows)
+
+  return `
+    <section class="calculation-block">
+    <h3 class="form-section-heading">Pot share by year</h3>
+    <div class="table-wrap">
+      <table class="projection-table projection-table--share">
+        <thead>
+          <tr>
+            <th scope="col">Year</th>
+            ${childNumbers.map((n) => `<th scope="col">Child ${n}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          ${displayRows
+            .map(
+              (row) => `
+            <tr>
+              <th scope="row">${row.modelYear}</th>
+              ${childNumbers
+                .map((n) => {
+                  const share = childSharePercent(row, n)
+                  return `<td>${share == null ? '—' : formatSharePct(share)}</td>`
+                })
+                .join('')}
+            </tr>
+          `,
+            )
+            .join('')}
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">
+      Each active child's year-end balance as a percentage of the combined pot.
+      Years 1–${TARGET_AGE - 1} omitted (shares unchanged). Matured or unfunded slots show —.
+    </p>
+    </section>
+  `
+}
+
 function renderAccountTable(
   rows: AccountYearRow[],
   childCount: number,
@@ -76,6 +128,7 @@ function renderAccountTable(
   const childNumbers = Array.from({ length: childCount }, (_, i) => i + 1)
 
   return `
+    <section class="calculation-block">
     <h3 class="form-section-heading">Brokerage accounts by year</h3>
     <div class="table-wrap">
       <table class="projection-table">
@@ -108,6 +161,7 @@ function renderAccountTable(
       Year-end balances from the funding year through each child's age ${TARGET_AGE}.
       Year 0 is first birth. Values show nominal (real in year-0 dollars).
     </p>
+    </section>
   `
 }
 
@@ -115,7 +169,7 @@ function renderExportToolbar(): string {
   return `
     <div class="export-toolbar no-print">
       <button type="button" class="btn-export" data-print-summary>Print summary</button>
-      <span class="export-hint">Summary only — opens your browser print dialog.</span>
+      <span class="export-hint">Summary and pot share — opens your browser print dialog.</span>
     </div>
   `
 }
@@ -139,6 +193,7 @@ function renderSummaryBody(
     <section class="result-group">
       ${renderChildTable(result.children)}
     </section>
+    ${renderShareTable(result.accountRows, inputs.childCount)}
   `
 }
 

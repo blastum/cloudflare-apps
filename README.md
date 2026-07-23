@@ -35,6 +35,7 @@ Preview deployments are created automatically for other branches and pull reques
 
 ## Apps
 
+- [Growth Factor Table](/growth-factor-table/) — dollar-free compounding factors by years and milestone ages
 - [Trump Account Modeler](/trump-account-modeler/) — growth, Roth conversion, and IRA projections
 - [Illinois Estate Tax Modeler](/illinois-estate-tax-modeler/) — Form 700 / AG calculator parity
 - [Ramsey Debt Modeler](/ramsey-modeler/) — Monte Carlo snowball vs avalanche debt payoff

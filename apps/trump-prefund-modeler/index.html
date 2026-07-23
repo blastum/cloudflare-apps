@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brokerage Prefund Modeler · Smirking Cat Software</title>
+    <title>Trump Prefund Modeler · Smirking Cat Software</title>
     <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,10 +11,12 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/public/css/theme.css" />
+    <link rel="stylesheet" href="/src/styles/calculator.css" />
   </head>
   <body>
     <div class="page page--wide">
-      <header class="site-header no-print">
+      <header class="site-header">
         <div class="brand">
           <div class="brand-mark" aria-hidden="true">
             <img src="/public/images/smirk-cat.png" alt="" width="60" height="60" />
@@ -30,39 +32,42 @@
       </header>
 
       <main>
-        <section class="hero no-print">
-          <h1>Brokerage Prefund Modeler</h1>
+        <section class="hero">
+          <h1>Trump Prefund Modeler</h1>
           <p>
-            Size separate brokerage deposits at a single funding year so each child reaches a
-            target real value at age 21. Year 0 is the first child's birth.
-            All calculations run in your browser.
+            Compute the year-0 lump sum that prefunds Trump account contributions for multiple
+            children with staggered births. Same withdraw-then-grow mechanics as the Deluxe
+            modeler — all calculations run in your browser.
           </p>
         </section>
 
-        <section class="card card--inputs no-print" aria-labelledby="inputs-heading">
+        <section class="card card--inputs" aria-labelledby="inputs-heading">
           <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
           <form id="calculator-form">
             <div class="form-grid">
               <label>
                 Number of children
                 <input type="number" name="childCount" min="1" max="20" step="1" value="1" />
-                <span class="field-hint">Each gets a separate brokerage deposit</span>
+                <span class="field-hint">Each gets 18 years of max Trump contributions</span>
               </label>
               <label>
                 Years between children
                 <input type="number" name="childSpacingYears" min="0" max="30" step="1" value="2" />
-                <span class="field-hint">Equal birth spacing after the first child</span>
+                <span class="field-hint">Birth spacing after the first child</span>
               </label>
               <label>
-                Funding year
-                <input type="number" name="fundingYear" min="-30" max="30" step="1" value="0" />
-                <span class="field-hint">Year 0 = first birth; negative = fund early</span>
+                Years before first birth
+                <input type="number" name="yearsBeforeFirstBirth" min="0" max="30" step="1" value="0" />
+                <span class="field-hint">Model year when child 1 is born (age 0)</span>
               </label>
-              <label>
-                Target at age 21 ($ real)
-                <input type="number" name="targetRealAtAge21" min="0" step="1000" value="200000" />
-                <span class="field-hint">Real value in year-0 dollars when each child turns 21</span>
-              </label>
+              <div class="form-field">
+                <span class="field-label">Contributions</span>
+                <label class="form-check">
+                  <input type="checkbox" name="contributionInflationIndexed" checked />
+                  Grow with inflation (max $5,000/year)
+                </label>
+                <span class="field-hint">Indexed from each child's birth year</span>
+              </div>
               <label>
                 Average CPI (%)
                 <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
@@ -83,10 +88,9 @@
         </section>
       </main>
 
-      <footer class="site-footer no-print">
+      <footer class="site-footer">
         <p>Estimates only — not tax or financial advice.</p>
       </footer>
-      <p class="print-only-footer">Estimates only — not tax or financial advice.</p>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
