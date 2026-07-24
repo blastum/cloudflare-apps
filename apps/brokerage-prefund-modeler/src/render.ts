@@ -179,7 +179,7 @@ function renderSummaryBody(
   result: CalculatorResult,
 ): string {
   return `
-    <h2 class="print-only-heading">Brokerage Prefund Modeler</h2>
+    <h2 class="print-only-heading">Brokerage Lump-Sum Modeler</h2>
     <div class="results-summary">
       <section class="result-group">
         <h3 class="result-group-heading">Summary</h3>

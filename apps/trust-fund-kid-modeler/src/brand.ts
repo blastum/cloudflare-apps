@@ -1,5 +1,5 @@
 export const BRAND_NAME = 'Smirking Cat Software'
-export const BRAND_TAGLINE = 'Separate-share Crummey funding model'
+export const BRAND_TAGLINE = 'Crummey with a smirk'
 
 export const TRUST_SYNOPSIS =
   'Use a trust to create a brokerage and a Trump account for your child.'

@@ -68,7 +68,7 @@ export function buildSummaryGroups(
       value: `${formatCurrency(inputs.annualContribution)}/yr${inputs.contributionInflationIndexed ? ' (indexed)' : ' (fixed)'}`,
     },
     {
-      label: 'Prefund',
+      label: 'Lump-sum funding',
       value: inputs.enablePrefund ? 'On' : 'Off',
     },
     { label: 'Average CPI', value: `${formatPct(inputs.cpiRate)}/yr` },
@@ -79,7 +79,7 @@ export function buildSummaryGroups(
 
   if (showFunding) {
     summaryItems.push({
-      label: 'Year-0 prefund',
+      label: 'Year-0 lump sum',
       value: formatCurrency(result.requiredPrefund!),
     })
   }
@@ -138,7 +138,7 @@ function balanceTable(
     : 'Year-end contributions for 18 years from starting age, fixed at the entered amount.'
 
   const prefundNote = showFunding
-    ? ' Prefund withdraws each contribution from the funding account, then the remainder grows at the market rate.'
+    ? ' The lump-sum account withdraws each contribution, then the remainder grows at the market rate.'
     : ''
 
   return {

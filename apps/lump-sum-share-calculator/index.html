@@ -33,9 +33,9 @@
         <section class="hero">
           <h1>Lump-Sum Pot Share Calculator</h1>
           <p>
-            Fund a brokerage lump sum at the first child's birth. Each child gets the same real
-            target at age 21. See how much of the pot belongs to each child when the youngest is
-            born.
+            Seed a communal pot at the first child's birth. Each child receives the same real
+            dollars at age 21; nominal payouts and shares of the remaining pot adjust so the fund
+            is empty after the last child.
           </p>
         </section>
 
@@ -52,9 +52,9 @@
 
             <div class="form-grid form-grid--rates">
               <label>
-                Target at age 21 ($ real)
-                <input type="number" name="targetRealAtAge21" min="0" step="1000" value="200000" />
-                <span class="field-hint">Real value in year-0 dollars when each child turns 21</span>
+                Lump sum at year 0 ($)
+                <input type="number" name="lumpSumAtYear0" min="0" step="10000" value="1000000" />
+                <span class="field-hint">Initial seed into the communal pot (year 0)</span>
               </label>
               <label>
                 Average CPI (%)

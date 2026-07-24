@@ -1,8 +1,8 @@
 export const BRAND_NAME = 'Smirking Cat Software'
-export const BRAND_TAGLINE = 'What will they do with all that money?'
+export const BRAND_TAGLINE = 'Deluxe, still local'
 
 export const APP_SYNOPSIS =
-  'Prefund a brokerage with the lump sum that pays every Trump contribution and ends at zero, then project the Trump account through age 18 and long-term IRA growth.'
+  'Fund a brokerage with the lump sum that pays every Trump contribution and ends at zero, then project the Trump account through age 18 and long-term IRA growth.'
 
 const LOGO_URL = '/public/images/smirk-cat.png'
 

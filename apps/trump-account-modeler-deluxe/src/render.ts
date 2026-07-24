@@ -12,7 +12,7 @@ function contributionFootnote(indexed: boolean, prefund: boolean): string {
     ? 'Year-end contributions for 18 years from starting age, each indexed by CPI.'
     : 'Year-end contributions for 18 years from starting age, fixed at the entered amount.'
   if (!prefund) return contrib
-  return `${contrib} Prefund withdraws each contribution from the funding account, then the remainder grows at the market rate.`
+  return `${contrib} The lump-sum account withdraws each contribution, then the remainder grows at the market rate.`
 }
 
 function renderSummaryGroup(

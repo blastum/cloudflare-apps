@@ -30,7 +30,7 @@ function formatFundingSource(source: TrumpRow['fundingSource']): string {
     case 'direct':
       return 'Direct'
     case 'prefund':
-      return 'Prefund'
+      return 'Lump-sum'
     case 'brokerage':
       return 'Brokerage'
     case 'mixed':
@@ -108,7 +108,7 @@ function renderGiftInflowsTable(rows: GiftInflowRow[]): string {
               <th scope="col">Gift</th>
               <th scope="col">→ Trump</th>
               <th scope="col">→ Brokerage</th>
-              <th scope="col">→ Prefund</th>
+              <th scope="col">→ Lump-sum</th>
             </tr>
           </thead>
           <tbody>
@@ -130,7 +130,7 @@ function renderGiftInflowsTable(rows: GiftInflowRow[]): string {
       </div>
       <p class="footnote">
         Years when Crummey gifts are made. The last gift year is trimmed to the minimum needed so
-        prefund lands near zero at 17. Each cell shows nominal (real) dollars.
+        the lump-sum account lands near zero at 17. Each cell shows nominal (real) dollars.
       </p>
     </section>
   `
@@ -148,7 +148,7 @@ function renderTrumpTable(rows: TrumpRow[]): string {
               <th scope="col">Slice</th>
               <th scope="col">Seed</th>
               <th scope="col">Funding source</th>
-              <th scope="col">Prefund balance</th>
+              <th scope="col">Lump-sum balance</th>
               <th scope="col">Trump balance</th>
             </tr>
           </thead>
@@ -177,8 +177,8 @@ function renderTrumpTable(rows: TrumpRow[]): string {
       </div>
       <p class="footnote">
         Annual trump slice from starting age through 17. Seed is a one-time federal deposit at account
-        open. Age 18 has no slice or funding but trump still compounds. Prefund balance is after
-        annual growth; age 18 shows zero after prefund sweep to brokerage. Milestone rows (ages
+        open. Age 18 has no slice or funding but trump still compounds. Lump-sum balance is after
+        annual growth; age 18 shows zero after lump-sum sweep to brokerage. Milestone rows (ages
         ${BALANCE_AGES.filter((age) => age > END_AGE).join(', ')}) project balance only at market return.
       </p>
     </section>
@@ -188,7 +188,7 @@ function renderTrumpTable(rows: TrumpRow[]): string {
 function brokerageFundingCell(row: BrokerageRow): string {
   if (row.age === END_AGE) {
     if (row.funding.nominal === 0 && row.funding.real === 0) return '—'
-    return `(prefund) ${formatNominalReal(row.funding.nominal, row.funding.real)}`
+    return `(lump-sum) ${formatNominalReal(row.funding.nominal, row.funding.real)}`
   }
   return cell(row.funding)
 }
@@ -229,9 +229,9 @@ function renderBrokerageTable(rows: BrokerageRow[]): string {
         </table>
       </div>
       <p class="footnote">
-        Funding is gift deposits to brokerage each year; age 18 shows prefund sweep. Total funding is
-        cumulative gift contributions only (prefund sweep is not a new gift). Age 18 balance includes
-        annual market growth plus prefund sweep. Milestone rows (ages
+        Funding is gift deposits to brokerage each year; age 18 shows lump-sum sweep. Total funding is
+        cumulative gift contributions only (lump-sum sweep is not a new gift). Age 18 balance includes
+        annual market growth plus lump-sum sweep. Milestone rows (ages
         ${BALANCE_AGES.filter((age) => age > END_AGE).join(', ')}) project balance only at market return.
         All values nominal (real).
       </p>

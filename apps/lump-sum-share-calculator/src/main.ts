@@ -36,7 +36,7 @@ function readInputs(): CalculatorInputs {
   const pct = (name: string) => num(name) / 100
   return {
     spacingMonths: readSpacingMonths(),
-    targetRealAtAge21: Math.max(0, num('targetRealAtAge21')),
+    lumpSumAtYear0: Math.max(0, num('lumpSumAtYear0')),
     cpiRate: pct('cpiRate'),
     marketRate: pct('marketRate'),
   }

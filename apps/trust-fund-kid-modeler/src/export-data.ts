@@ -60,7 +60,7 @@ function formatFundingSource(source: TrumpFundingSource): string {
     case 'direct':
       return 'Direct'
     case 'prefund':
-      return 'Prefund'
+      return 'Lump-sum'
     case 'brokerage':
       return 'Brokerage'
     case 'mixed':
@@ -73,7 +73,7 @@ function formatFundingSource(source: TrumpFundingSource): string {
 function brokerageFundingCell(row: BrokerageRow): string {
   if (row.age === END_AGE) {
     if (row.funding.nominal === 0 && row.funding.real === 0) return '-'
-    return `(prefund) ${formatNominalReal(row.funding.nominal, row.funding.real)}`
+    return `(lump-sum) ${formatNominalReal(row.funding.nominal, row.funding.real)}`
   }
   return exportCell(row.funding)
 }
@@ -83,7 +83,7 @@ function giftInflowsTable(rows: GiftInflowRow[]): ExportTable | null {
 
   return {
     title: 'Gift inflows',
-    headers: ['Age', 'Gift', 'To Trump', 'To Brokerage', 'To Prefund'],
+    headers: ['Age', 'Gift', 'To Trump', 'To Brokerage', 'To Lump-sum'],
     rows: rows.map((row) => ({
       kind: 'data' as const,
       cells: [
@@ -95,7 +95,7 @@ function giftInflowsTable(rows: GiftInflowRow[]): ExportTable | null {
       ],
     })),
     footnote:
-      'Years when Crummey gifts are made. The last gift year is trimmed to the minimum needed so prefund lands near zero at 17. Each cell shows nominal (real) dollars.',
+      'Years when Crummey gifts are made. The last gift year is trimmed to the minimum needed so the lump-sum account lands near zero at 17. Each cell shows nominal (real) dollars.',
   }
 }
 
@@ -122,7 +122,7 @@ function trumpTable(rows: TrumpRow[]): ExportTable {
 
   return {
     title: 'Trump account',
-    headers: ['Age', 'Slice', 'Seed', 'Funding source', 'Prefund balance', 'Trump balance'],
+    headers: ['Age', 'Slice', 'Seed', 'Funding source', 'Lump-sum balance', 'Trump balance'],
     rows: body,
     footnote:
       'Annual trump slice from starting age through 17. Seed is a one-time federal deposit at account open. Age 18 has no slice or funding but trump still compounds.',
@@ -167,7 +167,7 @@ export function buildSummaryGroups(
           ),
         },
         {
-          label: 'Trump path (direct + prefund)',
+          label: 'Trump path (direct + lump-sum)',
           value: formatNominalReal(
             result.trumpPathGifts.nominal,
             result.trumpPathGifts.real,
@@ -182,7 +182,7 @@ export function buildSummaryGroups(
         },
       ],
       footnote:
-        'Trump path is gift dollars routed directly to the Trump account or to prefund for later Trump slices. Prefund sweep at 18 is not a new gift. Federal seed is excluded.',
+        'Trump path is gift dollars routed directly to the Trump account or to the lump-sum account for later Trump slices. Lump-sum sweep at 18 is not a new gift. Federal seed is excluded.',
     },
     {
       title: 'Accounts',
@@ -227,7 +227,7 @@ export function buildSummaryGroups(
         },
       ],
       footnote:
-        'Cumulative funding is gift contributions only. Federal seed is excluded. Trump funding may seem low due to prefund growth.',
+        'Cumulative funding is gift contributions only. Federal seed is excluded. Trump funding may seem low due to lump-sum growth.',
     },
   ]
 }
@@ -256,7 +256,7 @@ function brokerageTable(rows: BrokerageRow[]): ExportTable {
     headers: ['Age', 'Funding', 'Total funding', 'Balance'],
     rows: body,
     footnote:
-      'Funding is gift deposits to brokerage each year; age 18 shows prefund sweep. Total funding is cumulative gift contributions only. All values nominal (real).',
+      'Funding is gift deposits to brokerage each year; age 18 shows lump-sum sweep. Total funding is cumulative gift contributions only. All values nominal (real).',
   }
 }
 

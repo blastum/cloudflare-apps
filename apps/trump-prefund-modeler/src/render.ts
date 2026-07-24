@@ -11,7 +11,7 @@ function renderPrefundSummary(inputs: CalculatorInputs, result: CalculatorResult
   return `
     <p class="prefund-summary">
       Deposit <strong>${formatNominalReal(result.requiredPrefund, result.requiredPrefundReal)}</strong>
-      at model year 0 to prefund Trump contributions for
+      at model year 0 to cover Trump contributions for
       <strong>${inputs.childCount} ${childWord}</strong>
       (first birth year ${inputs.yearsBeforeFirstBirth}, spacing ${inputs.childSpacingYears} yr).
       One child alone needs ${formatCurrency(result.standaloneSingleChildPrefund)} at birth.
@@ -43,7 +43,7 @@ function renderChildTable(children: ChildSummary[]): string {
           <tr>
             <th scope="col">Child</th>
             <th scope="col">Birth year</th>
-            <th scope="col">Prefund at year 0</th>
+            <th scope="col">Lump sum at year 0</th>
             <th scope="col">If funded at birth alone</th>
           </tr>
         </thead>
@@ -64,9 +64,9 @@ function renderChildTable(children: ChildSummary[]): string {
       </table>
     </div>
     <p class="footnote">
-      Prefund at year 0 is this child's share of the single year-0 deposit (sums to the total
+      Lump sum at year 0 is this child's share of the single year-0 deposit (sums to the total
       above). If funded at birth alone shows what you'd need if you waited until that child's
-      birth instead of prefunding everything at year 0.
+      birth instead of funding everything at year 0.
     </p>
   `
 }
@@ -101,7 +101,7 @@ function renderFundingTable(rows: FundingYearRow[]): string {
       </table>
     </div>
     <p class="footnote">
-      Year 0 starts with the required prefund deposit. Each year withdraws all active children's
+      Year 0 starts with the required lump-sum deposit. Each year withdraws all active children's
       Trump contributions, then the remainder grows at the market rate. End balance should reach
       near zero after the last child's final contribution year. Values show nominal (real in
       year-0 dollars).
