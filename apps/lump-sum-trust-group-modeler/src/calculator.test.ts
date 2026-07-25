@@ -127,6 +127,14 @@ describe('calculate', () => {
     )
   })
 
+  it('payout real at funding is equal for each child', () => {
+    const result = calculate(inputs())
+    const first = result.children[0]!.payoutRealAtFunding
+    for (const child of result.children) {
+      expect(child.payoutRealAtFunding).toBeCloseTo(first, 0)
+    }
+  })
+
   it('records funding year on result', () => {
     const result = calculate(inputs({ fundingMonthsFromFirstBirth: -60 }))
     expect(result.fundingYear).toBeCloseTo(-5, 5)

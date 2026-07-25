@@ -11,7 +11,6 @@ import {
 import { TARGET_AGE } from './constants'
 import {
   formatCurrency,
-  formatNominalReal,
   formatPct,
   formatSharePct,
   formatYears,
@@ -26,17 +25,25 @@ function formatFundingOffset(months: number): string {
   return `${abs} ${unit} after first birth (${formatYears(years)} yr)`
 }
 
-function renderTrusteeSteps(): string {
+function renderTrusteeSteps(inputs: CalculatorInputs): string {
   return `
     <h3 class="form-section-heading">Trustee worksheet (each 21)</h3>
+    <p class="trustee-overview">
+      At each child's 21st birthday, use the pot balance on that date and the trust's estimated CPI
+      and nominal fund growth (${formatPct(inputs.cpiRate)}/yr and ${formatPct(inputs.marketRate)}/yr
+      — ~10-year lookbacks) to size equal real payouts for every child still owed.
+    </p>
     <ol class="trustee-steps">
-      <li>Grow pot to today's balance (actual or modeled).</li>
-      <li>Weight = 1 for child turning 21 today; for each younger child, weight = 1 ÷ real growth to their 21.</li>
+      <li>Start with the pot balance on today's 21 — actual or trustee records.</li>
+      <li>Weight = 1 for the child turning 21 today; for each younger child, weight = 1 ÷ real growth to their 21.</li>
       <li>T = pot ÷ sum of weights (T is in this 21's dollars).</li>
-      <li>Pay T to today's child; reinvest the rest until the next 21.</li>
+      <li>Pay T to today's child; leave the remainder invested. Last child receives the balance.</li>
     </ol>
     <p class="footnote">
-      CPI and market below are policy estimates (~10-year lookbacks). Same numbers every payout unless amended.
+      Real growth to their 21st birthday = (1 + market)<sup>years</sup> ÷ (1 + CPI)<sup>years</sup>.
+    </p>
+    <p class="footnote">
+      Same CPI and market estimates at every payout unless the trust is amended.
     </p>
   `
 }
@@ -46,17 +53,15 @@ function renderSummary(
   result: CalculatorResult,
 ): string {
   const childWord = result.childCount === 1 ? 'child' : 'children'
+  const equalReal =
+    result.children[0]?.payoutRealAtFunding ?? 0
   return `
     <p class="prefund-summary">
-      Initial lump sum <strong>${formatCurrency(result.lumpSum)}</strong>
-      deposited ${formatFundingOffset(inputs.fundingMonthsFromFirstBirth)} for
-      <strong>${result.childCount} ${childWord}</strong>. At the first
-      ${TARGET_AGE} the pot is
-      <strong>${formatCurrency(result.potAtFirstMaturity)}</strong>
-      and the equal slice is
-      <strong>${formatCurrency(result.firstSliceAtFirstMaturity)}</strong>
-      (this 21's dollars). Each later 21 reruns the worksheet on whatever remains.
-      Total paid out: <strong>${formatCurrency(result.totalPaidNominal)}</strong>.
+      Seed one communal trust pot. Remove portions for each child at 21, ensuring equal real
+      payouts. <strong>${formatCurrency(result.lumpSum)}</strong> deposited
+      ${formatFundingOffset(inputs.fundingMonthsFromFirstBirth)} for
+      <strong>${result.childCount} ${childWord}</strong> — about
+      <strong>${formatCurrency(equalReal)}</strong> real at funding per child.
     </p>
   `
 }
@@ -119,10 +124,8 @@ function renderPayoutTable(children: ChildPayout[]): string {
             <th scope="col">Maturity year</th>
             <th scope="col">Kids left</th>
             <th scope="col">Share</th>
-            <th scope="col">Pot before</th>
             <th scope="col">Slice T</th>
-            <th scope="col">Payout</th>
-            <th scope="col">Pot after</th>
+            <th scope="col">Payout (real at funding)</th>
           </tr>
         </thead>
         <tbody>
@@ -135,10 +138,8 @@ function renderPayoutTable(children: ChildPayout[]): string {
               <td>${formatYears(child.maturityYear)}</td>
               <td>${child.childrenRemaining}</td>
               <td>${formatSharePct(child.shareOfRemainingPercent)}</td>
-              <td>${formatCurrency(child.potBeforePayout)}</td>
               <td>${formatCurrency(child.equalSliceAtThis21)}</td>
-              <td>${formatNominalReal(child.payoutNominal, child.payoutReal)}</td>
-              <td>${formatCurrency(child.potAfterPayout)}</td>
+              <td>${formatCurrency(child.payoutRealAtFunding)}</td>
             </tr>
           `,
             )
@@ -147,8 +148,8 @@ function renderPayoutTable(children: ChildPayout[]): string {
       </table>
     </div>
     <p class="footnote">
-      Slice T and payout real are in this 21's dollars (equal for non-last rows).
-      Payout nominal equals T except the last child, who takes the remainder.
+      Payout is real dollars at funding (purchasing power when the pot was seeded). Slice T is in
+      this 21's dollars. Last child receives the remaining balance.
     </p>
   `
 }
@@ -170,7 +171,7 @@ export function renderResults(
       </section>
     </div>
     <section class="result-group">
-      ${renderTrusteeSteps()}
+      ${renderTrusteeSteps(inputs)}
     </section>
     <section class="result-group">
       ${renderRemainingShareTable(result.remainingShareTable)}

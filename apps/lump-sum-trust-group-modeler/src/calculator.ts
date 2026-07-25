@@ -21,6 +21,8 @@ export type ChildPayout = {
   payoutNominal: number
   /** Same as equalSliceAtThis21 (real = dollars at this 21). */
   payoutReal: number
+  /** Payout deflated to funding-year purchasing power. */
+  payoutRealAtFunding: number
   potAfterPayout: number
 }
 
@@ -159,6 +161,10 @@ export function calculate(inputs: CalculatorInputs): CalculatorResult {
     const payoutNominal = isLast ? pot : Math.min(pot, sliceRounded)
     const potAfter = Math.max(0, pot - payoutNominal)
     const sharePercent = pot > 0 ? (payoutNominal / pot) * 100 : 0
+    const yearsFromFunding = maturityYear - fundYear
+    const payoutRealAtFunding = roundUsd(
+      payoutNominal / (1 + inputs.cpiRate) ** yearsFromFunding,
+    )
 
     children.push({
       childNumber: i + 1,
@@ -172,6 +178,7 @@ export function calculate(inputs: CalculatorInputs): CalculatorResult {
       payoutReal: isLast
         ? roundUsd(payoutNominal)
         : sliceRounded,
+      payoutRealAtFunding,
       potAfterPayout: potAfter,
     })
 
