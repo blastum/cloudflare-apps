@@ -352,7 +352,8 @@
 }
 
 .result-group--assumptions .projection-inputs {
-  gap: 0.15rem 1rem;
+  grid-template-columns: 1fr;
+  gap: 0.15rem 0;
   font-size: 0.8125rem;
 }
 
@@ -652,6 +653,10 @@
     border-color: #ccc;
     background: #fafafa !important;
     page-break-inside: avoid;
+  }
+
+  .result-group--assumptions .projection-inputs {
+    grid-template-columns: 1fr;
   }
 
   .results-summary {

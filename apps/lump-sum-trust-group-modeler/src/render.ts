@@ -11,12 +11,10 @@ import {
 } from './calculator'
 import { TARGET_AGE, TARGET_AGE_MONTHS } from './constants'
 import {
-  annualToMonthlyRate,
   formatCurrency,
   formatMonths,
   formatNominalReal,
   formatPct,
-  formatPctPerMonth,
   formatSharePct,
 } from './shared/money'
 
@@ -29,12 +27,10 @@ function formatFundingOffset(months: number): string {
 }
 
 function renderPolicyRatesBlock(inputs: CalculatorInputs): string {
-  const cpiM = annualToMonthlyRate(inputs.cpiRate)
-  const marketM = annualToMonthlyRate(inputs.marketRate)
   return `
     <dl class="worksheet-rates">
-      <div><dt>CPI (10-year)</dt><dd>${formatPct(inputs.cpiRate)}/yr · ${formatPctPerMonth(cpiM)}</dd></div>
-      <div><dt>Nominal growth (10-year)</dt><dd>${formatPct(inputs.marketRate)}/yr · ${formatPctPerMonth(marketM)}</dd></div>
+      <div><dt>CPI (10-year)</dt><dd>${formatPct(inputs.cpiRate)}/yr</dd></div>
+      <div><dt>Nominal growth (10-year)</dt><dd>${formatPct(inputs.marketRate)}/yr</dd></div>
     </dl>
   `
 }
@@ -45,12 +41,12 @@ function renderTrusteeSteps(inputs: CalculatorInputs): string {
     ${renderPolicyRatesBlock(inputs)}
     <ol class="trustee-steps">
       <li>Pot balance on this 21.</li>
-      <li>Months until each remaining child's 21; weight = 1 today, else 1 ÷ real growth over m months.</li>
+      <li>Months m to each remaining child's 21; weight = 1 today, else 1 ÷ real growth over m÷12 years.</li>
       <li>T = pot ÷ sum of weights.</li>
       <li>Pay T; leave remainder invested (last child: balance).</li>
     </ol>
     <p class="footnote">
-      Real growth over m months = (1 + market<sub>mo</sub>)<sup>m</sup> ÷ (1 + CPI<sub>mo</sub>)<sup>m</sup>.
+      Real growth over m months = (1 + market)<sup>m÷12</sup> ÷ (1 + CPI)<sup>m÷12</sup> (annual rates).
     </p>
   `
 }
@@ -135,12 +131,12 @@ function renderPrintableTrusteeWorksheet(
 
       <ol class="worksheet-steps">
         <li>Record pot balance on this 21.</li>
-        <li>For each remaining child: months m to their 21; weight = 1 if today, else 1 ÷ real growth over m.</li>
+        <li>For each remaining child: months m to their 21; weight = 1 if today, else 1 ÷ real growth over m÷12 years.</li>
         <li>T = pot ÷ sum of weights.</li>
         <li>Pay T; leave remainder invested (last child: full balance).</li>
       </ol>
       <p class="worksheet-formula">
-        Real growth over m months = (1 + market<sub>mo</sub>)<sup>m</sup> ÷ (1 + CPI<sub>mo</sub>)<sup>m</sup>
+        Real growth over m months = (1 + market)<sup>m÷12</sup> ÷ (1 + CPI)<sup>m÷12</sup>
       </p>
 
       <h3 class="worksheet-section-heading">Calculation</h3>
@@ -235,7 +231,6 @@ function renderPayoutTable(children: ChildPayout[]): string {
             <th scope="col">Maturity month</th>
             <th scope="col">Kids left</th>
             <th scope="col">Share</th>
-            <th scope="col">Slice T</th>
             <th scope="col">Payout</th>
           </tr>
         </thead>
@@ -249,7 +244,6 @@ function renderPayoutTable(children: ChildPayout[]): string {
               <td>${formatMonths(child.maturityMonth)}</td>
               <td>${child.childrenRemaining}</td>
               <td>${formatSharePct(child.shareOfRemainingPercent)}</td>
-              <td>${formatCurrency(child.equalSliceAtThis21)}</td>
               <td>${formatNominalReal(child.payoutNominal, child.payoutRealAtFunding)}</td>
             </tr>
           `,
@@ -259,8 +253,7 @@ function renderPayoutTable(children: ChildPayout[]): string {
       </table>
     </div>
     <p class="footnote">
-      Payout: nominal (real at funding). Real values are equal purchasing power when the pot was
-      seeded. Slice T is in this 21's dollars. Last child receives the remaining balance.
+      Payout: nominal (real at funding). Last child receives the remaining balance.
     </p>
   `
 }

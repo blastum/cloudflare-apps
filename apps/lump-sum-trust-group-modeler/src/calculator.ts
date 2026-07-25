@@ -1,5 +1,4 @@
 import { TARGET_AGE_MONTHS } from './constants'
-import { annualToMonthlyRate } from './shared/money'
 import { roundUsd } from './money'
 
 export type CalculatorInputs = {
@@ -66,16 +65,15 @@ export function birthYearsFromSpacing(spacingMonths: number[]): number[] {
   return birthMonthsFromSpacing(spacingMonths).map((m) => m / 12)
 }
 
-/** Cumulative real growth (market ÷ CPI) over waitMonths using monthly compounding. */
+/** Cumulative real growth (market ÷ CPI) over waitMonths; annual rates, m÷12 years. */
 export function realGrowthFactor(
   waitMonths: number,
   cpiRate: number,
   marketRate: number,
 ): number {
   if (waitMonths <= 0) return 1
-  const cpiM = annualToMonthlyRate(cpiRate)
-  const marketM = annualToMonthlyRate(marketRate)
-  return (1 + marketM) ** waitMonths / (1 + cpiM) ** waitMonths
+  const years = waitMonths / 12
+  return (1 + marketRate) ** years / (1 + cpiRate) ** years
 }
 
 /**
@@ -116,8 +114,7 @@ function growMonths(
   marketRate: number,
 ): number {
   if (monthSpan <= 0) return roundUsd(balance)
-  const marketM = annualToMonthlyRate(marketRate)
-  return roundUsd(balance * (1 + marketM) ** monthSpan)
+  return roundUsd(balance * (1 + marketRate) ** (monthSpan / 12))
 }
 
 /**
@@ -131,7 +128,6 @@ export function calculate(inputs: CalculatorInputs): CalculatorResult {
   const lumpSum = roundUsd(Math.max(0, inputs.lumpSum))
   const fundMonth = inputs.fundingMonthsFromFirstBirth
   const maturityMonths = birthMonths.map((b) => b + TARGET_AGE_MONTHS)
-  const cpiM = annualToMonthlyRate(inputs.cpiRate)
 
   const children: ChildPayout[] = []
   let pot = lumpSum
@@ -165,7 +161,7 @@ export function calculate(inputs: CalculatorInputs): CalculatorResult {
     const sharePercent = pot > 0 ? (payoutNominal / pot) * 100 : 0
     const monthsFromFunding = maturityMonth - fundMonth
     const payoutRealAtFunding = roundUsd(
-      payoutNominal / (1 + cpiM) ** monthsFromFunding,
+      payoutNominal / (1 + inputs.cpiRate) ** (monthsFromFunding / 12),
     )
 
     children.push({

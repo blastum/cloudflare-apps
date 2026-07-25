@@ -8,7 +8,6 @@ import {
   sliceWeight,
   type CalculatorInputs,
 } from './calculator'
-import { annualToMonthlyRate } from './shared/money'
 import { DEFAULTS, TARGET_AGE_MONTHS } from './constants'
 
 function inputs(partial: Partial<CalculatorInputs> = {}): CalculatorInputs {
@@ -38,12 +37,11 @@ describe('sliceWeight', () => {
       8,
     )
   })
-  it('uses monthly compounding for real growth', () => {
+  it('uses annual rates with m÷12 years for real growth', () => {
     const waitMonths = 60
-    const cpiM = annualToMonthlyRate(DEFAULTS.cpiRate)
-    const marketM = annualToMonthlyRate(DEFAULTS.marketRate)
+    const years = waitMonths / 12
     const expected =
-      (1 + marketM) ** waitMonths / (1 + cpiM) ** waitMonths
+      (1 + DEFAULTS.marketRate) ** years / (1 + DEFAULTS.cpiRate) ** years
     expect(realGrowthFactor(waitMonths, DEFAULTS.cpiRate, DEFAULTS.marketRate)).toBeCloseTo(
       expected,
       10,
@@ -102,9 +100,8 @@ describe('calculate', () => {
 
   it('first maturity pot is seed grown from funding to first maturity', () => {
     const result = calculate(inputs({ spacingMonths: [0, 24] }))
-    const marketM = annualToMonthlyRate(DEFAULTS.marketRate)
     const expected = Math.round(
-      DEFAULTS.lumpSum * (1 + marketM) ** TARGET_AGE_MONTHS,
+      DEFAULTS.lumpSum * (1 + DEFAULTS.marketRate) ** (TARGET_AGE_MONTHS / 12),
     )
     expect(result.potAtFirstMaturity).toBe(expected)
   })
