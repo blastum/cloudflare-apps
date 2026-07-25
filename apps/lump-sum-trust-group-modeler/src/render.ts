@@ -145,7 +145,7 @@ function renderPayoutTable(children: ChildPayout[]): string {
               <td>${child.childrenRemaining}</td>
               <td>${formatSharePct(child.shareOfRemainingPercent)}</td>
               <td>${formatCurrency(child.equalSliceAtThis21)}</td>
-              <td>${formatNominalReal(child.payoutNominal, child.payoutReal)}</td>
+              <td>${formatNominalReal(child.payoutNominal, child.payoutRealAtFunding)}</td>
             </tr>
           `,
             )
@@ -154,8 +154,8 @@ function renderPayoutTable(children: ChildPayout[]): string {
       </table>
     </div>
     <p class="footnote">
-      Payout: nominal (real at this 21). Slice T is in this 21's dollars. Last child receives the
-      remaining balance.
+      Payout: nominal (real at funding). Real values are equal purchasing power when the pot was
+      seeded. Slice T is in this 21's dollars. Last child receives the remaining balance.
     </p>
   `
 }
