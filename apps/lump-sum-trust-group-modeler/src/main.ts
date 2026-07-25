@@ -35,14 +35,15 @@ function readInputs(): CalculatorInputs {
   const data = new FormData(form)
   const num = (name: string) => Number(data.get(name) ?? 0)
   const pct = (name: string) => num(name) / 100
-  const lumpSumEl = form.elements.namedItem('lumpSumAtYear0')
-  const lumpSumAtYear0 =
+  const lumpSumEl = form.elements.namedItem('lumpSum')
+  const lumpSum =
     lumpSumEl instanceof HTMLInputElement
       ? parseCurrencyInput(lumpSumEl.value)
       : 0
   return {
     spacingMonths: readSpacingMonths(),
-    lumpSumAtYear0: Math.max(0, lumpSumAtYear0),
+    lumpSum: Math.max(0, lumpSum),
+    fundingMonthsFromFirstBirth: num('fundingMonthsFromFirstBirth'),
     cpiRate: pct('cpiRate'),
     marketRate: pct('marketRate'),
   }
@@ -84,7 +85,7 @@ function renderChildren(spacingMonths: number[] = [...DEFAULTS.spacingMonths]): 
 
 function restoreSavedSpacing(): number[] | null {
   try {
-    const saved = localStorage.getItem('lump-sum-share-calculator:inputs')
+    const saved = localStorage.getItem('lump-sum-trust-group-modeler:inputs')
     if (!saved) return null
     const vals = JSON.parse(saved) as { spacingMonths?: number[] }
     return vals.spacingMonths?.length ? vals.spacingMonths : null

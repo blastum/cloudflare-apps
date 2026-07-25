@@ -17,18 +17,46 @@ import {
   formatYears,
 } from './shared/money'
 
-function renderSummary(result: CalculatorResult): string {
+function formatFundingOffset(months: number): string {
+  if (months === 0) return 'At first birth (month 0)'
+  const years = months / 12
+  const abs = Math.abs(months)
+  const unit = abs === 1 ? 'month' : 'months'
+  if (months < 0) return `${abs} ${unit} before first birth (${formatYears(years)} yr)`
+  return `${abs} ${unit} after first birth (${formatYears(years)} yr)`
+}
+
+function renderTrusteeSteps(): string {
+  return `
+    <h3 class="form-section-heading">Trustee worksheet (each 21)</h3>
+    <ol class="trustee-steps">
+      <li>Grow pot to today's balance (actual or modeled).</li>
+      <li>Weight = 1 for child turning 21 today; for each younger child, weight = 1 ÷ real growth to their 21.</li>
+      <li>T = pot ÷ sum of weights (T is in this 21's dollars).</li>
+      <li>Pay T to today's child; reinvest the rest until the next 21.</li>
+    </ol>
+    <p class="footnote">
+      CPI and market below are policy estimates (~10-year lookbacks). Same numbers every payout unless amended.
+    </p>
+  `
+}
+
+function renderSummary(
+  inputs: CalculatorInputs,
+  result: CalculatorResult,
+): string {
   const childWord = result.childCount === 1 ? 'child' : 'children'
   return `
     <p class="prefund-summary">
-      Seed <strong>${formatCurrency(result.lumpSumAtYear0)}</strong> at year 0 for
-      <strong>${result.childCount} ${childWord}</strong>. When the first child turns
-      ${TARGET_AGE}, the pot is
-      <strong>${formatNominalReal(result.potAtFirstMaturity, result.potAtFirstMaturityReal)}</strong>.
-      Each child receives the same
-      <strong>${formatCurrency(result.equalRealAtAge21)} real</strong> at age ${TARGET_AGE}
-      (nominal amounts differ). Last child empties the pot. Total paid out:
-      <strong>${formatCurrency(result.totalPaidNominal)}</strong>.
+      Initial lump sum <strong>${formatCurrency(result.lumpSum)}</strong>
+      deposited ${formatFundingOffset(inputs.fundingMonthsFromFirstBirth)} for
+      <strong>${result.childCount} ${childWord}</strong>. At the first
+      ${TARGET_AGE} the pot is
+      <strong>${formatCurrency(result.potAtFirstMaturity)}</strong>
+      and the equal slice is
+      <strong>${formatCurrency(result.firstSliceAtFirstMaturity)}</strong>
+      (this 21's dollars). Each later 21 reruns the worksheet on whatever remains.
+      Total paid out: <strong>${formatCurrency(result.totalPaidNominal)}</strong>.
     </p>
   `
 }
@@ -37,19 +65,19 @@ function renderAssumptions(inputs: CalculatorInputs, result: CalculatorResult): 
   return `
     <dl class="projection-inputs">
       <div><dt>Children</dt><dd>${result.childCount}</dd></div>
-      <div><dt>Seed at year 0</dt><dd>${formatCurrency(result.lumpSumAtYear0)}</dd></div>
-      <div><dt>Last birth year</dt><dd>${formatYears(result.lastBirthYear)}</dd></div>
-      <div><dt>Equal real at age ${TARGET_AGE}</dt><dd>${formatCurrency(result.equalRealAtAge21)}</dd></div>
-      <div><dt>Pot at first age ${TARGET_AGE}</dt><dd>${formatCurrency(result.potAtFirstMaturity)}</dd></div>
-      <div><dt>Market growth</dt><dd>${formatPct(inputs.marketRate)}/yr</dd></div>
-      <div><dt>Average CPI</dt><dd>${formatPct(inputs.cpiRate)}/yr</dd></div>
+      <div><dt>Initial lump sum</dt><dd>${formatCurrency(result.lumpSum)}</dd></div>
+      <div><dt>Funding offset</dt><dd>${formatFundingOffset(inputs.fundingMonthsFromFirstBirth)}</dd></div>
+      <div><dt>First slice at first ${TARGET_AGE}</dt><dd>${formatCurrency(result.firstSliceAtFirstMaturity)}</dd></div>
+      <div><dt>Pot at first ${TARGET_AGE}</dt><dd>${formatCurrency(result.potAtFirstMaturity)}</dd></div>
+      <div><dt>CPI (10-yr lookback)</dt><dd>${formatPct(inputs.cpiRate)}/yr</dd></div>
+      <div><dt>Market (10-yr lookback)</dt><dd>${formatPct(inputs.marketRate)}/yr</dd></div>
     </dl>
   `
 }
 
 function renderRemainingShareTable(rows: RemainingShareRow[]): string {
   return `
-    <h3 class="form-section-heading">Share of remaining pot at each payout</h3>
+    <h3 class="form-section-heading">Share of pot at each payout</h3>
     <div class="table-wrap">
       <table class="projection-table">
         <thead>
@@ -76,16 +104,12 @@ function renderRemainingShareTable(rows: RemainingShareRow[]): string {
         </tbody>
       </table>
     </div>
-    <p class="footnote">
-      Not a flat 1/k split. Shares are sized so each child gets the same real dollars at age
-      ${TARGET_AGE}; later children usually take a larger fraction of whatever is left then.
-    </p>
   `
 }
 
 function renderPayoutTable(children: ChildPayout[]): string {
   return `
-    <h3 class="form-section-heading">Payouts at age ${TARGET_AGE}</h3>
+    <h3 class="form-section-heading">Simulated payouts at age ${TARGET_AGE}</h3>
     <div class="table-wrap">
       <table class="projection-table">
         <thead>
@@ -96,6 +120,7 @@ function renderPayoutTable(children: ChildPayout[]): string {
             <th scope="col">Kids left</th>
             <th scope="col">Share</th>
             <th scope="col">Pot before</th>
+            <th scope="col">Slice T</th>
             <th scope="col">Payout</th>
             <th scope="col">Pot after</th>
           </tr>
@@ -111,6 +136,7 @@ function renderPayoutTable(children: ChildPayout[]): string {
               <td>${child.childrenRemaining}</td>
               <td>${formatSharePct(child.shareOfRemainingPercent)}</td>
               <td>${formatCurrency(child.potBeforePayout)}</td>
+              <td>${formatCurrency(child.equalSliceAtThis21)}</td>
               <td>${formatNominalReal(child.payoutNominal, child.payoutReal)}</td>
               <td>${formatCurrency(child.potAfterPayout)}</td>
             </tr>
@@ -121,9 +147,8 @@ function renderPayoutTable(children: ChildPayout[]): string {
       </table>
     </div>
     <p class="footnote">
-      One communal pot grows from the year-0 seed. At each maturity the withdrawal is the
-      equal real amount inflated to that year. Payout shows nominal (real in year-0 dollars).
-      Pot after the last child is zero.
+      Slice T and payout real are in this 21's dollars (equal for non-last rows).
+      Payout nominal equals T except the last child, who takes the remainder.
     </p>
   `
 }
@@ -137,13 +162,16 @@ export function renderResults(
     <div class="results-summary">
       <section class="result-group">
         <h3 class="result-group-heading">Summary</h3>
-        ${renderSummary(result)}
+        ${renderSummary(inputs, result)}
       </section>
       <section class="result-group result-group--assumptions">
         <h3 class="result-group-heading">Assumptions</h3>
         ${renderAssumptions(inputs, result)}
       </section>
     </div>
+    <section class="result-group">
+      ${renderTrusteeSteps()}
+    </section>
     <section class="result-group">
       ${renderRemainingShareTable(result.remainingShareTable)}
     </section>
@@ -160,7 +188,7 @@ export function mountCalculator(
   calculate: (inputs: CalculatorInputs) => CalculatorResult,
   readInputs: () => CalculatorInputs,
 ): () => void {
-  const storageKey = 'lump-sum-share-calculator:inputs'
+  const storageKey = 'lump-sum-trust-group-modeler:inputs'
 
   const save = () => {
     const inputs = readInputs()
@@ -169,7 +197,9 @@ export function mountCalculator(
         storageKey,
         JSON.stringify({
           spacingMonths: inputs.spacingMonths,
-          lumpSumAtYear0: inputs.lumpSumAtYear0.toString(),
+          lumpSum: inputs.lumpSum.toString(),
+          fundingMonthsFromFirstBirth:
+            inputs.fundingMonthsFromFirstBirth.toString(),
           cpiRate: (inputs.cpiRate * 100).toString(),
           marketRate: (inputs.marketRate * 100).toString(),
         }),
@@ -189,7 +219,8 @@ export function mountCalculator(
     const saved = localStorage.getItem(storageKey)
     if (saved) {
       const vals = JSON.parse(saved) as {
-        lumpSumAtYear0?: string
+        lumpSum?: string
+        fundingMonthsFromFirstBirth?: string
         cpiRate?: string
         marketRate?: string
       }
@@ -197,11 +228,14 @@ export function mountCalculator(
         const el = form.elements.namedItem(name)
         if (el instanceof HTMLInputElement) el.value = value
       }
-      if (vals.lumpSumAtYear0 != null) {
-        const el = form.elements.namedItem('lumpSumAtYear0')
+      if (vals.lumpSum != null) {
+        const el = form.elements.namedItem('lumpSum')
         if (el instanceof HTMLInputElement) {
-          setCurrencyInputValue(el, vals.lumpSumAtYear0)
+          setCurrencyInputValue(el, vals.lumpSum)
         }
+      }
+      if (vals.fundingMonthsFromFirstBirth != null) {
+        setField('fundingMonthsFromFirstBirth', vals.fundingMonthsFromFirstBirth)
       }
       if (vals.cpiRate != null) setField('cpiRate', vals.cpiRate)
       if (vals.marketRate != null) setField('marketRate', vals.marketRate)
@@ -210,7 +244,7 @@ export function mountCalculator(
     /* ignore */
   }
 
-  bindCurrencyInputs(form, ['lumpSumAtYear0'])
+  bindCurrencyInputs(form, ['lumpSum'])
 
   form.addEventListener('input', render)
   form.addEventListener('change', render)

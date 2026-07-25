@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lump-Sum Pot Share Calculator · Smirking Cat Software</title>
+    <title>Lump Sum Trust Group Modeler · Smirking Cat Software</title>
     <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +21,7 @@
           </div>
           <div class="brand-text">
             <p class="brand-title">Smirking Cat Software</p>
-            <p class="brand-subtitle">One pot, many kids</p>
+            <p class="brand-subtitle">Communal trust pot</p>
           </div>
         </div>
         <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -31,11 +31,11 @@
 
       <main>
         <section class="hero">
-          <h1>Lump-Sum Pot Share Calculator</h1>
+          <h1>Lump Sum Trust Group Modeler</h1>
           <p>
-            Seed a communal pot at the first child's birth. Each child receives the same real
-            dollars at age 21; nominal payouts and shares of the remaining pot adjust so the fund
-            is empty after the last child.
+            Seed one communal trust pot. At each 21st birthday: T = pot ÷ (1 + weights for
+            younger kids), pay T in this 21's dollars, reinvest the rest. Uses ~10-year lookback
+            CPI and market estimates.
           </p>
         </section>
 
@@ -52,19 +52,31 @@
 
             <div class="form-grid form-grid--rates">
               <label>
-                Lump sum at year 0 ($)
-                <input type="text" name="lumpSumAtYear0" inputmode="numeric" autocomplete="off" value="1,000,000" />
-                <span class="field-hint">Initial seed into the communal pot (year 0)</span>
+                Initial lump sum ($)
+                <input type="text" name="lumpSum" inputmode="numeric" autocomplete="off" value="1,000,000" />
+                <span class="field-hint">Deposited once at the funding month offset below</span>
+              </label>
+              <label>
+                Funding months from first birth
+                <input
+                  type="number"
+                  name="fundingMonthsFromFirstBirth"
+                  min="-360"
+                  max="360"
+                  step="1"
+                  value="0"
+                />
+                <span class="field-hint">Negative = fund before birth; 0 = at first birth</span>
               </label>
               <label>
                 Average CPI (%)
                 <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
-                <span class="field-hint">Default ~US CPI 1975–2025 (BLS)</span>
+                <span class="field-hint">Policy estimate — ~10-year US CPI lookback (BLS)</span>
               </label>
               <label>
                 Average market growth (%)
                 <input type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" />
-                <span class="field-hint">Default ~S&amp;P 500 total return 1975–2025</span>
+                <span class="field-hint">Policy estimate — ~10-year S&amp;P 500 total return</span>
               </label>
             </div>
           </form>
