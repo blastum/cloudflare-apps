@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="page page--wide">
-      <header class="site-header">
+      <header class="site-header no-print">
         <div class="brand">
           <div class="brand-mark" aria-hidden="true">
             <img src="/public/images/smirk-cat.png" alt="" width="60" height="60" />
@@ -30,7 +30,7 @@
       </header>
 
       <main>
-        <section class="hero">
+        <section class="hero no-print">
           <h1>Lump Sum Trust Group Modeler</h1>
           <p>
             Seed one communal trust pot. Remove portions for each child at 21, ensuring equal real
@@ -38,7 +38,7 @@
           </p>
         </section>
 
-        <section class="card card--inputs" aria-labelledby="inputs-heading">
+        <section class="card card--inputs no-print" aria-labelledby="inputs-heading">
           <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
           <form id="calculator-form">
             <div class="form-section-heading">Children</div>
@@ -87,9 +87,10 @@
         </section>
       </main>
 
-      <footer class="site-footer">
+      <footer class="site-footer no-print">
         <p>Estimates only — not tax or financial advice.</p>
       </footer>
+      <p class="print-only-footer">Estimates only — not tax or financial advice.</p>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
