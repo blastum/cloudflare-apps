@@ -13,6 +13,7 @@ import {
   annualToMonthlyRate,
   formatCurrency,
   formatMonths,
+  formatNominalReal,
   formatPctPerMonth,
   formatSharePct,
 } from './shared/money'
@@ -130,7 +131,7 @@ function renderPayoutTable(children: ChildPayout[]): string {
             <th scope="col">Kids left</th>
             <th scope="col">Share</th>
             <th scope="col">Slice T</th>
-            <th scope="col">Payout (real at funding)</th>
+            <th scope="col">Payout</th>
           </tr>
         </thead>
         <tbody>
@@ -144,7 +145,7 @@ function renderPayoutTable(children: ChildPayout[]): string {
               <td>${child.childrenRemaining}</td>
               <td>${formatSharePct(child.shareOfRemainingPercent)}</td>
               <td>${formatCurrency(child.equalSliceAtThis21)}</td>
-              <td>${formatCurrency(child.payoutRealAtFunding)}</td>
+              <td>${formatNominalReal(child.payoutNominal, child.payoutReal)}</td>
             </tr>
           `,
             )
@@ -153,8 +154,8 @@ function renderPayoutTable(children: ChildPayout[]): string {
       </table>
     </div>
     <p class="footnote">
-      Payout is real dollars at funding (purchasing power when the pot was seeded). Slice T is in
-      this 21's dollars. Last child receives the remaining balance.
+      Payout: nominal (real at this 21). Slice T is in this 21's dollars. Last child receives the
+      remaining balance.
     </p>
   `
 }
