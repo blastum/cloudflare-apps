@@ -26,3 +26,16 @@ export function formatYears(years: number): string {
   }
   return years.toFixed(2)
 }
+
+/** Convert an annual decimal rate to an equivalent monthly rate. */
+export function annualToMonthlyRate(annualRate: number): number {
+  return (1 + annualRate) ** (1 / 12) - 1
+}
+
+export function formatPctPerMonth(rate: number): string {
+  return `${(rate * 100).toFixed(3)}%/mo`
+}
+
+export function formatMonths(months: number): string {
+  return String(Math.round(months))
+}

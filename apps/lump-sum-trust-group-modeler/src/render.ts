@@ -10,37 +10,42 @@ import {
 } from './calculator'
 import { TARGET_AGE } from './constants'
 import {
+  annualToMonthlyRate,
   formatCurrency,
-  formatPct,
+  formatMonths,
+  formatPctPerMonth,
   formatSharePct,
-  formatYears,
 } from './shared/money'
 
 function formatFundingOffset(months: number): string {
   if (months === 0) return 'At first birth (month 0)'
-  const years = months / 12
   const abs = Math.abs(months)
   const unit = abs === 1 ? 'month' : 'months'
-  if (months < 0) return `${abs} ${unit} before first birth (${formatYears(years)} yr)`
-  return `${abs} ${unit} after first birth (${formatYears(years)} yr)`
+  if (months < 0) return `${abs} ${unit} before first birth (month ${months})`
+  return `${abs} ${unit} after first birth (month ${months})`
 }
 
 function renderTrusteeSteps(inputs: CalculatorInputs): string {
+  const cpiM = annualToMonthlyRate(inputs.cpiRate)
+  const marketM = annualToMonthlyRate(inputs.marketRate)
   return `
     <h3 class="form-section-heading">Trustee worksheet (each 21)</h3>
     <p class="trustee-overview">
-      At each child's 21st birthday, use the pot balance on that date and the trust's estimated CPI
-      and nominal fund growth (${formatPct(inputs.cpiRate)}/yr and ${formatPct(inputs.marketRate)}/yr
-      — ~10-year lookbacks) to size equal real payouts for every child still owed.
+      At each child's 21st birthday, use the pot balance on that date and the trust's estimated
+      monthly CPI and nominal fund growth (${formatPctPerMonth(cpiM)} and
+      ${formatPctPerMonth(marketM)} — from ~10-year lookbacks) to size equal real payouts for
+      every child still owed.
     </p>
     <ol class="trustee-steps">
       <li>Start with the pot balance on today's 21 — actual or trustee records.</li>
-      <li>Weight = 1 for the child turning 21 today; for each younger child, weight = 1 ÷ real growth to their 21.</li>
+      <li>List remaining children and months until each one's 21.</li>
+      <li>For each remaining child: weight = 1 if turning 21 today; else weight = 1 ÷ real growth over the months until their 21.</li>
       <li>T = pot ÷ sum of weights (T is in this 21's dollars).</li>
       <li>Pay T to today's child; leave the remainder invested. Last child receives the balance.</li>
     </ol>
     <p class="footnote">
-      Real growth to their 21st birthday = (1 + market)<sup>years</sup> ÷ (1 + CPI)<sup>years</sup>.
+      Real growth over m months to their 21st birthday =
+      (1 + market<sub>mo</sub>)<sup>m</sup> ÷ (1 + CPI<sub>mo</sub>)<sup>m</sup>.
     </p>
     <p class="footnote">
       Same CPI and market estimates at every payout unless the trust is amended.
@@ -74,8 +79,8 @@ function renderAssumptions(inputs: CalculatorInputs, result: CalculatorResult): 
       <div><dt>Funding offset</dt><dd>${formatFundingOffset(inputs.fundingMonthsFromFirstBirth)}</dd></div>
       <div><dt>First slice at first ${TARGET_AGE}</dt><dd>${formatCurrency(result.firstSliceAtFirstMaturity)}</dd></div>
       <div><dt>Pot at first ${TARGET_AGE}</dt><dd>${formatCurrency(result.potAtFirstMaturity)}</dd></div>
-      <div><dt>CPI (10-yr lookback)</dt><dd>${formatPct(inputs.cpiRate)}/yr</dd></div>
-      <div><dt>Market (10-yr lookback)</dt><dd>${formatPct(inputs.marketRate)}/yr</dd></div>
+      <div><dt>CPI (10-yr lookback)</dt><dd>${formatPctPerMonth(annualToMonthlyRate(inputs.cpiRate))}</dd></div>
+      <div><dt>Market (10-yr lookback)</dt><dd>${formatPctPerMonth(annualToMonthlyRate(inputs.marketRate))}</dd></div>
     </dl>
   `
 }
@@ -89,7 +94,7 @@ function renderRemainingShareTable(rows: RemainingShareRow[]): string {
           <tr>
             <th scope="col">Child</th>
             <th scope="col">Kids left</th>
-            <th scope="col">Maturity year</th>
+            <th scope="col">Maturity month</th>
             <th scope="col">Share of pot</th>
           </tr>
         </thead>
@@ -100,7 +105,7 @@ function renderRemainingShareTable(rows: RemainingShareRow[]): string {
             <tr>
               <th scope="row">${row.childNumber}</th>
               <td>${row.childrenRemaining}</td>
-              <td>${formatYears(row.maturityYear)}</td>
+              <td>${formatMonths(row.maturityMonth)}</td>
               <td>${formatSharePct(row.sharePercent)}</td>
             </tr>
           `,
@@ -120,8 +125,8 @@ function renderPayoutTable(children: ChildPayout[]): string {
         <thead>
           <tr>
             <th scope="col">Child</th>
-            <th scope="col">Birth year</th>
-            <th scope="col">Maturity year</th>
+            <th scope="col">Birth month</th>
+            <th scope="col">Maturity month</th>
             <th scope="col">Kids left</th>
             <th scope="col">Share</th>
             <th scope="col">Slice T</th>
@@ -134,8 +139,8 @@ function renderPayoutTable(children: ChildPayout[]): string {
               (child) => `
             <tr>
               <th scope="row">${child.childNumber}</th>
-              <td>${formatYears(child.birthYear)}</td>
-              <td>${formatYears(child.maturityYear)}</td>
+              <td>${formatMonths(child.birthMonth)}</td>
+              <td>${formatMonths(child.maturityMonth)}</td>
               <td>${child.childrenRemaining}</td>
               <td>${formatSharePct(child.shareOfRemainingPercent)}</td>
               <td>${formatCurrency(child.equalSliceAtThis21)}</td>

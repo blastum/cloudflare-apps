@@ -8,7 +8,8 @@ import {
   sliceWeight,
   type CalculatorInputs,
 } from './calculator'
-import { DEFAULTS, TARGET_AGE, TARGET_AGE_MONTHS } from './constants'
+import { annualToMonthlyRate } from './shared/money'
+import { DEFAULTS, TARGET_AGE_MONTHS } from './constants'
 
 function inputs(partial: Partial<CalculatorInputs> = {}): CalculatorInputs {
   return {
@@ -35,6 +36,17 @@ describe('sliceWeight', () => {
     expect(w).toBeCloseTo(
       1 / realGrowthFactor(60, DEFAULTS.cpiRate, DEFAULTS.marketRate),
       8,
+    )
+  })
+  it('uses monthly compounding for real growth', () => {
+    const waitMonths = 60
+    const cpiM = annualToMonthlyRate(DEFAULTS.cpiRate)
+    const marketM = annualToMonthlyRate(DEFAULTS.marketRate)
+    const expected =
+      (1 + marketM) ** waitMonths / (1 + cpiM) ** waitMonths
+    expect(realGrowthFactor(waitMonths, DEFAULTS.cpiRate, DEFAULTS.marketRate)).toBeCloseTo(
+      expected,
+      10,
     )
   })
 })
@@ -90,8 +102,9 @@ describe('calculate', () => {
 
   it('first maturity pot is seed grown from funding to first maturity', () => {
     const result = calculate(inputs({ spacingMonths: [0, 24] }))
+    const marketM = annualToMonthlyRate(DEFAULTS.marketRate)
     const expected = Math.round(
-      DEFAULTS.lumpSum * (1 + DEFAULTS.marketRate) ** TARGET_AGE,
+      DEFAULTS.lumpSum * (1 + marketM) ** TARGET_AGE_MONTHS,
     )
     expect(result.potAtFirstMaturity).toBe(expected)
   })
@@ -104,10 +117,10 @@ describe('calculate', () => {
     )
   })
 
-  it('maturity is birth plus target age', () => {
+  it('maturity is birth plus target age in months', () => {
     const result = calculate(inputs({ spacingMonths: [0, 18] }))
     for (const child of result.children) {
-      expect(child.maturityYear).toBeCloseTo(child.birthYear + TARGET_AGE, 5)
+      expect(child.maturityMonth).toBe(child.birthMonth + TARGET_AGE_MONTHS)
     }
   })
 
@@ -135,9 +148,9 @@ describe('calculate', () => {
     }
   })
 
-  it('records funding year on result', () => {
+  it('records funding month on result', () => {
     const result = calculate(inputs({ fundingMonthsFromFirstBirth: -60 }))
-    expect(result.fundingYear).toBeCloseTo(-5, 5)
+    expect(result.fundingMonth).toBe(-60)
   })
 
   it('birth spacing accumulates in months', () => {

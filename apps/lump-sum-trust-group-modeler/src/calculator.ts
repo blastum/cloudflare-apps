@@ -1,4 +1,5 @@
 import { TARGET_AGE_MONTHS } from './constants'
+import { annualToMonthlyRate } from './shared/money'
 import { roundUsd } from './money'
 
 export type CalculatorInputs = {
@@ -11,8 +12,8 @@ export type CalculatorInputs = {
 
 export type ChildPayout = {
   childNumber: number
-  birthYear: number
-  maturityYear: number
+  birthMonth: number
+  maturityMonth: number
   childrenRemaining: number
   /** Equal slice T in this 21's dollars for everyone still owed. */
   equalSliceAtThis21: number
@@ -21,7 +22,7 @@ export type ChildPayout = {
   payoutNominal: number
   /** Same as equalSliceAtThis21 (real = dollars at this 21). */
   payoutReal: number
-  /** Payout deflated to funding-year purchasing power. */
+  /** Payout deflated to funding-month purchasing power. */
   payoutRealAtFunding: number
   potAfterPayout: number
 }
@@ -29,14 +30,14 @@ export type ChildPayout = {
 export type RemainingShareRow = {
   childrenRemaining: number
   childNumber: number
-  maturityYear: number
+  maturityMonth: number
   sharePercent: number
 }
 
 export type CalculatorResult = {
   childCount: number
-  fundingYear: number
-  lastBirthYear: number
+  fundingMonth: number
+  lastBirthMonth: number
   lumpSum: number
   /** Slice T at the first child's 21 (in that day's dollars). */
   firstSliceAtFirstMaturity: number
@@ -65,15 +66,16 @@ export function birthYearsFromSpacing(spacingMonths: number[]): number[] {
   return birthMonthsFromSpacing(spacingMonths).map((m) => m / 12)
 }
 
-/** Cumulative real growth (market ÷ CPI) over waitMonths. */
+/** Cumulative real growth (market ÷ CPI) over waitMonths using monthly compounding. */
 export function realGrowthFactor(
   waitMonths: number,
   cpiRate: number,
   marketRate: number,
 ): number {
   if (waitMonths <= 0) return 1
-  const years = waitMonths / 12
-  return (1 + marketRate) ** years / (1 + cpiRate) ** years
+  const cpiM = annualToMonthlyRate(cpiRate)
+  const marketM = annualToMonthlyRate(marketRate)
+  return (1 + marketM) ** waitMonths / (1 + cpiM) ** waitMonths
 }
 
 /**
@@ -114,7 +116,8 @@ function growMonths(
   marketRate: number,
 ): number {
   if (monthSpan <= 0) return roundUsd(balance)
-  return roundUsd(balance * (1 + marketRate) ** (monthSpan / 12))
+  const marketM = annualToMonthlyRate(marketRate)
+  return roundUsd(balance * (1 + marketM) ** monthSpan)
 }
 
 /**
@@ -124,11 +127,11 @@ function growMonths(
 export function calculate(inputs: CalculatorInputs): CalculatorResult {
   const birthMonths = birthMonthsFromSpacing(inputs.spacingMonths)
   const childCount = birthMonths.length
-  const lastBirthYear = (birthMonths[childCount - 1] ?? 0) / 12
+  const lastBirthMonth = birthMonths[childCount - 1] ?? 0
   const lumpSum = roundUsd(Math.max(0, inputs.lumpSum))
   const fundMonth = inputs.fundingMonthsFromFirstBirth
-  const fundYear = fundMonth / 12
   const maturityMonths = birthMonths.map((b) => b + TARGET_AGE_MONTHS)
+  const cpiM = annualToMonthlyRate(inputs.cpiRate)
 
   const children: ChildPayout[] = []
   let pot = lumpSum
@@ -139,8 +142,7 @@ export function calculate(inputs: CalculatorInputs): CalculatorResult {
 
   for (let i = 0; i < childCount; i++) {
     const maturityMonth = maturityMonths[i]!
-    const birthYear = birthMonths[i]! / 12
-    const maturityYear = maturityMonth / 12
+    const birthMonth = birthMonths[i]!
 
     pot = growMonths(pot, maturityMonth - previousMonth, inputs.marketRate)
     if (i === 0) potAtFirstMaturity = pot
@@ -161,15 +163,15 @@ export function calculate(inputs: CalculatorInputs): CalculatorResult {
     const payoutNominal = isLast ? pot : Math.min(pot, sliceRounded)
     const potAfter = Math.max(0, pot - payoutNominal)
     const sharePercent = pot > 0 ? (payoutNominal / pot) * 100 : 0
-    const yearsFromFunding = maturityYear - fundYear
+    const monthsFromFunding = maturityMonth - fundMonth
     const payoutRealAtFunding = roundUsd(
-      payoutNominal / (1 + inputs.cpiRate) ** yearsFromFunding,
+      payoutNominal / (1 + cpiM) ** monthsFromFunding,
     )
 
     children.push({
       childNumber: i + 1,
-      birthYear,
-      maturityYear,
+      birthMonth,
+      maturityMonth,
       childrenRemaining,
       equalSliceAtThis21: sliceRounded,
       shareOfRemainingPercent: sharePercent,
@@ -189,8 +191,8 @@ export function calculate(inputs: CalculatorInputs): CalculatorResult {
 
   return {
     childCount,
-    fundingYear: fundYear,
-    lastBirthYear,
+    fundingMonth: fundMonth,
+    lastBirthMonth,
     lumpSum,
     firstSliceAtFirstMaturity,
     potAtFirstMaturity,
@@ -199,7 +201,7 @@ export function calculate(inputs: CalculatorInputs): CalculatorResult {
     remainingShareTable: children.map((c) => ({
       childrenRemaining: c.childrenRemaining,
       childNumber: c.childNumber,
-      maturityYear: c.maturityYear,
+      maturityMonth: c.maturityMonth,
       sharePercent: c.shareOfRemainingPercent,
     })),
   }
