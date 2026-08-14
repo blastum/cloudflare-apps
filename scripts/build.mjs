@@ -46,6 +46,11 @@ async function syncSite() {
   await mkdir(dist, { recursive: true })
   await cp(join(root, 'index.html'), join(dist, 'index.html'))
 
+  const redirectsPath = join(root, '_redirects')
+  if (await exists(redirectsPath)) {
+    await cp(redirectsPath, join(dist, '_redirects'))
+  }
+
   const publicDir = join(root, 'public')
   if (await exists(publicDir)) {
     await cp(publicDir, join(dist, 'public'), { recursive: true })

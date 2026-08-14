@@ -1,145 +1,71 @@
-import { formatCurrency } from './shared/money'
+import { MONTH_NAMES } from './constants'
 import {
-  type BalanceYearRow,
   type CalculatorInputs,
   type CalculatorResult,
-  type ConversionScenarioRow,
-  type IraBalanceRow,
+  type ChildSummary,
+  type PotYearRow,
 } from './calculator'
+import {
+  formatCurrency,
+  formatMonthYear,
+  formatNominalReal,
+  formatPct,
+} from './shared/money'
 
-function formatPct(rate: number): string {
-  return `${(rate * 100).toFixed(1)}%`
-}
-
-function contributionFootnote(indexed: boolean): string {
-  if (indexed) {
-    return 'Year-end contributions for 18 years from starting age, each indexed by CPI.'
-  }
-  return 'Year-end contributions for 18 years from starting age, fixed at the entered amount.'
-}
-
-function renderBalanceTable(rows: BalanceYearRow[], indexed: boolean): string {
+function renderExportToolbar(): string {
   return `
-    <h3 class="form-section-heading">Balance by year</h3>
-    <div class="table-wrap">
-      <table class="projection-table">
-        <thead>
-          <tr>
-            <th scope="col">Age</th>
-            <th scope="col">Contribution</th>
-            <th scope="col">Account balance</th>
-            <th scope="col">Principal</th>
-            <th scope="col">Earnings</th>
-            <th scope="col">Real value</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${rows
-            .map(
-              (row) => `
-            <tr>
-              <th scope="row">${row.age}</th>
-              <td>${row.contribution > 0 ? formatCurrency(row.contribution) : '—'}</td>
-              <td>${formatCurrency(row.accountBalance)}</td>
-              <td>${formatCurrency(row.principalBalance)}</td>
-              <td>${formatCurrency(row.earningsBalance)}</td>
-              <td>${formatCurrency(row.realValue)}</td>
-            </tr>
-          `,
-            )
-            .join('')}
-        </tbody>
-      </table>
+    <div class="export-toolbar no-print">
+      <button type="button" class="btn-export" data-print-summary>Print summary</button>
+      <span class="export-hint">Summary and tables — opens your browser print dialog.</span>
     </div>
-    <p class="footnote">
-      ${contributionFootnote(indexed)} Principal is cumulative contributions (basis); starting
-      balance has no basis. Real value is in projection-start dollars.
-    </p>
   `
 }
 
-function formatYearlyCell(values: number[]): string {
-  return values.map((v) => formatCurrency(v)).join('<br>')
-}
-
-function formatYearlyTaxCell(nominal: number[], real: number[]): string {
-  return nominal
-    .map((v, i) => `${formatCurrency(v)} (${formatCurrency(real[i] ?? 0)})`)
-    .join('<br>')
-}
-
-function formatTaxTotal(nominal: number, real: number): string {
-  return `${formatCurrency(nominal)} (${formatCurrency(real)})`
-}
-
-function formatYearlyBracketCell(rates: number[]): string {
-  return rates.map((r) => formatPct(r)).join('<br>')
-}
-
-function renderConversionTable(rows: ConversionScenarioRow[]): string {
+function renderSummary(inputs: CalculatorInputs, result: CalculatorResult): string {
+  const childWord = inputs.children.length === 1 ? 'child' : 'children'
+  const missedNote =
+    result.missedChildCount > 0
+      ? ` ${result.missedChildCount} ${result.missedChildCount === 1 ? 'child has' : 'children have'} no contribution years on or after the funding year.`
+      : ''
   return `
-    <h3 class="form-section-heading">Roth conversion cost</h3>
-    <div class="table-wrap">
-      <table class="projection-table">
-        <thead>
-          <tr>
-            <th scope="col">Years</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Taxable</th>
-            <th scope="col">Tax</th>
-            <th scope="col">Max bracket</th>
-            <th scope="col">Total tax</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${rows
-            .map(
-              (row) => `
-            <tr>
-              <th scope="row">${row.conversionYears}</th>
-              <td class="cell-lines">${formatYearlyCell(row.yearlyAmounts)}</td>
-              <td class="cell-lines">${formatYearlyCell(row.yearlyTaxable)}</td>
-              <td class="cell-lines">${formatYearlyTaxCell(row.yearlyTaxes, row.yearlyTaxesReal)}</td>
-              <td class="cell-lines">${formatYearlyBracketCell(row.yearlyMaxMarginalRates)}</td>
-              <td>${formatTaxTotal(row.totalTaxPaid, row.totalTaxPaidReal)}<br><span class="field-hint">Peak ${formatPct(row.maxMarginalRate)}</span></td>
-            </tr>
-          `,
-            )
-            .join('')}
-        </tbody>
-      </table>
-    </div>
-    <p class="footnote">
-      Conversions start at age 18. Multi-year paths equalize taxable income each year (after
-      standard deduction) to minimize total federal tax; the final year converts any remainder.
-      Unconverted balance grows at market rate between years. Max bracket is the highest marginal
-      rate on conversion income that year. Tax shows nominal with projection-start dollars in
-      parentheses. Federal single filer, $0 other income; 2026 brackets and $16,100 standard
-      deduction indexed by the CPI assumption from projection start.
+    <p class="prefund-summary">
+      Deposit <strong>${formatNominalReal(result.requiredLumpSum, result.requiredLumpSumReal)}</strong>
+      in ${inputs.fundingYear}. Each year the pot pays statutory Trump contributions for
+      <strong>${inputs.children.length} ${childWord}</strong> until empty.${missedNote}
     </p>
+    <dl class="projection-inputs">
+      <div><dt>Funding year</dt><dd>${inputs.fundingYear}</dd></div>
+      <div><dt>Contributions</dt><dd>Statutory max each year</dd></div>
+      <div><dt>Market growth</dt><dd>${formatPct(inputs.marketRate)}/yr</dd></div>
+      <div><dt>Average CPI</dt><dd>${formatPct(inputs.cpiRate)}/yr</dd></div>
+    </dl>
   `
 }
 
-function renderIraTable(rows: IraBalanceRow[]): string {
+function renderChildTable(children: ChildSummary[]): string {
   return `
-    <h3 class="form-section-heading">IRA balance — no conversion</h3>
+    <h3 class="form-section-heading">Per child</h3>
     <div class="table-wrap">
       <table class="projection-table">
         <thead>
           <tr>
-            <th scope="col">Age</th>
-            <th scope="col">Nominal</th>
-            <th scope="col">Real</th>
+            <th scope="col">Child</th>
+            <th scope="col">Birth</th>
+            <th scope="col">Funded years</th>
+            <th scope="col">Deposit at fund year</th>
+            <th scope="col">Total contributions</th>
           </tr>
         </thead>
         <tbody>
-          ${rows
+          ${children
             .map(
-              (row) => `
-            <tr>
-              <th scope="row">${row.age}</th>
-              <td>${formatCurrency(row.nominal)}</td>
-              <td>${formatCurrency(row.real)}</td>
+              (child) => `
+            <tr${child.missed ? ' class="row-missed"' : ''}>
+              <th scope="row">${child.childNumber}</th>
+              <td>${formatMonthYear(child.birthYear, child.birthMonth)}</td>
+              <td>${child.missed ? 'Missed' : `${child.fundedYears} (through ${child.lastContributionYear})`}</td>
+              <td>${child.missed ? '—' : formatCurrency(child.requiredDeposit)}</td>
+              <td>${child.missed ? '—' : formatNominalReal(child.totalContributionsNominal, child.totalContributionsReal)}</td>
             </tr>
           `,
             )
@@ -147,10 +73,128 @@ function renderIraTable(rows: IraBalanceRow[]): string {
         </tbody>
       </table>
     </div>
-    <p class="footnote">
-      Traditional IRA balance at each age if left unconverted from age 18, growing at the market
-      rate assumption with no withdrawals. Real values are in projection-start dollars.
-    </p>
+  `
+}
+
+type MilestoneRow = {
+  childNumber: number
+  birthLabel: string
+  calendarYear: number | null
+  nominal: number | null
+  real: number | null
+}
+
+function milestoneRows(result: CalculatorResult, age: 18 | 67): MilestoneRow[] {
+  return result.children.map((child) => ({
+    childNumber: child.childNumber,
+    birthLabel: formatMonthYear(child.birthYear, child.birthMonth),
+    calendarYear: age === 18 ? child.age18CalendarYear : child.age67CalendarYear,
+    nominal: age === 18 ? child.age18Balance : child.age67Balance,
+    real: age === 18 ? child.age18BalanceReal : child.age67BalanceReal,
+  }))
+}
+
+function renderMilestoneTable(
+  result: CalculatorResult,
+  age: 18 | 67,
+  heading: string,
+  footnote?: string,
+): string {
+  const rows = milestoneRows(result, age)
+  if (rows.length === 0) return ''
+
+  return `
+    <h3 class="form-section-heading">${heading}</h3>
+    <div class="table-wrap">
+      <table class="projection-table">
+        <thead>
+          <tr>
+            <th scope="col">Child</th>
+            <th scope="col">Year</th>
+            <th scope="col">Trump account balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows
+            .map(
+              (row) => `
+            <tr>
+              <th scope="row">${row.childNumber} · ${row.birthLabel}</th>
+              <td>${row.calendarYear ?? '—'}</td>
+              <td>${
+                row.nominal !== null && row.real !== null
+                  ? formatNominalReal(row.nominal, row.real)
+                  : '—'
+              }</td>
+            </tr>
+          `,
+            )
+            .join('')}
+        </tbody>
+      </table>
+    </div>
+    ${footnote ? `<p class="footnote">${footnote}</p>` : ''}
+  `
+}
+
+function renderAge18Table(result: CalculatorResult): string {
+  return renderMilestoneTable(result, 18, 'Account balance at age 18')
+}
+
+function renderAge67Table(result: CalculatorResult): string {
+  return renderMilestoneTable(
+    result,
+    67,
+    'Estimated value at age 67',
+    'Balance at age 18 grown at the market rate assumption with no further contributions or withdrawals.',
+  )
+}
+
+function renderPotTable(rows: PotYearRow[]): string {
+  const filtered =
+    rows.length > 36
+      ? [...rows.filter((r) => r.withdrawal > 0), rows[0]!, rows.at(-1)!]
+      : rows
+
+  return `
+    <h3 class="form-section-heading">Communal pot by calendar year</h3>
+    <div class="table-wrap">
+      <table class="projection-table">
+        <thead>
+          <tr>
+            <th scope="col">Year</th>
+            <th scope="col">Withdrawal</th>
+            <th scope="col">End balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${filtered
+            .map(
+              (row) => `
+            <tr>
+              <th scope="row">${row.calendarYear}</th>
+              <td>${row.withdrawalLabel}</td>
+              <td>${formatNominalReal(row.potNominal, row.potReal)}</td>
+            </tr>
+          `,
+            )
+            .join('')}
+        </tbody>
+      </table>
+    </div>
+  `
+}
+
+function renderResultsBody(
+  inputs: CalculatorInputs,
+  result: CalculatorResult,
+): string {
+  return `
+    ${renderSummary(inputs, result)}
+    ${renderAge18Table(result)}
+    ${renderAge67Table(result)}
+    ${renderChildTable(result.children)}
+    ${renderPotTable(result.potRows)}
   `
 }
 
@@ -159,72 +203,93 @@ export function renderResults(
   inputs: CalculatorInputs,
   result: CalculatorResult,
 ): void {
-  const summary = `
-    <dl class="projection-inputs">
-      <div><dt>Starting age</dt><dd>${inputs.startingAge}</dd></div>
-      <div><dt>Starting balance</dt><dd>${formatCurrency(inputs.startingBalance)} (no basis)</dd></div>
-      <div><dt>Annual contribution</dt><dd>${formatCurrency(inputs.annualContribution)}/yr${inputs.contributionInflationIndexed ? ' (indexed)' : ' (fixed)'}</dd></div>
-      <div><dt>Average CPI</dt><dd>${formatPct(inputs.cpiRate)}/yr</dd></div>
-      <div><dt>Market growth</dt><dd>${formatPct(inputs.marketRate)}/yr</dd></div>
-      <div><dt>Balance at age 18</dt><dd>${formatCurrency(result.age18Balance)}</dd></div>
-    </dl>
-  `
-
   container.innerHTML = `
-    ${summary}
-    ${renderBalanceTable(result.balanceRows, inputs.contributionInflationIndexed)}
-    ${renderConversionTable(result.conversionRows)}
-    ${renderIraTable(result.iraRows)}
+    ${renderExportToolbar()}
+    <h2 class="print-only-heading">Trump Account Modeler</h2>
+    ${renderResultsBody(inputs, result)}
+    <p class="print-only-footer">Estimates only — not tax or financial advice.</p>
   `
+}
+
+export function monthOptions(selected: number): string {
+  return MONTH_NAMES.map(
+    (name, i) =>
+      `<option value="${i + 1}"${i + 1 === selected ? ' selected' : ''}>${name}</option>`,
+  ).join('')
 }
 
 export function mountCalculator(
   form: HTMLFormElement,
   results: HTMLElement,
-  calculate: (inputs: CalculatorInputs) => CalculatorResult,
+  calculateFn: (inputs: CalculatorInputs) => CalculatorResult,
   readInputs: () => CalculatorInputs,
+  options?: {
+    onPersist?: () => void
+    onReset?: (render: () => void) => void
+  },
 ): void {
-  const storageKey = 'trump-account-modeler:inputs'
-  try {
-    const saved = localStorage.getItem(storageKey)
-    if (saved) {
-      const vals = JSON.parse(saved) as Record<string, string>
-      for (const [k, v] of Object.entries(vals)) {
-        const el = form.elements.namedItem(k)
-        if (el instanceof HTMLInputElement) {
-          if (el.type === 'checkbox') {
-            el.checked = v === 'on' || v === 'true'
-          } else {
-            el.value = String(v)
-          }
-        }
-      }
-    }
-  } catch {
-    /* ignore */
-  }
-
-  const save = () => {
-    const data: Record<string, string> = {}
-    for (const el of form.elements) {
-      if (el instanceof HTMLInputElement && el.name) {
-        data[el.name] = el.type === 'checkbox' ? (el.checked ? 'on' : 'off') : el.value
-      }
-    }
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(data))
-    } catch {
-      /* ignore */
-    }
-  }
-
   const render = () => {
     const inputs = readInputs()
-    renderResults(results, inputs, calculate(inputs))
-    save()
+    renderResults(results, inputs, calculateFn(inputs))
+    options?.onPersist?.()
   }
 
-  form.addEventListener('input', render)
-  form.addEventListener('change', render)
+  // Safari number spinners fire `input` on mousedown and repeat until mouseup.
+  // Replacing the results DOM in that window steals mouseup, so the stepper
+  // sticks in one direction or ignores later clicks. Defer the paint.
+  let dirty = false
+  let flushTimer = 0
+  const pointersDown = new Set<number>()
+
+  const isNumberInput = (target: EventTarget | null): target is HTMLInputElement =>
+    target instanceof HTMLInputElement && target.type === 'number'
+
+  const flush = () => {
+    if (flushTimer) {
+      window.clearTimeout(flushTimer)
+      flushTimer = 0
+    }
+    if (dirty && pointersDown.size === 0) {
+      dirty = false
+      render()
+    }
+  }
+
+  const schedule = (event: Event) => {
+    dirty = true
+    if (isNumberInput(event.target) || pointersDown.size > 0) {
+      if (pointersDown.size > 0) return
+      if (flushTimer) window.clearTimeout(flushTimer)
+      flushTimer = window.setTimeout(flush, 200)
+      return
+    }
+    flush()
+  }
+
+  form.addEventListener('pointerdown', (event) => {
+    if (isNumberInput(event.target)) pointersDown.add(event.pointerId)
+  })
+  const onPointerEnd = (event: PointerEvent) => {
+    pointersDown.delete(event.pointerId)
+    flush()
+  }
+  window.addEventListener('pointerup', onPointerEnd)
+  window.addEventListener('pointercancel', onPointerEnd)
+
+  form.addEventListener('input', schedule)
+  form.addEventListener('change', schedule)
+
+  form
+    .closest('.card--inputs')
+    ?.querySelector<HTMLButtonElement>('[data-reset-assumptions]')
+    ?.addEventListener('click', () => options?.onReset?.(render))
+
+  results.addEventListener('click', (event) => {
+    const target = event.target
+    if (!(target instanceof HTMLElement)) return
+    if (!target.closest('[data-print-summary]')) return
+    window.print()
+  })
+
   render()
 }

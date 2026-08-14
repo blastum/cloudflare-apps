@@ -4,21 +4,20 @@ export type TaxBracket = {
 }
 
 export const DEFAULTS = {
-  startingAge: 0,
-  startingBalance: 1000,
-  annualContribution: 5000,
-  contributionInflationIndexed: true,
+  birthYear: 2026,
+  birthMonth: 1,
+  fundingYear: 2026,
   cpiRate: 0.032,
   marketRate: 0.103,
 } as const
 
-export const MAX_ANNUAL_CONTRIBUTION = 5000
-export const CONTRIBUTION_YEARS = 18
-export const GROWTH_END_AGE = 18
+export const DEFAULT_CPI_PCT = 3.2
+export const DEFAULT_MARKET_PCT = 10.3
+export const DEFAULT_CHILD_SPACING_MONTHS = 20
 
 export const STANDARD_DEDUCTION_SINGLE_2026 = 16_100
 
-/** 2026 single filer brackets (Rev. Proc. 2025-32); indexed by CPI at conversion. */
+/** 2026 single filer brackets (Rev. Proc. 2025-32); indexed by CPI from 2026. */
 export const SINGLE_BRACKETS_2026: TaxBracket[] = [
   { rate: 0.1, upTo: 12_400 },
   { rate: 0.12, upTo: 50_400 },
@@ -30,3 +29,19 @@ export const SINGLE_BRACKETS_2026: TaxBracket[] = [
 ]
 
 export const IRA_TARGET_AGES = [50, 55, 60, 65, 67] as const
+export const PROJECTION_AGE_67 = 67
+
+export const MONTH_NAMES = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+] as const

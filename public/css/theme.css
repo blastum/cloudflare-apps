@@ -84,16 +84,30 @@ a:hover {
 }
 
 .site-header {
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
+  justify-content: center;
+  gap: var(--space-3);
   margin-bottom: var(--space-8);
   padding-top: var(--space-8);
 }
 
-.site-header:not(:has(.breadcrumb)) {
-  justify-content: center;
+.site-header .breadcrumb {
+  position: absolute;
+  top: var(--space-8);
+  right: 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.site-header .breadcrumb a {
+  text-decoration: none;
+}
+
+.site-header .breadcrumb a:hover {
+  text-decoration: underline;
 }
 
 .brand {
@@ -166,6 +180,10 @@ a:hover {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-faint);
+}
+
+.section-label--spaced {
+  margin-top: var(--space-8);
 }
 
 .app-grid {

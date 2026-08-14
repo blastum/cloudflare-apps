@@ -35,7 +35,13 @@ Preview deployments are created automatically for other branches and pull reques
 
 ## Apps
 
+### Kitchen
+
+- [Sourdough Calculator](/sourdough-calculator/) — baker's percentages to preferment and dough grams
+
+### Finance
+
 - [Growth Factor Table](/growth-factor-table/) — dollar-free compounding factors by years and milestone ages
-- [Trump Account Modeler](/trump-account-modeler/) — growth, Roth conversion, and IRA projections
+- [Trump Account Modeler](/trump-account-modeler/) — lump-sum brokerage setaside to fund Trump accounts for one or more children
 - [Illinois Estate Tax Modeler](/illinois-estate-tax-modeler/) — Form 700 / AG calculator parity
 - [Ramsey Debt Modeler](/ramsey-modeler/) — Monte Carlo snowball vs avalanche debt payoff

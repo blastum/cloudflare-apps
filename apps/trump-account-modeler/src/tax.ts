@@ -79,30 +79,32 @@ export function marginalRateOnTaxable(
 /** Highest marginal bracket reached by conversion gross income (indexed brackets). */
 export function maxMarginalRateForGross(
   grossIncome: number,
-  yearsFromStart: number,
+  calendarYear: number,
   cpiRate: number,
 ): number {
-  const taxable = taxableIncomeFromGross(grossIncome, yearsFromStart, cpiRate)
+  const yearsFromBase = calendarYear - 2026
+  const taxable = taxableIncomeFromGross(grossIncome, yearsFromBase, cpiRate)
   return marginalRateOnTaxable(
     taxable,
-    inflatedSingleBrackets(yearsFromStart, cpiRate),
+    inflatedSingleBrackets(yearsFromBase, cpiRate),
   )
 }
 
 /**
  * Federal income tax for single filer with only conversion income.
- * 2026 brackets and standard deduction, indexed by CPI from projection start.
+ * 2026 brackets and standard deduction, indexed by CPI from calendar 2026.
  */
 export function federalTaxSingle(
   grossIncome: number,
-  yearsFromStart: number,
+  calendarYear: number,
   cpiRate: number,
 ): number {
+  const yearsFromBase = calendarYear - 2026
   const standardDeduction = inflateByCpi(
     STANDARD_DEDUCTION_SINGLE_2026,
-    yearsFromStart,
+    yearsFromBase,
     cpiRate,
   )
   const taxable = Math.max(0, grossIncome - standardDeduction)
-  return progressiveTax(taxable, inflatedSingleBrackets(yearsFromStart, cpiRate))
+  return progressiveTax(taxable, inflatedSingleBrackets(yearsFromBase, cpiRate))
 }
