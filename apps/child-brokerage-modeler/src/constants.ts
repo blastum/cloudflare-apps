@@ -20,8 +20,8 @@ export const DEFAULT_CONTRIBUTIONS: { year: number; amount: number }[] = [
   { year: 0, amount: 5000 },
 ]
 
-export const TARGET_AGES = [18, 21, 25, 50, 55, 60, 65] as const
+export const TARGET_AGES = [18, 21, 25, 50, 55, 60, 65, 67, 70] as const
 
-export const MAX_AGE = 65
+export const MAX_AGE = 70
 
 export type ProjectionMode = 'child' | 'annual'
