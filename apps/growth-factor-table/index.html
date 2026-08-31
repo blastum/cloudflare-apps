@@ -42,18 +42,18 @@
 
         <section class="card" aria-labelledby="inputs-heading">
           <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
-          <form id="calculator-form">
+          <form id="calculator-form" autocomplete="off">
             <div class="form-grid">
-              <label>
-                Average market growth (%)
-                <input type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" />
+              <div class="form-field">
+                <label for="market-rate">Average market growth (%)</label>
+                <input id="market-rate" type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" autocomplete="off" />
                 <span class="field-hint">Nominal return, compounded yearly</span>
-              </label>
-              <label>
-                Average CPI (%)
-                <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
+              </div>
+              <div class="form-field">
+                <label for="cpi-rate">Average CPI (%)</label>
+                <input id="cpi-rate" type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" autocomplete="off" />
                 <span class="field-hint">For inflation-adjusted (real) factors</span>
-              </label>
+              </div>
             </div>
           </form>
         </section>

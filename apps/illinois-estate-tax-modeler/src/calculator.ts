@@ -1,3 +1,4 @@
+import { roundUsd } from '../../../shared/growth'
 import creditTable from './assets/state-death-tax-credit-table.json'
 
 const TABLE_ADJUSTMENT = 60_000
@@ -31,10 +32,6 @@ export type CalculatorResult = {
   preApportionmentTax: number
   illinoisSitusFraction: number
   federalCapApplied: boolean
-}
-
-function roundUsd(value: number): number {
-  return Math.round(value)
 }
 
 function creditFromTableAmount(amt4tbl: number): number {

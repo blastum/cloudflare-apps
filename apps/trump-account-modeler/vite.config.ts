@@ -5,4 +5,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
+  test: {
+    include: ['src/**/*.test.ts', '../../shared/**/*.test.ts'],
+  },
 })

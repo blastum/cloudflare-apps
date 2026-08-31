@@ -36,47 +36,52 @@
           <h1>Trust Fund Kid Modeler</h1>
           <p class="hero-synopsis" id="hero-synopsis"></p>
           <ul class="hero-attributes" id="hero-attributes"></ul>
+          <p class="hero-link">
+            <a href="/trust-intent-picker/?job=annual-gifts">Trust explorer — Crummey gifts</a>
+            ·
+            <a href="/trust-intent-picker/trusts/crummey-trust/">Crummey trust reference</a>
+          </p>
         </section>
 
         <section class="card card--inputs no-print" aria-labelledby="inputs-heading">
           <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
-          <form id="calculator-form">
+          <form id="calculator-form" autocomplete="off">
             <div class="form-grid">
-              <label>
-                Starting age
-                <input type="number" name="startingAge" min="0" max="17" step="1" value="0" />
+              <div class="form-field">
+                <label for="starting-age">Starting age</label>
+                <input id="starting-age" type="number" name="startingAge" min="0" max="17" step="1" value="0" autocomplete="off" />
                 <span class="field-hint">Trump slices run from this age through 17</span>
-              </label>
-              <label>
-                Inflation rate (%)
-                <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.0" />
+              </div>
+              <div class="form-field">
+                <label for="cpi-rate">Average CPI (%)</label>
+                <input id="cpi-rate" type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" autocomplete="off" />
                 <span class="field-hint">Indexes real-dollar inputs each year</span>
-              </label>
-              <label>
-                Nominal market return (%)
-                <input type="number" name="marketRate" min="0" max="30" step="0.1" value="10.0" />
+              </div>
+              <div class="form-field">
+                <label for="market-rate">Average market growth (%)</label>
+                <input id="market-rate" type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" autocomplete="off" />
                 <span class="field-hint">Annual return on trump, lump-sum, and brokerage</span>
-              </label>
-              <label>
-                Brokerage target (real $)
-                <input type="number" name="brokerageRealTarget" min="0" step="1" value="70000" />
+              </div>
+              <div class="form-field">
+                <label for="brokerage-target">Brokerage target (real $)</label>
+                <input id="brokerage-target" type="text" inputmode="numeric" class="input-currency" name="brokerageRealTarget" value="70000" autocomplete="off" />
                 <span class="field-hint">Cumulative gift deposits in year-0 dollars</span>
-              </label>
-              <label>
-                Trump annual slice (real $)
-                <input type="number" name="trumpRealAnnual" min="0" step="1" value="5000" />
-                <span class="field-hint">Inflation-indexed each year ($5,000 × 1.03^age)</span>
-              </label>
-              <label>
-                Trump seed ($)
-                <input type="number" name="trumpSeed" min="0" step="1" value="1000" />
+              </div>
+              <div class="form-field">
+                <label for="trump-annual">Trump annual slice (real $)</label>
+                <input id="trump-annual" type="text" inputmode="numeric" class="input-currency" name="trumpRealAnnual" value="5000" autocomplete="off" />
+                <span class="field-hint">Inflation-indexed each year</span>
+              </div>
+              <div class="form-field">
+                <label for="trump-seed">Trump seed ($)</label>
+                <input id="trump-seed" type="text" inputmode="numeric" class="input-currency" name="trumpSeed" value="1000" autocomplete="off" />
                 <span class="field-hint">One-time federal deposit at account open (nominal $)</span>
-              </label>
-              <label>
-                Annual Crummey gift (real $)
-                <input type="number" name="giftRealAnnual" min="0" step="1" value="35000" />
+              </div>
+              <div class="form-field">
+                <label for="gift-annual">Annual Crummey gift (real $)</label>
+                <input id="gift-annual" type="text" inputmode="numeric" class="input-currency" name="giftRealAnnual" value="35000" autocomplete="off" />
                 <span class="field-hint">Full inflation-indexed gift each gift year</span>
-              </label>
+              </div>
             </div>
           </form>
         </section>

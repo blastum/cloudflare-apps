@@ -1,12 +1,14 @@
-export const DEFAULTS = {
-  /** Months after previous child; first child is always birth year 0. */
-  spacingMonths: [0, 21, 16, 36],
-  lumpSum: 1_000_000,
-  /** Months from first birth; negative = fund before birth. */
-  fundingMonthsFromFirstBirth: 0,
-  cpiRate: 0.032,
-  marketRate: 0.103,
-} as const
+import type { SolveMode } from './calculator'
+import { DEFAULT_CPI_RATE, DEFAULT_MARKET_RATE } from '../../../shared/growth'
 
-export const TARGET_AGE = 21
-export const TARGET_AGE_MONTHS = TARGET_AGE * 12
+export const DEFAULTS = {
+  /** Spacing after previous child adds (months); first child is always birth month 0. */
+  spacingMonths: [0, 21, 16, 36],
+  solveMode: 'initial' as SolveMode,
+  lumpSum: 1_000_000,
+  targetMaturityValue: 500_000,
+  fundingMonth: 0,
+  payoutAge: 25,
+  cpiRate: DEFAULT_CPI_RATE,
+  marketRate: DEFAULT_MARKET_RATE,
+} as const

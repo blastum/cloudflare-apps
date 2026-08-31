@@ -1,3 +1,6 @@
+import { bindLiveForm } from '../../../shared/defer-form-paint'
+import { bindGrowthFields } from '../../../shared/growth-fields'
+import { bindSteppers } from '../../../shared/stepper'
 import {
   type CalculatorInputs,
   type CalculatorResult,
@@ -275,7 +278,8 @@ export function mountCalculator(
     save()
   }
 
-  form.addEventListener('input', render)
-  form.addEventListener('change', render)
+  bindSteppers(form, render)
+  bindGrowthFields(form, render)
+  bindLiveForm(form, render)
   render()
 }

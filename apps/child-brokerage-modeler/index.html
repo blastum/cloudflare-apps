@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Child Brokerage Modeler · Smirking Cat Software</title>
+    <title>Brokerage Modeler · Smirking Cat Software</title>
     <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,46 +33,100 @@
 
       <main>
         <section class="hero">
-          <h1>Child Brokerage Modeler</h1>
+          <h1>Brokerage Modeler</h1>
           <p>
-            Project a child investment account with year-by-year contributions, then see estimated
-            brokerage value at key ages. All calculations run in your browser.
+            Project a child's account with year-by-year gifts, or a constant annual contribution
+            for a set horizon. All calculations run in your browser.
           </p>
         </section>
 
-        <section class="card" aria-labelledby="inputs-heading">
-          <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
-          <form id="calculator-form">
-            <div class="form-grid">
-              <label>
-                Starting age
-                <input type="number" name="startingAge" min="0" max="17" step="1" value="0" />
-                <span class="field-hint">Child's age when the account opens (year 0)</span>
-              </label>
-              <label>
-                Starting balance ($)
-                <input type="number" name="startingBalance" min="0" step="1" value="0" />
-                <span class="field-hint">Initial account balance at year 0</span>
-              </label>
-              <label>
-                Average CPI (%)
-                <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
-                <span class="field-hint">Default ~US CPI 1975–2025 (BLS)</span>
-              </label>
-              <label>
-                Average market growth (%)
-                <input type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" />
-                <span class="field-hint">Default ~S&amp;P 500 total return 1975–2025</span>
-              </label>
+        <section class="card card--inputs" aria-labelledby="inputs-heading">
+          <div class="card-heading-row">
+            <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
+            <button type="button" class="btn-reset" data-reset-assumptions>Reset</button>
+          </div>
+          <form id="calculator-form" autocomplete="off">
+            <div class="mode-toggle" role="tablist" aria-label="Projection style">
+              <button type="button" role="tab" id="tab-child" data-mode="child" aria-selected="true" aria-controls="panel-child">
+                Child, year by year
+              </button>
+              <button type="button" role="tab" id="tab-annual" data-mode="annual" aria-selected="false" aria-controls="panel-annual">
+                Constant annual
+              </button>
             </div>
 
-            <h3 class="form-section-heading">Contributions by year</h3>
-            <p class="field-hint contributions-intro">
-              Year 0 is when the account opens. Add a row for each year you plan to contribute;
-              years without a row contribute $0.
-            </p>
-            <div id="contributions-list" class="contributions-list"></div>
-            <button type="button" class="btn-add" data-add-contribution>Add year</button>
+            <div id="panel-child" role="tabpanel" aria-labelledby="tab-child" data-mode-panel="child">
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="starting-age">Starting age</label>
+                  <input id="starting-age" type="number" name="startingAge" min="0" max="17" step="1" value="0" autocomplete="off" />
+                  <span class="field-hint">Child's age when the account opens (year 0)</span>
+                </div>
+                <div class="form-field">
+                  <label for="starting-balance">Starting balance ($)</label>
+                  <input id="starting-balance" type="text" inputmode="numeric" class="input-currency" name="startingBalance" value="0" autocomplete="off" />
+                  <span class="field-hint">Initial account balance at year 0</span>
+                </div>
+                <div class="form-field">
+                  <label for="cpi-rate">Average CPI (%)</label>
+                  <input id="cpi-rate" type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" autocomplete="off" />
+                  <span class="field-hint">Default ~US CPI 1975–2025 (BLS)</span>
+                </div>
+                <div class="form-field">
+                  <label for="market-rate">Average market growth (%)</label>
+                  <input id="market-rate" type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" autocomplete="off" />
+                  <span class="field-hint">Default ~S&amp;P 500 total return 1975–2025</span>
+                </div>
+              </div>
+
+              <div class="assumption-check">
+                <label class="form-check">
+                  <input type="checkbox" name="contributionsInReal" value="1" />
+                  Contributions in real dollars
+                </label>
+                <span class="field-hint">
+                  When checked, each gift amount is in year-0 real dollars and grows with CPI before deposit.
+                </span>
+              </div>
+
+              <h3 class="form-section-heading">Contributions by year</h3>
+              <p class="field-hint contributions-intro">
+                Year 0 is when the account opens. Add a row for each year you plan to contribute;
+                years without a row contribute $0.
+              </p>
+              <div id="contributions-list" class="contributions-list"></div>
+              <button type="button" class="btn-add" data-add-contribution>Add year</button>
+            </div>
+
+            <div id="panel-annual" role="tabpanel" aria-labelledby="tab-annual" data-mode-panel="annual" hidden>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="initial-investment">Initial investment ($)</label>
+                  <input id="initial-investment" type="text" inputmode="numeric" class="input-currency" name="initialInvestment" value="100000" autocomplete="off" />
+                  <span class="field-hint">Starting account balance</span>
+                </div>
+                <div class="form-field">
+                  <label for="annual-addition">Annual addition ($)</label>
+                  <input id="annual-addition" type="text" inputmode="numeric" class="input-currency" name="annualAddition" value="25000" autocomplete="off" />
+                  <span class="field-hint">Same contribution every year</span>
+                </div>
+                <div class="form-field">
+                  <label for="years">Number of years</label>
+                  <input id="years" type="number" name="years" min="0" max="100" step="1" value="20" autocomplete="off" />
+                  <span class="field-hint">How many years to project</span>
+                </div>
+                <div class="form-field">
+                  <label for="expected-return">Average market growth (%)</label>
+                  <input id="expected-return" type="number" name="expectedReturn" min="0" max="30" step="0.1" value="10.3" autocomplete="off" />
+                  <span class="field-hint">Default ~S&amp;P 500 total return 1975–2025</span>
+                </div>
+                <div class="form-field">
+                  <label for="expected-inflation">Average CPI (%)</label>
+                  <input id="expected-inflation" type="number" name="expectedInflation" min="0" max="20" step="0.1" value="3.2" autocomplete="off" />
+                  <span class="field-hint">Default ~US CPI 1975–2025 (BLS)</span>
+                </div>
+              </div>
+            </div>
           </form>
         </section>
 

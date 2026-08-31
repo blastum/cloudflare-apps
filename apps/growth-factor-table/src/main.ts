@@ -1,3 +1,5 @@
+import '../../../shared/styles/controls.css'
+import '../../../shared/styles/print.css'
 import { calculate, type CalculatorInputs } from './calculator'
 import { mountCalculator } from './render'
 

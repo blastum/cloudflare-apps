@@ -11,8 +11,9 @@ export const DEFAULTS = {
   marketRate: 0.103,
 } as const
 
-export const DEFAULT_CPI_PCT = 3.2
-export const DEFAULT_MARKET_PCT = 10.3
+export { DEFAULT_CPI_PCT, DEFAULT_MARKET_PCT } from '../../../shared/growth'
+export { MONTH_NAMES } from '../../../shared/money'
+
 export const DEFAULT_CHILD_SPACING_MONTHS = 20
 
 export const STANDARD_DEDUCTION_SINGLE_2026 = 16_100
@@ -30,18 +31,3 @@ export const SINGLE_BRACKETS_2026: TaxBracket[] = [
 
 export const IRA_TARGET_AGES = [50, 55, 60, 65, 67] as const
 export const PROJECTION_AGE_67 = 67
-
-export const MONTH_NAMES = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-] as const

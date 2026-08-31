@@ -40,38 +40,38 @@
 
         <section class="card card--inputs no-print" aria-labelledby="inputs-heading">
           <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
-          <form id="calculator-form">
+          <form id="calculator-form" autocomplete="off">
             <div class="form-grid">
-              <label>
-                Number of children
-                <input type="number" name="childCount" min="1" max="20" step="1" value="1" />
+              <div class="form-field">
+                <label for="child-count">Number of children</label>
+                <input id="child-count" type="number" name="childCount" min="1" max="20" step="1" value="1" autocomplete="off" />
                 <span class="field-hint">Each gets a separate brokerage deposit</span>
-              </label>
-              <label>
-                Years between children
-                <input type="number" name="childSpacingYears" min="0" max="30" step="1" value="2" />
+              </div>
+              <div class="form-field">
+                <label for="child-spacing-years">Years between children</label>
+                <input id="child-spacing-years" type="number" name="childSpacingYears" min="0" max="30" step="1" value="2" autocomplete="off" />
                 <span class="field-hint">Equal birth spacing after the first child</span>
-              </label>
-              <label>
-                Funding year
-                <input type="number" name="fundingYear" min="-30" max="30" step="1" value="0" />
+              </div>
+              <div class="form-field">
+                <label for="funding-year">Funding year</label>
+                <input id="funding-year" type="number" name="fundingYear" min="-30" max="30" step="1" value="0" autocomplete="off" />
                 <span class="field-hint">Year 0 = first birth; negative = fund early</span>
-              </label>
-              <label>
-                Target at age 21 ($ real)
-                <input type="number" name="targetRealAtAge21" min="0" step="1000" value="200000" />
+              </div>
+              <div class="form-field">
+                <label for="target-real">Target at age 21 ($ real)</label>
+                <input id="target-real" type="text" inputmode="numeric" class="input-currency" name="targetRealAtAge21" value="200000" autocomplete="off" />
                 <span class="field-hint">Real value in year-0 dollars when each child turns 21</span>
-              </label>
-              <label>
-                Average CPI (%)
-                <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
+              </div>
+              <div class="form-field">
+                <label for="cpi-rate">Average CPI (%)</label>
+                <input id="cpi-rate" type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" autocomplete="off" />
                 <span class="field-hint">Default ~US CPI 1975–2025 (BLS)</span>
-              </label>
-              <label>
-                Average market growth (%)
-                <input type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" />
+              </div>
+              <div class="form-field">
+                <label for="market-rate">Average market growth (%)</label>
+                <input id="market-rate" type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" autocomplete="off" />
                 <span class="field-hint">Default ~S&amp;P 500 total return 1975–2025</span>
-              </label>
+              </div>
             </div>
           </form>
         </section>

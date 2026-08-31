@@ -42,42 +42,48 @@
 
         <section class="card" aria-labelledby="inputs-heading">
           <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
-          <form id="calculator-form">
+          <form id="calculator-form" autocomplete="off">
             <div class="form-grid">
-              <label>
-                Tentative taxable estate ($)
+              <div class="form-field">
+                <label for="tentative-estate">Tentative taxable estate ($)</label>
                 <input
-                  type="number"
+                  id="tentative-estate"
+                  type="text"
+                  inputmode="numeric"
+                  class="input-currency"
                   name="tentativeTaxableEstate"
-                  min="0"
-                  step="1000"
                   value="5000000"
+                  autocomplete="off"
                 />
                 <span class="field-hint">Form 706 line 3a — tentative taxable estate</span>
-              </label>
-              <label>
-                Adjusted taxable gifts ($)
+              </div>
+              <div class="form-field">
+                <label for="taxable-gifts">Adjusted taxable gifts ($)</label>
                 <input
-                  type="number"
+                  id="taxable-gifts"
+                  type="text"
+                  inputmode="numeric"
+                  class="input-currency"
                   name="adjustedTaxableGifts"
-                  min="0"
-                  step="1000"
                   value="0"
+                  autocomplete="off"
                 />
                 <span class="field-hint">Form 706 line 4 — lifetime taxable gifts</span>
-              </label>
-              <label>
-                Illinois situs (%)
+              </div>
+              <div class="form-field">
+                <label for="illinois-situs">Illinois situs (%)</label>
                 <input
+                  id="illinois-situs"
                   type="number"
                   name="illinoisSitusPercent"
                   min="0"
                   max="100"
                   step="1"
                   value="100"
+                  autocomplete="off"
                 />
                 <span class="field-hint">100% = all assets in Illinois (Schedule A/B line 9)</span>
-              </label>
+              </div>
             </div>
           </form>
         </section>

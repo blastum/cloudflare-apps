@@ -9,41 +9,23 @@ import {
   type TrumpFundingSource,
   type TrumpRow,
 } from './calculator'
-import { formatCurrency, formatNominalReal } from './shared/money'
+import { formatCurrency, formatNominalReal } from '../../../shared/money'
+import type {
+  ExportDocument,
+  ExportTable,
+  ExportTableRow,
+  SummaryGroup,
+  SummaryItem,
+  SummarySubsection,
+} from '../../../shared/pdf'
 
-export type ExportTableRow =
-  | { kind: 'data'; cells: string[] }
-  | { kind: 'span'; text: string }
-
-export type ExportTable = {
-  title: string
-  headers: string[]
-  rows: ExportTableRow[]
-  footnote?: string
-}
-
-export type SummaryItem = { label: string; value: string }
-
-export type SummarySubsection = {
-  title: string
-  items: SummaryItem[]
-}
-
-export type SummaryGroup = {
-  title: string
-  items?: SummaryItem[]
-  subsections?: SummarySubsection[]
-  footnote?: string
-}
-
-export type ExportDocument = {
-  title: string
-  overviewBullets: readonly string[]
-  generatedAt: string
-  disclaimer: string
-  warning: string | null
-  summaryGroups: SummaryGroup[]
-  tables: ExportTable[]
+export type {
+  ExportDocument,
+  ExportTable,
+  ExportTableRow,
+  SummaryGroup,
+  SummaryItem,
+  SummarySubsection,
 }
 
 function formatPct(rate: number): string {

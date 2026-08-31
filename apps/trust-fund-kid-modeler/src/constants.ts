@@ -1,7 +1,9 @@
+import { DEFAULT_CPI_RATE, DEFAULT_MARKET_RATE } from '../../../shared/growth'
+
 export const DEFAULTS = {
   startingAge: 0,
-  cpiRate: 0.03,
-  marketRate: 0.1,
+  cpiRate: DEFAULT_CPI_RATE,
+  marketRate: DEFAULT_MARKET_RATE,
   brokerageRealTarget: 70_000,
   trumpRealAnnual: 5_000,
   giftRealAnnual: 35_000,

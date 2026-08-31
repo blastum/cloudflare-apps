@@ -1,3 +1,6 @@
+import { bindLiveForm } from '../../../shared/defer-form-paint'
+import { bindPrintToolbar } from '../../../shared/print'
+import { bindSteppers } from '../../../shared/stepper'
 import {
   type CalculatorInputs,
   type CalculatorResult,
@@ -192,15 +195,8 @@ export function mountCalculator(
     save()
   }
 
-  results.addEventListener('click', (event) => {
-    const target = event.target
-    if (!(target instanceof HTMLElement)) return
-    if (target.closest('[data-print-recipe]')) {
-      window.print()
-    }
-  })
-
-  form.addEventListener('input', render)
-  form.addEventListener('change', render)
+  bindSteppers(form, render)
+  bindLiveForm(form, render)
+  bindPrintToolbar(results, { summarySelector: '[data-print-recipe]' })
   render()
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lump Sum Trust Group Modeler · Smirking Cat Software</title>
+    <title>Pot Trust Modeler · Smirking Cat Software</title>
     <link rel="icon" href="/public/images/smirk-cat.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +21,7 @@
           </div>
           <div class="brand-text">
             <p class="brand-title">Smirking Cat Software</p>
-            <p class="brand-subtitle">Communal trust pot</p>
+            <p class="brand-subtitle">Pot Trust</p>
           </div>
         </div>
         <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -31,59 +31,132 @@
 
       <main>
         <section class="hero no-print">
-          <h1>Lump Sum Trust Group Modeler</h1>
+          <h1>Pot Trust Modeler</h1>
           <p>
-            Seed one communal trust pot. Remove portions for each child at 21, ensuring equal real
-            payouts.
+            Seed a communal trust pot with one lump sum. Each child receives an equal real payout
+            when they reach the target age — enter the initial pot or the maturity value you want.
+          </p>
+          <p class="hero-link">
+            <a href="/trust-intent-picker/?job=shared-pot">Trust explorer — shared pot</a>
+            ·
+            <a href="/trust-intent-picker/trusts/pot/">Pot trust reference</a>
           </p>
         </section>
 
         <section class="card card--inputs no-print" aria-labelledby="inputs-heading">
-          <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
-          <form id="calculator-form">
-            <div class="form-section-heading">Children</div>
-            <p class="field-hint children-intro">
-              First child is born at year 0. Later children are spaced by months after the previous
-              birth.
-            </p>
-            <div id="children-list" class="children-list"></div>
-            <button type="button" class="btn-add-child" data-add-child>Add child</button>
+          <div class="card-heading-row">
+            <h2 id="inputs-heading" class="card-heading">Your assumptions</h2>
+            <button type="button" class="btn-reset" data-reset-assumptions>Reset</button>
+          </div>
+          <form id="calculator-form" autocomplete="off">
+            <div class="mode-toggle" role="tablist" aria-label="Solve for">
+              <button
+                type="button"
+                role="tab"
+                id="tab-initial"
+                data-mode="initial"
+                aria-selected="true"
+                aria-controls="amount"
+              >
+                Initial pot
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="tab-maturity"
+                data-mode="maturity"
+                aria-selected="false"
+                aria-controls="amount"
+              >
+                Maturity value
+              </button>
+            </div>
 
-            <div class="form-grid form-grid--rates">
-              <label>
-                Initial lump sum ($)
-                <input type="text" name="lumpSum" inputmode="numeric" autocomplete="off" value="1,000,000" />
-                <span class="field-hint">Deposited once at the funding month offset below</span>
-              </label>
-              <label>
-                Funding months from first birth
+            <div class="form-grid form-grid--assumptions">
+              <div class="form-field">
+                <label for="amount" id="amount-label">Initial pot ($)</label>
                 <input
+                  id="amount"
+                  type="text"
+                  inputmode="numeric"
+                  class="input-currency"
+                  name="amount"
+                  value="1000000"
+                  autocomplete="off"
+                />
+                <span class="field-hint" id="amount-hint">One deposit into the communal pot</span>
+              </div>
+              <div class="form-field">
+                <label for="funding-month">Funding month</label>
+                <input
+                  id="funding-month"
                   type="number"
-                  name="fundingMonthsFromFirstBirth"
+                  name="fundingMonth"
                   min="-360"
-                  max="360"
+                  max="720"
                   step="1"
                   value="0"
+                  autocomplete="off"
                 />
-                <span class="field-hint">Negative = fund before birth; 0 = at first birth</span>
-              </label>
-              <label>
-                Average CPI (%)
-                <input type="number" name="cpiRate" min="0" max="20" step="0.1" value="3.2" />
-                <span class="field-hint">Policy estimate — ~10-year US CPI lookback (BLS)</span>
-              </label>
-              <label>
-                Average market growth (%)
-                <input type="number" name="marketRate" min="0" max="30" step="0.1" value="10.3" />
-                <span class="field-hint">Policy estimate — ~10-year S&amp;P 500 total return</span>
-              </label>
+                <span class="field-hint">Months from first birth (negative = before birth)</span>
+              </div>
+              <div class="form-field">
+                <label for="payout-age">Payout age</label>
+                <input
+                  id="payout-age"
+                  type="number"
+                  name="payoutAge"
+                  min="1"
+                  max="65"
+                  step="1"
+                  value="25"
+                  autocomplete="off"
+                />
+                <span class="field-hint">Each child receives their share when they reach this age</span>
+              </div>
+              <div class="form-field">
+                <label for="cpi-rate">Average CPI (%)</label>
+                <input
+                  id="cpi-rate"
+                  type="number"
+                  name="cpiRate"
+                  min="0"
+                  max="20"
+                  step="0.1"
+                  value="3.2"
+                  autocomplete="off"
+                />
+                <span class="field-hint">Policy estimate — US CPI</span>
+              </div>
+              <div class="form-field">
+                <label for="market-rate">Average market growth (%)</label>
+                <input
+                  id="market-rate"
+                  type="number"
+                  name="marketRate"
+                  min="0"
+                  max="30"
+                  step="0.1"
+                  value="10.3"
+                  autocomplete="off"
+                />
+                <span class="field-hint">Policy estimate — S&amp;P 500 total return</span>
+              </div>
             </div>
+
+            <div class="form-section-heading">Children</div>
+            <p class="field-hint children-intro">
+              First child is born at month 0. Use
+              <strong>Spacing after previous child adds (months)</strong> for each additional child.
+            </p>
+            <div id="children-list" class="children-list"></div>
           </form>
         </section>
 
         <section class="card card--results" aria-labelledby="results-heading">
           <h2 id="results-heading" class="card-heading">Results</h2>
           <div id="results"></div>
+          <div id="trustee-worksheet"></div>
         </section>
       </main>
 

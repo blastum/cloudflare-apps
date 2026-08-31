@@ -1,3 +1,6 @@
+import { currencyFromForm } from '../../../shared/currency-input'
+import '../../../shared/styles/controls.css'
+import '../../../shared/styles/print.css'
 import { calculate, type CalculatorInputs } from './calculator'
 import { mountCalculator } from './render'
 
@@ -15,8 +18,8 @@ function readInputs(): CalculatorInputs {
   const num = (name: string) => Number(data.get(name) ?? 0)
   const situsPct = num('illinoisSitusPercent')
   return {
-    tentativeTaxableEstate: Math.max(0, num('tentativeTaxableEstate')),
-    adjustedTaxableGifts: Math.max(0, num('adjustedTaxableGifts')),
+    tentativeTaxableEstate: Math.max(0, currencyFromForm(data, 'tentativeTaxableEstate')),
+    adjustedTaxableGifts: Math.max(0, currencyFromForm(data, 'adjustedTaxableGifts')),
     illinoisSitusFraction: Math.max(0, Math.min(100, situsPct)) / 100,
   }
 }

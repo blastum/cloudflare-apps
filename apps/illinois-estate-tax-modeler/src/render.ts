@@ -4,7 +4,10 @@ import {
   type ScenarioRow,
   scenarioTable,
 } from './calculator'
-import { formatCurrency } from './shared/money'
+import { bindLiveForm } from '../../../shared/defer-form-paint'
+import { bindCurrencyInputs } from '../../../shared/currency-input'
+import { bindSteppers } from '../../../shared/stepper'
+import { formatCurrency } from '../../../shared/money'
 
 function formatPct(rate: number): string {
   return `${(rate * 100).toFixed(2)}%`
@@ -154,7 +157,8 @@ export function mountCalculator(
     save()
   }
 
-  form.addEventListener('input', render)
-  form.addEventListener('change', render)
+  bindSteppers(form, render)
+  bindCurrencyInputs(form)
+  bindLiveForm(form, render)
   render()
 }

@@ -1,3 +1,8 @@
+import { bindLiveForm } from '../../../shared/defer-form-paint'
+import { bindCurrencyInputs } from '../../../shared/currency-input'
+import { bindGrowthFields } from '../../../shared/growth-fields'
+import { bindPrintToolbar, printToolbarHtml } from '../../../shared/print'
+import { bindSteppers } from '../../../shared/stepper'
 import {
   type AccountYearRow,
   childSharePercent,
@@ -165,15 +170,6 @@ function renderAccountTable(
   `
 }
 
-function renderExportToolbar(): string {
-  return `
-    <div class="export-toolbar no-print">
-      <button type="button" class="btn-export" data-print-summary>Print summary</button>
-      <span class="export-hint">Summary and pot share — opens your browser print dialog.</span>
-    </div>
-  `
-}
-
 function renderSummaryBody(
   inputs: CalculatorInputs,
   result: CalculatorResult,
@@ -203,7 +199,7 @@ export function renderResults(
   result: CalculatorResult,
 ): void {
   container.innerHTML = `
-    ${renderExportToolbar()}
+    ${printToolbarHtml({ hint: 'Summary and pot share — opens your browser print dialog.' })}
     ${renderSummaryBody(inputs, result)}
     <h3 class="results-calculations-heading no-print">Year-by-year balances</h3>
     <div class="results-calculations no-print">
@@ -267,14 +263,10 @@ export function mountCalculator(
     save()
   }
 
-  results.addEventListener('click', (event) => {
-    const target = event.target
-    if (!(target instanceof HTMLElement)) return
-    if (!target.closest('[data-print-summary]')) return
-    window.print()
-  })
-
-  form.addEventListener('input', render)
-  form.addEventListener('change', render)
+  bindSteppers(form, render)
+  bindCurrencyInputs(form)
+  bindGrowthFields(form, render)
+  bindLiveForm(form, render)
+  bindPrintToolbar(results)
   render()
 }

@@ -82,8 +82,19 @@ export const INTENT_FACETS = [
 
   // Access and distributions
   {
-    id: 'access_discretionary_needs',
-    label: "Beneficiary/trustee takes what's needed (HEMS-style)",
+    id: 'access_hems_ascertainable',
+    label: 'HEMS / ascertainable standard (health, education, maintenance, support)',
+    group: 'access',
+  },
+  {
+    id: 'access_liberal_discretionary',
+    label: 'Generous support — liberal discretion, not a tight HEMS cage',
+    group: 'access',
+    description: 'Common for surviving-spouse trusts with spendthrift protection',
+  },
+  {
+    id: 'access_pure_discretion',
+    label: 'Pure trustee discretion — wide latitude',
     group: 'access',
   },
   { id: 'access_fixed_income', label: 'Fixed or mandated income', group: 'access' },

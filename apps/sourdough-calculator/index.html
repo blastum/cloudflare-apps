@@ -42,56 +42,64 @@
 
         <section class="card no-print" aria-labelledby="inputs-heading">
           <h2 id="inputs-heading" class="card-heading">Parameters</h2>
-          <form id="calculator-form">
+          <form id="calculator-form" autocomplete="off">
             <div class="form-grid">
-              <label>
-                Total flour (g)
+              <div class="form-field">
+                <label for="total-flour">Total flour (g)</label>
                 <input
+                  id="total-flour"
                   type="number"
                   name="totalFlourG"
                   min="1"
                   max="20000"
                   step="1"
                   value="510"
+                  autocomplete="off"
                 />
                 <span class="field-hint">Baker&apos;s 100% — all flour in the loaf</span>
-              </label>
-              <label>
-                Hydration (%)
+              </div>
+              <div class="form-field">
+                <label for="hydration">Hydration (%)</label>
                 <input
+                  id="hydration"
                   type="number"
                   name="hydrationPct"
                   min="50"
                   max="120"
                   step="0.5"
                   value="80"
+                  autocomplete="off"
                 />
                 <span class="field-hint">Total water as % of flour</span>
-              </label>
-              <label>
-                Salt (%)
+              </div>
+              <div class="form-field">
+                <label for="salt">Salt (%)</label>
                 <input
+                  id="salt"
                   type="number"
                   name="saltPct"
                   min="0"
                   max="5"
                   step="0.1"
                   value="2"
+                  autocomplete="off"
                 />
                 <span class="field-hint">Of total flour</span>
-              </label>
-              <label>
-                Levain (%)
+              </div>
+              <div class="form-field">
+                <label for="levain">Levain (%)</label>
                 <input
+                  id="levain"
                   type="number"
                   name="levainPct"
                   min="0"
                   max="50"
                   step="0.5"
                   value="12"
+                  autocomplete="off"
                 />
                 <span class="field-hint">Preferment flour as % of total flour</span>
-              </label>
+              </div>
             </div>
           </form>
         </section>

@@ -1,21 +1,11 @@
+import { inflate as inflateByCpi, roundUsd } from '../../../shared/growth'
 import {
   SINGLE_BRACKETS_2026,
   STANDARD_DEDUCTION_SINGLE_2026,
   type TaxBracket,
 } from './constants'
 
-export function roundUsd(amount: number): number {
-  return Math.round(amount)
-}
-
-export function inflateByCpi(
-  baseAmount: number,
-  years: number,
-  cpiRate: number,
-): number {
-  if (years <= 0 || cpiRate === 0) return roundUsd(baseAmount)
-  return roundUsd(baseAmount * (1 + cpiRate) ** years)
-}
+export { inflateByCpi, roundUsd }
 
 export function inflatedSingleBrackets(
   years: number,

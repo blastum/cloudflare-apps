@@ -1,0 +1,6114 @@
+{
+  "crummey-trust": {
+    "name": "Crummey trust",
+    "glossaryAnchor": "crummey-trust-irrevocable-gift-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Crummey gift trust, withdrawal-power trust, irrevocable gift trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None — lifetime gifting vehicle"
+      },
+      {
+        "facet": "When created",
+        "detail": "During grantor's life"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No — irrevocable once funded"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Inter vivos"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Children or grandchildren as Crummey powerholders"
+      },
+      {
+        "facet": "Beneficiary pool",
+        "detail": "Separate share — per-beneficiary sub-trust or account for clean withdrawals"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Annual-exclusion gifts into trust; estate reduction; staged access for heirs"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Only if gifts exceed annual exclusion"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No — if properly drafted and funded"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Carryover basis on lifetime gifts"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Often grantor trust; may file 1041"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "Yes — core feature; notice after each contribution"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Often seeds dynasty or separate-share trusts for descendants"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Not typical"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Annual admin (notices, lapse, 5-and-5) vs tax-free annual gifting into protected trust"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "typical",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "typical",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "optional",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "unusual",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "optional",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "typical",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "optional",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "separate-share": {
+    "name": "Separate share trust",
+    "glossaryAnchor": "separate-share-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Two-pot trust, individual share trust, separate trust, family trust (fixed shares)"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "At death (two-pot) or when a pot trust divides at a milestone"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No once funded irrevocably"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Testamentary — springs from will/RLT or pot division; not a living trust"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Named children or grandchildren — one share each"
+      },
+      {
+        "facet": "Beneficiary pool",
+        "detail": "Separate share — fixed portion per heir; no cross-share reallocation"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Clear accounting; protect each heir's share from another's needs"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "At funding (death or lifetime gift)"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At grantor death if testamentary; carryover if lifetime gift"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Form 1041 per share or combined trust with separate accounting"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No — death-funded; lifetime Crummey separate shares are Crummey trust"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "GST allocation common for grandchild shares"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Unusual as IRA trust"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Fixed equality vs cannot rebalance when one heir has greater need"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "typical",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "optional",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "typical",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "pot": {
+    "name": "Pot trust",
+    "glossaryAnchor": "pot-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Family pot trust, common pot, sprinkling trust, one-pot trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "Testamentary or lifetime"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No once funded irrevocably"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Either"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Class — \"all grandchildren\""
+      },
+      {
+        "facet": "Beneficiary pool",
+        "detail": "Pooled — single fund; may divide into separate shares at a milestone"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Flexible fairness as family grows; simpler than many separate trusts early on"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "At funding"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At grantor death if testamentary"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Single 1041 for the pool"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "Common for lifetime grandchild gifting"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "GST allocation often used"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Unusual as IRA trust"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Flexibility vs disputes over unequal needs"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "optional",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "typical",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "optional",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "optional",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "typical",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "optional",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "b-trust": {
+    "name": "B trust (bypass / credit shelter)",
+    "glossaryAnchor": "b-trust-bypass-credit-shelter-family-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "B trust, bypass trust, credit shelter trust, family trust, non-marital trust, exemption trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "B in both A-B and A-B-C plans"
+      },
+      {
+        "facet": "When created",
+        "detail": "At first spouse's death (testamentary sub-trust of RLT or will)"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No — irrevocable once funded"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Testamentary (springs from RLT/will formula)"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Surviving spouse (income + limited principal); remainder to children/heirs"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Lock in first decedent's exclusion; shelter appreciation from second estate tax"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No — intentionally not marital property"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Yes — funded to exclusion amount (federal and often IL)"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No — if no general power of appointment (HEMS invasion only)"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Step-up at first death only; no second step-up at survivor's death"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Complex or simple trust — Form 1041; DNI may pass income to spouse via K-1"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Remainder may be GST-exempt if exemption allocated"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Strong for remainder beneficiaries; spouse access limited to terms"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Generally avoid as IRA beneficiary — accelerates tax; prefer spouse or conduit"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Tax savings and creditor shield vs survivor cannot freely spend principal; admin after first death"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "unusual",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "typical",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "typical",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "qtip": {
+    "name": "QTIP trust",
+    "glossaryAnchor": "qtip-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "QTIP, qualified terminable interest property trust, terminable interest marital trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "Marital trust in A-B; often C trust in A-B-C after bypass funded"
+      },
+      {
+        "facet": "When created",
+        "detail": "At first death"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Testamentary sub-trust (common) or less often inter vivos QTIP"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Spouse (income for life); children or others as remainder"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Marital deduction + control who gets assets after spouse dies"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "Yes — § 2056(b)(7) QTIP election required"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "No"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Yes — included at second death"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "First death and again at spouse's death"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Trust 1041; spouse taxed on distributed income"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Remainder can be GST-exempt with allocation"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Remainder beneficiaries protected; spouse has income rights"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Generally avoid as IRA beneficiary"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Blended-family control vs QTIP assets taxed in survivor's estate later"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "typical",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "typical",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "marital": {
+    "name": "Marital trust",
+    "glossaryAnchor": "marital-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Marital deduction trust, marital share trust, spousal trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "Marital half of the estate — may map to A (outright/survivor) or C (QTIP)"
+      },
+      {
+        "facet": "When created",
+        "detail": "At first death (or outright at death)"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No once funded as sub-trust; survivor's own RLT remains revocable"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Usually testamentary sub-trust or outright bequest"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Surviving U.S. citizen spouse"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Defer estate tax at first death via marital deduction"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "Yes — if qualified (QTIP election for terminable interests)"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "No for the marital amount itself"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Yes for QTIP; outright marital bequest also in survivor's estate"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At first death; QTIP assets step up again at second death"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Depends on structure — outright to spouse vs QTIP trust"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Indirect — marital deduction defers tax; remainder planning separate"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Outright marital gift: none; QTIP: limited for spouse"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Spouse as individual IRA beneficiary often better than marital trust"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Tax deferral at first death vs concentration of assets in survivor's estate"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "typical",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "typical",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "clayton-qtip": {
+    "name": "Clayton QTIP",
+    "glossaryAnchor": "clayton-qtip",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Clayton election, formula QTIP, bypass-first marital plan"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "Defines how B and C (or marital QTIP) are funded"
+      },
+      {
+        "facet": "When created",
+        "detail": "Formula executes at first death"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "Formula in revocable RLT; sub-trusts irrevocable once funded"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Testamentary funding formula in RLT/will"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Same as bypass + QTIP combined"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Automatically optimize bypass vs marital split"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "On QTIP portion only"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "On bypass portion"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "QTIP portion yes; bypass portion no"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Bypass: one step-up; QTIP: two step-ups"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Per sub-trust (bypass + QTIP)"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Per sub-trust planning"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Per sub-trust"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Coordinate IRA beneficiaries separately from formula"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Flexibility vs requires skilled drafting and executor coordination"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "typical",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "typical",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "typical",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "dynasty": {
+    "name": "Dynasty / GST-exempt trust",
+    "glossaryAnchor": "dynasty-gst-exempt-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "GST-exempt trust, generation-skipping trust, perpetual trust (within state limits)"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "Often remainder of B trust or separate lifetime trust"
+      },
+      {
+        "facet": "When created",
+        "detail": "Lifetime or at death"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Either — lifetime funding common for GST allocation"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Children, grandchildren, remote descendants"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Multi-generation wealth transfer with one GST tax hit at funding"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Yes — lifetime gift or testamentary funding uses exemption"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Carryover if lifetime gift; step-up if testamentary"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Complex trust 1041; may be grantor trust in some designs"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "Often for annual exclusion gifts into trust"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Core feature — inclusion ratio 0 if fully exempt"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Possible but coordinate 10-year and trust tax rules"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Generational tax efficiency vs cost, duration limits, and ongoing administration"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "optional",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "optional",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "typical",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "optional",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "typical",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "typical",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "ilit": {
+    "name": "ILIT",
+    "glossaryAnchor": "ilit",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Irrevocable life insurance trust, insurance trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None — liquidity for estate tax or inheritance"
+      },
+      {
+        "facet": "When created",
+        "detail": "During life; policy applied for or transferred to trust"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Inter vivos"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Spouse and/or descendants"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Estate liquidity; estate-tax-free death benefit"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Removes policy and often premiums from estate if structured correctly"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No — if no incidents of ownership"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "N/A — insurance proceeds income-tax-free"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Grantor trust common — grantor pays tax on trust income"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "Yes — typical for annual-exclusion premium gifts"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "May allocate GST exemption to trust"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes for beneficiaries"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "N/A — holds insurance, not IRA"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Estate tax leverage vs Crummey admin and irrevocability"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "typical",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "optional",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "unusual",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "optional",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "rlt": {
+    "name": "Revocable living trust",
+    "glossaryAnchor": "revocable-living-trust-rlt",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Living trust, revocable trust, inter vivos revocable trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "Parent document — sub-trusts spring from it at first death"
+      },
+      {
+        "facet": "When created",
+        "detail": "During grantor's life; funded by retitling assets"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "Yes — grantor may amend or revoke"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Inter vivos"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Grantor during life; spouse and descendants after death per plan"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Probate avoidance, incapacity continuity, container for tax sub-trusts"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "N/A while grantor alive; sub-trusts may qualify at death"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "No while revocable; bypass sub-trust uses exclusion at first death"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Grantor's share still in estate; survivor's own revocable share remains in survivor's estate"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At each owner's death on assets in the trust"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Grantor trust — income on grantor's Form 1040"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "May hold GST-exempt sub-trusts if drafted"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Limited while revocable; stronger in irrevocable sub-trusts at death"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Poor IRA beneficiary — often accelerates payout; prefer individuals or conduit"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Privacy and control vs must fund and maintain; no estate tax savings alone"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "optional",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "optional",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "optional",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "optional",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "optional",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "optional",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "optional",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "optional",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "testamentary": {
+    "name": "Testamentary trust",
+    "glossaryAnchor": "testamentary-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Trust under will, sub-trust at death, children's trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "Bypass and QTIP are often testamentary sub-trusts of an RLT"
+      },
+      {
+        "facet": "When created",
+        "detail": "At grantor's death"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "N/A — becomes irrevocable at death"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Testamentary"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Children, grandchildren, or spouse per terms"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Control timing of distributions; creditor/divorce protection"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "Only if structured as marital/QTIP share"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Yes if funded as bypass sub-trust"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Depends on sub-trust type (bypass: no; QTIP: yes)"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At grantor's death when trust is funded"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Simple or complex trust — Form 1041, K-1s to beneficiaries"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No (funded at death, not by lifetime gifts)"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "May be GST-exempt if exemption allocated on Form 706"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Common — limits beneficiary creditors' access"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Conduit or accumulation variants possible if drafted for SECURE Act"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Post-death control vs ongoing trustee and 1041 compliance"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "optional",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "optional",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "optional",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "optional",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "optional",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "optional",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "a-trust": {
+    "name": "A trust (survivor's trust)",
+    "glossaryAnchor": "a-trust-survivors-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Survivor's trust, survivor's revocable trust, A trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "A in A-B-C; in simple A-B plans the marital side may be A or QTIP"
+      },
+      {
+        "facet": "When created",
+        "detail": "Often pre-exists as survivor's RLT; confirmed or funded at first death"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "Yes — survivor retains full control"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Inter vivos (survivor's living trust)"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Surviving spouse during life; then children/heirs per survivor's plan"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Hold survivor's separate share without mixing with bypass or QTIP"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No — this is survivor's own property, not a transfer from first decedent"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Uses survivor's exclusion at survivor's death, not first decedent's"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Yes — fully included"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Step-up at survivor's death"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Grantor trust while survivor is alive and competent"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "May pour to dynasty trusts at survivor's death"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Weak while revocable"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Generally poor IRA beneficiary"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Full flexibility for survivor vs no use of first decedent's exclusion for this share"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "optional",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "optional",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "optional",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "no",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "optional",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "c-trust": {
+    "name": "C trust (marital QTIP)",
+    "glossaryAnchor": "c-trust-marital-qtip",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "C trust, marital QTIP trust, QTIP residue trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "C in A-B-C (marital share after B is funded)"
+      },
+      {
+        "facet": "When created",
+        "detail": "At first spouse's death"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Testamentary sub-trust"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Surviving spouse (income for life); remainder per first decedent's terms"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Marital deduction for excess over bypass + control remainder beneficiaries"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "Yes — with QTIP election on Form 706"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "No — uses marital deduction instead"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Yes — QTIP included at second death (with second step-up on those assets)"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At first death; second step-up at survivor's death on QTIP assets"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Trust 1041; income typically taxed to spouse if distributed"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Remainder may pass to GST trust if planned"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Moderate — spouse income rights; remainder protected"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Poor choice as IRA beneficiary"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Spousal support + remainder control vs full inclusion at second death"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "unusual",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "typical",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "typical",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "disclaimer": {
+    "name": "Disclaimer trust plan",
+    "glossaryAnchor": "disclaimer-trust-plan",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Disclaimer planning, qualified disclaimer to bypass trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "Post-death alternative to fixed formula for B trust funding"
+      },
+      {
+        "facet": "When created",
+        "detail": "Bypass funded only if spouse disclaims after first death"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "Bypass sub-trust irrevocable once funded"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Testamentary mechanism"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Same as B trust after disclaimer"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Flexibility to see actual estate/tax law before committing to bypass"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "On non-disclaimed marital share"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "On disclaimed amount routed to bypass"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Disclaimed/bypass portion: no"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At first death on all estate assets"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Per resulting trusts"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "As per bypass terms"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "As per bypass terms"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Disclaimer of IRA interests is complex — specialist drafting required"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Post-death flexibility vs uncertainty and strict disclaimer rules"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "optional",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "typical",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "typical",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "child-age-stage": {
+    "name": "Child / age-stage trust",
+    "glossaryAnchor": "testamentary-child-age-stage-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Age-stage trust, staged distribution trust, trust for descendant"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None — funded from residue or share of estate"
+      },
+      {
+        "facet": "When created",
+        "detail": "At grantor's death"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No once funded"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Testamentary"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Named child or grandchild"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Delay full control; protect from immaturity, creditors, divorce"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Part of taxable estate unless funded from bypass remainder"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No — beneficiary is child/heir, not spouse"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At grantor's death"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Form 1041; K-1 to beneficiary when distributed"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "May allocate GST exemption for grandchild beneficiaries"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes — standard feature"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Conduit or accumulation if drafted for IRA"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Protection vs trustee cost and beneficiary frustration with delays"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "optional",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "optional",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "typical",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "bloodline": {
+    "name": "Bloodline / descendants trust",
+    "glossaryAnchor": "bloodline-descendants-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Descendants trust, heirs-by-blood trust, anti-in-law trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "Testamentary or lifetime irrevocable"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No once irrevocable/testamentary funded"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Either"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Child for life; grandchildren/descendants as remainder"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Keep assets in bloodline"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "If lifetime gift; or at death from estate"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At death if testamentary; carryover if lifetime gift"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Trust 1041"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "Sometimes if lifetime gifts to trust"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Often combined with GST exemption"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Possible with careful drafting"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Bloodline protection vs in-law has no direct access (plan HEMS for household needs)"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "optional",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "typical",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "optional",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "optional",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "conduit": {
+    "name": "Conduit trust",
+    "glossaryAnchor": "conduit-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "See-through conduit trust, IRA conduit trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None — retirement beneficiary planning"
+      },
+      {
+        "facet": "When created",
+        "detail": "Often testamentary; may be standalone"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No once funded / named beneficiary"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Either"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Individuals behind the trust (must be identifiable)"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Stretch/control IRA with spendthrift layer"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "IRA included in estate if estate is beneficiary — avoid"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No for non-spouse conduit"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "N/A for pre-tax IRA; Roth step-up in estate"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Pass-through of IRA taxable distributions; 1041 may be informational"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "SECURE 10-year rule for most non-spouse beneficiaries"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes — reason to use trust vs outright"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Yes — designed for this"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Creditor protection vs strict IRS drafting and 10-year payout rules"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "unusual",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "typical",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "optional",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "accumulation": {
+    "name": "Accumulation trust",
+    "glossaryAnchor": "accumulation-trust",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "See-through accumulation trust, non-conduit trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "Testamentary or inter vivos"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Either"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Children or grandchildren as discretionary beneficiaries"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Trustee control over IRA payout timing and reinvestment"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "N/A for IRA character"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "N/A for pre-tax IRA"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Trust taxed on undistributed income at high compressed rates"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "10-year rule; GST may apply to skip persons"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Strong"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Yes — but stricter drafting than conduit"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Control vs trust income tax compression and compliance risk"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "typical",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "optional",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "snt": {
+    "name": "Special needs trust",
+    "glossaryAnchor": "special-needs-trust-snt",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Supplemental needs trust, d4A trust (self-settled), third-party SNT"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "Third-party: by family; self-settled: with beneficiary's funds"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "Third-party: may be in RLT until death; then irrevocable"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Either"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Individual with disability"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Quality-of-life supplements while preserving benefits"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "At funding from estate or gifts"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "At testamentary funding"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Trust 1041; rules vary by trust type"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "Rare"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "May apply if skip person is beneficiary"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes — integral to benefits planning"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Generally poor — consider ABLE account or individual beneficiary planning"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Benefits preservation vs strict distribution limits and payback risk (self-settled)"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "unusual",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "typical",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "optional",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "typical",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "optional",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "optional",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "slat": {
+    "name": "SLAT",
+    "glossaryAnchor": "slat",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Spousal lifetime access trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None — lifetime gifting strategy"
+      },
+      {
+        "facet": "When created",
+        "detail": "During grantor's life"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Inter vivos"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Spouse and descendants"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Estate reduction with marital access safety valve"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No — lifetime gift, not marital transfer at death"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Uses lifetime gift/estate exemption at funding"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No — if spouse has no general power of appointment"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "No — carryover basis on gifted assets"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Non-grantor or grantor depending on drafting"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "Sometimes"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Common for multi-generation SLATs"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Not typical"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Estate savings vs gift tax on funding; **reciprocal trust** risk if both spouses create mirror SLATs"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "optional",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "typical",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "grat": {
+    "name": "GRAT",
+    "glossaryAnchor": "grat",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Grantor retained annuity trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "During life"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Inter vivos"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Children or remainder heirs"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Transfer appreciation with low taxable gift"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Taxable gift is remainder value at creation (often near zero)"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Assets return to estate if grantor dies during term"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Carryover to trust; no step-up on gift"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Grantor trust — grantor pays tax"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "GST on remainder if skip persons"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "For remainder beneficiaries after term"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Not used"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Low gift tax on upside vs mortality risk during annuity term"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "idgt": {
+    "name": "IDGT",
+    "glossaryAnchor": "idgt",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Intentionally defective grantor trust, grantor trust sale trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "During life"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Inter vivos"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Descendants or family members"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Estate freeze; sell assets to trust for note without income tax on sale"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Gift on seed gift; appreciation out of estate"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Carryover on sold assets"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Grantor trust"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Often combined"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Yes"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Not typical"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Estate freeze vs complexity and grantor's ongoing income tax bill"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "typical",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "optional",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "typical",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "typical",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "qprt": {
+    "name": "QPRT",
+    "glossaryAnchor": "qprt",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Qualified personal residence trust"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "During life"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Inter vivos"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Children or heirs receive residence after term"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Transfer home at reduced gift tax value"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Taxable gift is discounted remainder interest"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Back in estate if grantor dies during retained term"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Carryover basis to heirs — loss of step-up on lifetime transfer"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Grantor trust during term"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "If remainder to skip persons"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "For remainder beneficiaries"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "N/A"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Gift tax discount vs mortality risk and loss of step-up"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "crt": {
+    "name": "CRT",
+    "glossaryAnchor": "crt",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Charitable remainder annuity trust (CRAT), charitable remainder unitrust (CRUT)"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "During life or at death (testamentary CRT)"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Either"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Donor/spouse (income); charity (remainder)"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Income stream + charitable legacy + income tax deduction"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "Estate tax charitable deduction for remainder; spouse income interest may qualify for marital QTIP-like planning in some CRTs"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Reduces taxable estate by charitable remainder value"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "Depends on who holds income interest"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Trust sells appreciated assets without donor-level cap gain"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Trust tax-exempt; beneficiary taxed on distributions (tier rules)"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "N/A"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "Limited — charitable remainder fixed"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Not typical — QCD often better for IRA charity"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Tax benefits vs irrevocability and actuarial complexity"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "no",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "optional",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "no",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  },
+  "clt": {
+    "name": "CLT",
+    "glossaryAnchor": "clt",
+    "glossary": [
+      {
+        "facet": "Also called",
+        "detail": "Charitable lead annuity trust (CLAT), charitable lead unitrust (CLUT)"
+      },
+      {
+        "facet": "A-B / A-B-C role",
+        "detail": "None"
+      },
+      {
+        "facet": "When created",
+        "detail": "During life or at death"
+      },
+      {
+        "facet": "Revocable",
+        "detail": "No"
+      },
+      {
+        "facet": "Inter vivos / testamentary",
+        "detail": "Either"
+      },
+      {
+        "facet": "Typical beneficiaries",
+        "detail": "Charity (lead); heirs (remainder)"
+      },
+      {
+        "facet": "Primary purpose",
+        "detail": "Fund charity now; pass remainder to family at reduced transfer tax"
+      },
+      {
+        "facet": "Marital deduction",
+        "detail": "No (charitable lead, not marital)"
+      },
+      {
+        "facet": "Uses estate exclusion",
+        "detail": "Remainder gift tax value reduced by charitable lead interest"
+      },
+      {
+        "facet": "In survivor's estate",
+        "detail": "No for properly structured lifetime CLT assets"
+      },
+      {
+        "facet": "Basis step-up",
+        "detail": "Carryover on lifetime funding"
+      },
+      {
+        "facet": "Income tax",
+        "detail": "Grantor or non-grantor CLT — different charitable deduction timing"
+      },
+      {
+        "facet": "Crummey powers",
+        "detail": "No"
+      },
+      {
+        "facet": "GST / dynasty",
+        "detail": "Remainder to heirs may trigger GST planning"
+      },
+      {
+        "facet": "Spendthrift",
+        "detail": "For remainder beneficiaries"
+      },
+      {
+        "facet": "See-through (IRA)",
+        "detail": "Not typical"
+      },
+      {
+        "facet": "Key tradeoff",
+        "detail": "Transfer tax efficiency vs complexity and charity commitment during lead term"
+      }
+    ],
+    "clauses": [
+      {
+        "id": "C01",
+        "label": "Crummey withdrawal rights",
+        "value": "no",
+        "group": "clause",
+        "description": "Notice plus temporary withdrawal right so gifts qualify for the annual exclusion."
+      },
+      {
+        "id": "C02",
+        "label": "Pot / spray / sprinkle",
+        "value": "no",
+        "group": "clause",
+        "description": "Shared pool; trustee allocates among class members by need."
+      },
+      {
+        "id": "C03",
+        "label": "Separate share",
+        "value": "no",
+        "group": "clause",
+        "description": "Fixed slice or sub-trust per beneficiary; no cross-share reallocation."
+      },
+      {
+        "id": "C04",
+        "label": "Spendthrift clause",
+        "value": "typical",
+        "group": "clause",
+        "description": "Anti-alienation language limiting creditors, divorcing spouses, and voluntary assignments."
+      },
+      {
+        "id": "C05",
+        "label": "HEMS / ascertainable standard",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Health, education, maintenance, and support — classic ascertainable standard."
+      },
+      {
+        "id": "C06",
+        "label": "Pure discretionary distributions",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Trustee discretion without an ascertainable standard."
+      },
+      {
+        "id": "C07",
+        "label": "Power of appointment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Lets a holder redirect remainder interests (general, limited, testamentary, or inter vivos)."
+      },
+      {
+        "id": "C08",
+        "label": "Decanting provision",
+        "value": "optional",
+        "group": "clause",
+        "description": "Authorizes moving trust assets to a new trust with different terms."
+      },
+      {
+        "id": "C09",
+        "label": "Incentive clauses",
+        "value": "no",
+        "group": "clause",
+        "description": "Ties distributions to milestones such as education, employment, or sobriety."
+      },
+      {
+        "id": "C10",
+        "label": "Trustee removal / replacement",
+        "value": "typical",
+        "group": "clause",
+        "description": "Beneficiary, trust protector, or court power to replace trustees."
+      },
+      {
+        "id": "C11",
+        "label": "In terrorem / no-contest",
+        "value": "optional",
+        "group": "clause",
+        "description": "Penalizes beneficiaries who challenge the trust or will."
+      },
+      {
+        "id": "C12",
+        "label": "GST exemption allocation",
+        "value": "typical",
+        "group": "clause",
+        "description": "Locks generation-skipping transfer tax status at funding."
+      },
+      {
+        "id": "C13",
+        "label": "QTIP / marital deduction",
+        "value": "no",
+        "group": "clause",
+        "description": "Spouse income for life with Form 706 marital deduction election."
+      },
+      {
+        "id": "C14",
+        "label": "Tax apportionment",
+        "value": "optional",
+        "group": "clause",
+        "description": "Allocates estate, GST, or generation tax among beneficiaries and trusts."
+      },
+      {
+        "id": "C15",
+        "label": "Dynasty / perpetual",
+        "value": "optional",
+        "group": "clause",
+        "description": "Duration language to keep trust going within state rule-against-perpetuities limits."
+      },
+      {
+        "id": "C16",
+        "label": "Grantor-trust income tax status",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether grantor pays income tax on trust earnings (IRC §§ 671–679), separate from revocability."
+      },
+      {
+        "id": "C17",
+        "label": "See-through / conduit / accumulation",
+        "value": "no",
+        "group": "clause",
+        "description": "IRA beneficiary trust rules — conduit payout vs accumulation inside trust."
+      },
+      {
+        "id": "C18",
+        "label": "Special / supplemental needs",
+        "value": "no",
+        "group": "clause",
+        "description": "SNT language preserving public benefits while supplementing care."
+      },
+      {
+        "id": "C19",
+        "label": "Distribution standard taxonomy",
+        "value": "n/a",
+        "group": "clause",
+        "description": "Whether distributions follow an ascertainable standard (HEMS) or fully discretionary language."
+      },
+      {
+        "id": "A01",
+        "label": "Revocable vs irrevocable",
+        "value": "no",
+        "group": "attribute",
+        "description": "Whether the grantor can revoke or amend the trust."
+      },
+      {
+        "id": "A02",
+        "label": "Inter vivos vs testamentary",
+        "value": "typical",
+        "group": "attribute",
+        "description": "Living trust vs trust created at death under will or RLT formula."
+      },
+      {
+        "id": "A03",
+        "label": "When created",
+        "value": "typical",
+        "group": "attribute",
+        "description": "During life, at grantor death, or at first spouse death."
+      },
+      {
+        "id": "A04",
+        "label": "Beneficiary pool structure",
+        "value": "no",
+        "group": "attribute",
+        "description": "Pooled pot vs separate share per beneficiary."
+      },
+      {
+        "id": "C20",
+        "label": "Bypass / exemption funding formula",
+        "value": "no",
+        "group": "clause",
+        "description": "Pours the unused federal and state estate-tax exemption into a bypass trust at first death — the identity clause of a B trust."
+      }
+    ]
+  }
+}

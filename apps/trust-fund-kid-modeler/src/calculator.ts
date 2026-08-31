@@ -1,3 +1,4 @@
+import { deflate, inflate, roundUsd } from '../../../shared/growth'
 import { BALANCE_AGES, DEFAULTS, END_AGE, LAST_TRUMP_AGE, MAX_AGE } from './constants'
 
 export type CalculatorInputs = {
@@ -62,23 +63,13 @@ export type CalculatorResult = {
   brokerageRows: BrokerageRow[]
 }
 
-export function roundUsd(amount: number): number {
-  return Math.round(amount)
-}
+export { roundUsd }
 
 export function yearsFromStart(age: number, startingAge: number): number {
   return age - startingAge
 }
 
-export function inflate(real: number, years: number, cpiRate: number): number {
-  if (years <= 0) return roundUsd(real)
-  return roundUsd(real * (1 + cpiRate) ** years)
-}
-
-export function deflate(nominal: number, years: number, cpiRate: number): number {
-  if (years <= 0) return roundUsd(nominal)
-  return roundUsd(nominal / (1 + cpiRate) ** years)
-}
+export { inflate, deflate }
 
 function pair(nominal: number, real: number): MoneyPair {
   return { nominal: roundUsd(nominal), real: roundUsd(real) }

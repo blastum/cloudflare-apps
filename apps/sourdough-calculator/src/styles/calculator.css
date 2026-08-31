@@ -38,14 +38,16 @@
   }
 }
 
-.form-grid label {
+.form-grid label,
+.form-field {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
   font-size: 0.9375rem;
 }
 
-.form-grid input {
+.form-grid input,
+.form-field input {
   padding: 0.55rem 0.65rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -55,7 +57,8 @@
   font-variant-numeric: tabular-nums;
 }
 
-.form-grid input:focus {
+.form-grid input:focus,
+.form-field input:focus {
   outline: 2px solid var(--accent-soft);
   border-color: var(--accent);
 }

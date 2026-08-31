@@ -1,4 +1,4 @@
-import { cp, mkdir, readdir, stat } from 'node:fs/promises'
+import { cp, mkdir, readdir, rm, stat } from 'node:fs/promises'
 import { spawn } from 'node:child_process'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -58,6 +58,7 @@ async function syncSite() {
 }
 
 async function main() {
+  await rm(dist, { recursive: true, force: true })
   await syncSite()
   if (siteOnly) return
 

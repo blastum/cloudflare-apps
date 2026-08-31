@@ -1,25 +1,20 @@
-import { MONTH_NAMES } from './constants'
+import { bindLiveForm } from '../../../shared/defer-form-paint'
+import { bindGrowthFields } from '../../../shared/growth-fields'
+import { bindPrintToolbar, printToolbarHtml } from '../../../shared/print'
+import { bindCalculatorReset } from '../../../shared/reset'
+import { bindSteppers } from '../../../shared/stepper'
+import {
+  formatCurrency,
+  formatMonthYear,
+  formatNominalReal,
+  formatPct,
+} from '../../../shared/money'
 import {
   type CalculatorInputs,
   type CalculatorResult,
   type ChildSummary,
   type PotYearRow,
 } from './calculator'
-import {
-  formatCurrency,
-  formatMonthYear,
-  formatNominalReal,
-  formatPct,
-} from './shared/money'
-
-function renderExportToolbar(): string {
-  return `
-    <div class="export-toolbar no-print">
-      <button type="button" class="btn-export" data-print-summary>Print summary</button>
-      <span class="export-hint">Summary and tables — opens your browser print dialog.</span>
-    </div>
-  `
-}
 
 function renderSummary(inputs: CalculatorInputs, result: CalculatorResult): string {
   const childWord = inputs.children.length === 1 ? 'child' : 'children'
@@ -204,18 +199,11 @@ export function renderResults(
   result: CalculatorResult,
 ): void {
   container.innerHTML = `
-    ${renderExportToolbar()}
+    ${printToolbarHtml()}
     <h2 class="print-only-heading">Trump Account Modeler</h2>
     ${renderResultsBody(inputs, result)}
     <p class="print-only-footer">Estimates only — not tax or financial advice.</p>
   `
-}
-
-export function monthOptions(selected: number): string {
-  return MONTH_NAMES.map(
-    (name, i) =>
-      `<option value="${i + 1}"${i + 1 === selected ? ' selected' : ''}>${name}</option>`,
-  ).join('')
 }
 
 export function mountCalculator(
@@ -225,7 +213,9 @@ export function mountCalculator(
   readInputs: () => CalculatorInputs,
   options?: {
     onPersist?: () => void
-    onReset?: (render: () => void) => void
+    onReset?: () => void
+    storageKeys?: string[]
+    fieldDefaults?: Record<string, string>
   },
 ): void {
   const render = () => {
@@ -234,62 +224,20 @@ export function mountCalculator(
     options?.onPersist?.()
   }
 
-  // Safari number spinners fire `input` on mousedown and repeat until mouseup.
-  // Replacing the results DOM in that window steals mouseup, so the stepper
-  // sticks in one direction or ignores later clicks. Defer the paint.
-  let dirty = false
-  let flushTimer = 0
-  const pointersDown = new Set<number>()
+  bindSteppers(form, render)
+  bindGrowthFields(form, render)
+  bindLiveForm(form, render)
+  bindPrintToolbar(results)
 
-  const isNumberInput = (target: EventTarget | null): target is HTMLInputElement =>
-    target instanceof HTMLInputElement && target.type === 'number'
-
-  const flush = () => {
-    if (flushTimer) {
-      window.clearTimeout(flushTimer)
-      flushTimer = 0
-    }
-    if (dirty && pointersDown.size === 0) {
-      dirty = false
-      render()
-    }
+  if (options?.storageKeys && options.fieldDefaults) {
+    bindCalculatorReset({
+      form,
+      storageKeys: options.storageKeys,
+      fieldDefaults: options.fieldDefaults,
+      onReset: options.onReset,
+      paint: render,
+    })
   }
-
-  const schedule = (event: Event) => {
-    dirty = true
-    if (isNumberInput(event.target) || pointersDown.size > 0) {
-      if (pointersDown.size > 0) return
-      if (flushTimer) window.clearTimeout(flushTimer)
-      flushTimer = window.setTimeout(flush, 200)
-      return
-    }
-    flush()
-  }
-
-  form.addEventListener('pointerdown', (event) => {
-    if (isNumberInput(event.target)) pointersDown.add(event.pointerId)
-  })
-  const onPointerEnd = (event: PointerEvent) => {
-    pointersDown.delete(event.pointerId)
-    flush()
-  }
-  window.addEventListener('pointerup', onPointerEnd)
-  window.addEventListener('pointercancel', onPointerEnd)
-
-  form.addEventListener('input', schedule)
-  form.addEventListener('change', schedule)
-
-  form
-    .closest('.card--inputs')
-    ?.querySelector<HTMLButtonElement>('[data-reset-assumptions]')
-    ?.addEventListener('click', () => options?.onReset?.(render))
-
-  results.addEventListener('click', (event) => {
-    const target = event.target
-    if (!(target instanceof HTMLElement)) return
-    if (!target.closest('[data-print-summary]')) return
-    window.print()
-  })
 
   render()
 }

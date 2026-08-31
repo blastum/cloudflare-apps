@@ -7,12 +7,14 @@ Each subdirectory here is an independent single-page app (typically Vite + TypeS
 After build, source in `apps/trump-account-modeler/` is served at the site root subpath:
 
 ```
-https://<your-domain>/trump-account-modeler/
+https://smirking-cat-software.com/trump-account-modeler/
 ```
 
 (The `apps/` folder is only the monorepo layout — it is not part of the public URL.)
 
 The umbrella home page lives at `/` (`index.html` in the repo root).
+
+See `CONVENTIONS.md` at the repo root for the shared calculator kit: custom number steppers, growth fields (CPI 3.2% / market 10.3%), child lists, reset, print/PDF, and imports from `shared/`.
 
 ## Adding a new app
 

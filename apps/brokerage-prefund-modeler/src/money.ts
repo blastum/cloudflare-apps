@@ -1,14 +1,13 @@
-export function roundUsd(amount: number): number {
-  return Math.round(amount)
-}
+import { deflate, inflate, roundUsd } from '../../../shared/growth'
+
+export { roundUsd }
 
 export function inflateByCpi(
   baseAmount: number,
   years: number,
   cpiRate: number,
 ): number {
-  if (years <= 0 || cpiRate === 0) return roundUsd(baseAmount)
-  return roundUsd(baseAmount * (1 + cpiRate) ** years)
+  return inflate(baseAmount, years, cpiRate)
 }
 
 export function deflateToStart(
@@ -16,6 +15,5 @@ export function deflateToStart(
   cpiRate: number,
   years: number,
 ): number {
-  if (years <= 0) return roundUsd(nominal)
-  return roundUsd(nominal / (1 + cpiRate) ** years)
+  return deflate(nominal, years, cpiRate)
 }

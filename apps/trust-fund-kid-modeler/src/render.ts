@@ -1,5 +1,9 @@
+import { bindLiveForm } from '../../../shared/defer-form-paint'
+import { bindCurrencyInputs } from '../../../shared/currency-input'
+import { bindGrowthFields } from '../../../shared/growth-fields'
+import { bindSteppers } from '../../../shared/stepper'
+import { formatNominalReal } from '../../../shared/money'
 import { BALANCE_AGES, END_AGE } from './constants'
-import { formatNominalReal } from './shared/money'
 import { buildExportDocument, buildSummaryGroups, type SummaryGroup } from './export-data'
 import { TRUST_ATTRIBUTES, TRUST_SYNOPSIS } from './brand'
 import {
@@ -356,8 +360,10 @@ export function mountCalculator(
     save()
   }
 
-  form.addEventListener('input', render)
-  form.addEventListener('change', render)
+  bindSteppers(form, render)
+  bindCurrencyInputs(form)
+  bindGrowthFields(form, render)
+  bindLiveForm(form, render)
 
   results.addEventListener('click', (event) => {
     const target = event.target

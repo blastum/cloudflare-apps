@@ -1,14 +1,14 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { access, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { clauseRowsForSlug } from '../src/clause-coverage.mjs'
+import { CLAUSE_BY_ID } from '../src/clause-schema.mjs'
 import { INTENT_MAPPINGS } from '../src/intent-mappings.mjs'
+import { vesselRule } from '../src/vessel-rules.mjs'
+import { resolveNotebookFile } from './glossary-path.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const glossaryPath = join(
-  root,
-  '../../../NotebookLinkManager/notebook/estate-planning/notes/glossary-and-trust-types.md',
-)
 const publicTrustsDir = join(root, 'public/trusts')
 const generatedDir = join(root, 'src/generated')
 
@@ -65,7 +65,7 @@ function bodyToHtml(body) {
  * @param {string} body
  * @returns {{ facet: string, detail: string }[]}
  */
-function extractTechnicalRows(body) {
+function extractGlossaryRows(body) {
   const rows = []
   const matches = body.matchAll(/<tr><td>([^<]+)<\/td><td>([\s\S]*?)<\/td><\/tr>/g)
   for (const match of matches) {
@@ -75,6 +75,83 @@ function extractTechnicalRows(body) {
     })
   }
   return rows
+}
+
+/**
+ * @param {string} text
+ */
+function escapeHtml(text) {
+  return text
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+}
+
+/**
+ * @param {{ id?: string, label?: string, why: string }} row
+ */
+function ruleLabel(row) {
+  if (row.label) return row.label
+  if (row.id) return CLAUSE_BY_ID.get(row.id)?.label ?? row.id
+  return row.why
+}
+
+/**
+ * @param {string} title
+ * @param {{ id?: string, label?: string, why: string }[]} rows
+ * @param {string} layer
+ */
+function renderRuleTable(title, rows, layer) {
+  if (!rows || rows.length === 0) return ''
+  const body = rows
+    .map(
+      (row) =>
+        `<tr><th scope="row">${escapeHtml(ruleLabel(row))}</th><td>${escapeHtml(row.why)}</td></tr>`,
+    )
+    .join('\n')
+  return `<h2 class="technical-heading">${escapeHtml(title)}</h2>
+<table class="technical-table clause-table--${layer}">
+  <thead><tr><th scope="col">Clause</th><th scope="col">Why</th></tr></thead>
+  <tbody>${body}</tbody>
+</table>`
+}
+
+/**
+ * @param {string} slug
+ */
+function renderVesselHtml(slug) {
+  const rule = vesselRule(slug)
+  if (!rule) return ''
+
+  return `<p><a href="/trust-intent-picker/?v=${encodeURIComponent(slug)}">Configure this vessel in the explorer</a></p>
+<p class="result-summary">${escapeHtml(rule.nutshell)}</p>
+<p class="workspace-job">${escapeHtml(rule.job)}</p>
+${renderRuleTable('Locked core', rule.required, 'required')}
+${renderRuleTable('What you can add', rule.optional, 'optional')}
+${renderRuleTable('Do not mix', rule.forbidden, 'forbidden')}`
+}
+
+/**
+ * @param {{ id: string, label: string, value: string, group: string }[]} clauseRows
+ */
+function renderClauseTable(clauseRows, group) {
+  const rows = clauseRows.filter((row) => row.group === group)
+  if (rows.length === 0) return ''
+
+  const body = rows
+    .map(
+      (row) =>
+        `<tr><th scope="row">${row.label}</th><td><span class="coverage coverage--${row.value}">${row.value}</span></td></tr>`,
+    )
+    .join('\n')
+
+  const heading = group === 'attribute' ? 'Type attributes' : 'Clauses and provisions'
+  return `<h2 class="technical-heading">${heading}</h2>
+<table class="technical-table">
+  <thead><tr><th scope="col">Item</th><th scope="col">Typical for this trust</th></tr></thead>
+  <tbody>${body}</tbody>
+</table>`
 }
 
 /**
@@ -99,9 +176,9 @@ function parseSections(glossary) {
 /**
  * @param {string} title
  * @param {string} contentHtml
- * @param {string} slug
+ * @param {string} clauseHtml
  */
-function trustPageHtml(title, contentHtml, slug) {
+function trustPageHtml(title, contentHtml, clauseHtml) {
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -143,6 +220,9 @@ function trustPageHtml(title, contentHtml, slug) {
         <section class="card trust-content">
           ${contentHtml}
         </section>
+        <section class="card trust-clauses">
+          ${clauseHtml}
+        </section>
       </main>
       <footer class="site-footer">
         <p>Educational reference synced from estate-planning glossary — not legal or tax advice.</p>
@@ -153,11 +233,31 @@ function trustPageHtml(title, contentHtml, slug) {
 `
 }
 
+async function committedTrustPagesExist() {
+  try {
+    await access(join(publicTrustsDir, 'rlt', 'index.html'))
+    await access(join(generatedDir, 'trust-pages.json'))
+    return true
+  } catch {
+    return false
+  }
+}
+
 async function main() {
+  let glossaryPath
+  try {
+    glossaryPath = resolveNotebookFile('glossary-and-trust-types.md')
+  } catch (error) {
+    if (await committedTrustPagesExist()) {
+      console.log('sync-glossary: skipped (no notebook; using committed public/trusts/)')
+      return
+    }
+    throw error
+  }
   const glossary = await readFile(glossaryPath, 'utf8')
   const sections = parseSections(glossary)
 
-  /** @type {Record<string, { name: string, glossaryAnchor: string, technical: { facet: string, detail: string }[] }>} */
+  /** @type {Record<string, object>} */
   const trustPages = {}
 
   await mkdir(publicTrustsDir, { recursive: true })
@@ -170,19 +270,35 @@ async function main() {
     }
 
     const contentHtml = bodyToHtml(section.body)
-    const technical = extractTechnicalRows(section.body)
+    const glossaryRows = extractGlossaryRows(section.body)
+    const clauseRows = clauseRowsForSlug(entry.slug)
+    const clauseHtml = [
+      renderVesselHtml(entry.slug),
+      renderClauseTable(clauseRows, 'attribute'),
+      renderClauseTable(clauseRows, 'clause'),
+    ]
+      .filter(Boolean)
+      .join('\n')
+
     const pageDir = join(publicTrustsDir, entry.slug)
     await mkdir(pageDir, { recursive: true })
     await writeFile(
       join(pageDir, 'index.html'),
-      trustPageHtml(entry.name, contentHtml, entry.slug),
+      trustPageHtml(entry.name, contentHtml, clauseHtml),
       'utf8',
     )
 
     trustPages[entry.slug] = {
       name: entry.name,
       glossaryAnchor: entry.glossaryAnchor,
-      technical,
+      glossary: glossaryRows,
+      clauses: clauseRows.map((row) => ({
+        id: row.id,
+        label: row.label,
+        value: row.value,
+        group: row.group,
+        description: CLAUSE_BY_ID.get(row.id)?.description ?? '',
+      })),
     }
   }
 
@@ -193,6 +309,7 @@ async function main() {
   )
 
   console.log(`sync-glossary: ${INTENT_MAPPINGS.length} trust pages → public/trusts/`)
+  console.log(`  source: ${glossaryPath}`)
 }
 
 main().catch((error) => {

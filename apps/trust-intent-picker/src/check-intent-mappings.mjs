@@ -1,16 +1,9 @@
 import { readFile } from 'node:fs/promises'
-import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-import { INTENT_FACET_IDS } from './intent-schema.mjs'
+import { CLAUSE_BY_ID } from './clause-schema.mjs'
+import { JOBS, jobFromLegacyTokens } from './jobs.mjs'
 import { INTENT_MAPPINGS } from './intent-mappings.mjs'
-import { isFullScore, matchIntents, STRONG_WEIGHT } from './match-by-intent.mjs'
-
-const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const glossaryPath = join(
-  root,
-  '../../../NotebookLinkManager/notebook/estate-planning/notes/glossary-and-trust-types.md',
-)
+import { EXCLUSIVE_ADDON_PAIRS, VESSEL_RULES, allowedAddons, vesselRule } from './vessel-rules.mjs'
+import { resolveNotebookFile } from '../scripts/glossary-path.mjs'
 
 /** @type {string[]} */
 const failures = []
@@ -35,20 +28,62 @@ function test(label, fn) {
   }
 }
 
-function validateSchema() {
+function catalogIdsInRules(rules) {
+  return rules.map((row) => row.id).filter(Boolean)
+}
+
+function validateVesselCoverage() {
   for (const entry of INTENT_MAPPINGS) {
+    assert(VESSEL_RULES.has(entry.slug), `Missing vessel rules for ${entry.slug}`)
+  }
+
+  for (const slug of VESSEL_RULES.keys()) {
+    assert(
+      INTENT_MAPPINGS.some((entry) => entry.slug === slug),
+      `Vessel rules slug ${slug} has no glossary mapping`,
+    )
+  }
+}
+
+function validateClauseIds() {
+  for (const rule of VESSEL_RULES.values()) {
     const ids = [
-      ...(entry.strong ?? []),
-      ...(entry.weak ?? []),
-      ...(entry.incompatible ?? []),
+      ...catalogIdsInRules(rule.required),
+      ...catalogIdsInRules(rule.optional),
+      ...catalogIdsInRules(rule.forbidden),
     ]
     for (const id of ids) {
-      assert(INTENT_FACET_IDS.has(id), `Unknown intent "${id}" on mapping ${entry.slug}`)
+      assert(CLAUSE_BY_ID.has(id), `${rule.slug}: unknown clause id ${id}`)
+    }
+
+    const required = new Set(catalogIdsInRules(rule.required))
+    const forbidden = new Set(catalogIdsInRules(rule.forbidden))
+    for (const id of required) {
+      assert(!forbidden.has(id), `${rule.slug}: ${id} is both required and forbidden`)
+    }
+
+    const optional = new Set(catalogIdsInRules(rule.optional))
+    for (const id of required) {
+      assert(!optional.has(id), `${rule.slug}: ${id} is both required and optional`)
+    }
+
+    for (const [a, b] of EXCLUSIVE_ADDON_PAIRS) {
+      assert(
+        !(required.has(a) && required.has(b)),
+        `${rule.slug}: exclusive pair ${a}/${b} both required`,
+      )
     }
   }
 }
 
+function validateJobs() {
+  for (const job of JOBS) {
+    assert(VESSEL_RULES.has(job.vessel), `Job ${job.id} points at unknown vessel ${job.vessel}`)
+  }
+}
+
 async function validateGlossaryAnchors() {
+  const glossaryPath = resolveNotebookFile('glossary-and-trust-types.md')
   const glossary = await readFile(glossaryPath, 'utf8')
   const anchors = new Set([...glossary.matchAll(/href="#([a-z0-9-]+)"/g)].map((m) => m[1]))
 
@@ -60,137 +95,68 @@ async function validateGlossaryAnchors() {
   }
 }
 
-function rankOf(results, slug) {
-  return results.findIndex((result) => result.slug === slug)
-}
-
-// TC-1: Grandchildren — annual gifts — own slice
-test('TC-1: grandchildren annual gifts fixed slice', () => {
-  const selection = {
-    beneficiary_grandchildren: true,
-    start_during_life: true,
-    fund_annual_gift_exclusion: true,
-    structure_fixed_slice: true,
-    structure_class_grows: true,
-  }
-
-  const results = matchIntents(selection, INTENT_MAPPINGS)
-
-  assert(results.length > 0, 'TC-1: expected at least one result')
-  assert(results[0].slug === 'crummey-trust', `TC-1: expected crummey-trust #1, got ${results[0]?.slug}`)
-
-  const topScore = results[0].score
-  for (const slug of ['pot', 'ilit', 'b-trust', 'separate-share', 'rlt']) {
-    const entry = results.find((result) => result.slug === slug)
-    assert(!entry || entry.score < topScore, `TC-1: ${slug} must not tie or beat crummey-trust`)
-  }
-
-  for (const id of [
-    'start_during_life',
-    'fund_annual_gift_exclusion',
-    'structure_fixed_slice',
-    'beneficiary_grandchildren',
-  ]) {
-    assert(
-      results[0].matched.includes(id),
-      `TC-1: crummey-trust must strongly match ${id}`,
-    )
-  }
-
-  const separateShareRank = rankOf(results, 'separate-share')
-  assert(
-    separateShareRank === -1 || separateShareRank > 0,
-    'TC-1: separate-share must not outrank crummey-trust',
-  )
+test('job: Rockefeller descendants → dynasty', () => {
+  const job = JOBS.find((entry) => entry.id === 'rockefeller')
+  assert(job?.vessel === 'dynasty', `expected dynasty, got ${job?.vessel}`)
+  const rule = vesselRule('dynasty')
+  assert(catalogIdsInRules(rule.required).includes('C12'), 'dynasty must require GST allocation')
+  assert(catalogIdsInRules(rule.required).includes('C15'), 'dynasty must require duration language')
+  assert(catalogIdsInRules(rule.forbidden).includes('C13'), 'dynasty must forbid QTIP as the whole vessel')
 })
 
-// TC-2: Wife — Illinois shield — needs — remainder to child
-test('TC-2: spouse Illinois shield discretionary remainder to children', () => {
-  const selection = {
-    beneficiary_spouse: true,
-    start_at_first_spouse_death: true,
-    tax_illinois_estate: true,
-    tax_federal_estate: true,
-    access_discretionary_needs: true,
-    remainder_to_children: true,
-  }
-
-  const results = matchIntents(selection, INTENT_MAPPINGS)
-
-  assert(results[0]?.slug === 'b-trust', `TC-2: expected b-trust #1, got ${results[0]?.slug}`)
-
-  const qtipRank = rankOf(results, 'qtip')
-  const claytonRank = rankOf(results, 'clayton-qtip')
-  assert(qtipRank === 1, `TC-2: expected qtip #2, got rank ${qtipRank + 1}`)
-  assert(claytonRank === 2, `TC-2: expected clayton-qtip #3, got rank ${claytonRank + 1}`)
-
-  const topScore = results[0].score
-  for (const slug of ['crummey-trust', 'pot', 'ilit', 'rlt']) {
-    const entry = results.find((result) => result.slug === slug)
-    assert(!entry || entry.score < topScore, `TC-2: ${slug} must not tie or beat b-trust`)
-  }
-
-  for (const id of [
-    'tax_illinois_estate',
-    'tax_federal_estate',
-    'beneficiary_spouse',
-    'remainder_to_children',
-    'access_discretionary_needs',
-  ]) {
-    assert(results[0].matched.includes(id), `TC-2: b-trust must match ${id}`)
-  }
+test('job: special-needs child → SNT', () => {
+  const job = JOBS.find((entry) => entry.id === 'special-needs')
+  assert(job?.vessel === 'snt', `expected snt, got ${job?.vessel}`)
+  const rule = vesselRule('snt')
+  assert(catalogIdsInRules(rule.required).includes('C18'), 'SNT must require supplemental-needs language')
+  assert(catalogIdsInRules(rule.required).includes('C06'), 'SNT must require pure discretion')
+  assert(catalogIdsInRules(rule.forbidden).includes('C05'), 'SNT must forbid HEMS/support')
+  assert(catalogIdsInRules(rule.forbidden).includes('C01'), 'SNT must forbid Crummey withdrawal')
 })
 
-// TC-3: Regression — abandoned picker failure mode
-test('TC-3: lifetime annual gift fixed slice regression', () => {
-  const selection = {
-    start_during_life: true,
-    fund_annual_gift_exclusion: true,
-    structure_fixed_slice: true,
-  }
+test('job: spouse exemption → bypass, not QTIP', () => {
+  const job = JOBS.find((entry) => entry.id === 'spouse-exemption')
+  assert(job?.vessel === 'b-trust', `expected b-trust, got ${job?.vessel}`)
+  const rule = vesselRule('b-trust')
+  assert(catalogIdsInRules(rule.required).includes('C20'), 'bypass must require funding formula')
+  assert(catalogIdsInRules(rule.forbidden).includes('C13'), 'bypass must forbid QTIP on the same vessel')
+  assert(rule.companions?.includes('qtip'), 'bypass should point at QTIP as a companion vessel')
+})
 
-  const results = matchIntents(selection, INTENT_MAPPINGS)
-  const fullScore = selection.start_during_life
-    ? Object.values(selection).filter(Boolean).length * STRONG_WEIGHT
-    : 0
-  const topAtFull = results.filter((result) => result.score === fullScore && isFullScore(result))
+test('job: annual gifts → Crummey', () => {
+  assert(JOBS.find((entry) => entry.id === 'annual-gifts')?.vessel === 'crummey-trust', 'annual-gifts → crummey')
+  const rule = vesselRule('crummey-trust')
+  assert(catalogIdsInRules(rule.required).includes('C01'), 'Crummey vessel requires Crummey powers')
+  assert(catalogIdsInRules(rule.forbidden).includes('C02'), 'Crummey vessel forbids pot as the gift vehicle')
+})
 
-  assert(topAtFull.length === 1, `TC-3: expected one full-score top result, got ${topAtFull.length}`)
-  assert(topAtFull[0].slug === 'crummey-trust', 'TC-3: only crummey-trust at full score')
+test('legacy ?i= annual gift tokens map to annual-gifts', () => {
+  const job = jobFromLegacyTokens(['annual_gift', 'fixed_slice', 'during_life'])
+  assert(job?.id === 'annual-gifts', `expected annual-gifts, got ${job?.id}`)
+})
 
-  const potAbsent = results.every((result) => result.slug !== 'pot')
-  assert(potAbsent, 'TC-3: pot must not appear without structure_shared_pool')
+test('legacy ?i= shared pot tokens map to shared-pot', () => {
+  const job = jobFromLegacyTokens(['shared_pool', 'class_grows', 'hems'])
+  assert(job?.id === 'shared-pot', `expected shared-pot, got ${job?.id}`)
+})
 
-  const withPool = {
-    start_during_life: true,
-    fund_annual_gift_exclusion: true,
-    structure_shared_pool: true,
-  }
-  const poolResults = matchIntents(withPool, INTENT_MAPPINGS)
-  const potEntry = poolResults.find((result) => result.slug === 'pot')
-  assert(potEntry && potEntry.score > 0, 'TC-3: pot should appear when structure_shared_pool selected')
+test('addons: forbidden ids cannot be enabled', () => {
+  const next = allowedAddons('snt', ['C05', 'C10', 'C01'])
+  assert(next.includes('C10'), 'C10 is optional on SNT')
+  assert(!next.includes('C05'), 'C05 is forbidden on SNT')
+  assert(!next.includes('C01'), 'C01 is forbidden on SNT')
+})
 
-  const withUnrelated = {
-    ...selection,
-    beneficiary_charity: true,
-    constraint_ira_assets: true,
-  }
-  const stableResults = matchIntents(withUnrelated, INTENT_MAPPINGS)
-  assert(
-    stableResults[0]?.slug === 'crummey-trust',
-    'TC-3: crummey-trust must remain #1 when unrelated intents added',
-  )
-
-  const baselineSlugs = results.map((result) => result.slug)
-  const stableSlugs = stableResults.map((result) => result.slug)
-  assert(
-    stableSlugs[0] === baselineSlugs[0],
-    'TC-3: top result must not flip when unrelated intents added',
-  )
+test('RLT is not a GST/dynasty vehicle', () => {
+  const rule = vesselRule('rlt')
+  assert(catalogIdsInRules(rule.forbidden).includes('C12'), 'RLT must forbid GST as the RLT itself')
+  assert(catalogIdsInRules(rule.forbidden).includes('C01'), 'RLT must forbid Crummey gifts into itself')
 })
 
 async function main() {
-  validateSchema()
+  validateVesselCoverage()
+  validateClauseIds()
+  validateJobs()
   await validateGlossaryAnchors()
 
   if (failures.length > 0) {
@@ -199,7 +165,7 @@ async function main() {
     process.exit(1)
   }
 
-  console.log('check-intent-mappings: all checks passed (TC-1, TC-2, TC-3, schema, glossary)')
+  console.log('check-intent-mappings: vessel rules, jobs, glossary anchors passed')
 }
 
 main().catch((error) => {

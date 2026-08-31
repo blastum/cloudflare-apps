@@ -21,7 +21,9 @@ export const INTENT_TO_URL = {
   tax_federal_estate: 'federal_tax',
   tax_gst_multigen: 'gst',
   tax_not_primary: 'tax_not_primary',
-  access_discretionary_needs: 'discretionary',
+  access_hems_ascertainable: 'hems',
+  access_liberal_discretionary: 'liberal',
+  access_pure_discretion: 'pure_discretion',
   access_fixed_income: 'fixed_income',
   access_staged_ages: 'staged_ages',
   access_grantor_control: 'grantor_control',
@@ -38,6 +40,9 @@ export const INTENT_TO_URL = {
 const URL_TO_INTENT = new Map(
   Object.entries(INTENT_TO_URL).map(([intentId, token]) => [token, intentId]),
 )
+
+// Backward-compatible URL token from earlier picker versions.
+URL_TO_INTENT.set('discretionary', 'access_hems_ascertainable')
 
 /**
  * @param {Record<string, boolean>} selection
